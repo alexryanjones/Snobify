@@ -8,15 +8,20 @@ function Login (req, res) {
       clientSecret: 'e56217866f9b43508b6d705be1b526eb',
       redirectUri: 'http://localhost:3000'
   })
-
   spotifyApi.authorizationCodeGrant(code)
-  .then(response => {
-    response.json({
-      accessToken: response.body.access_token,
-      refreshToken: response.body.refresh_token,
-      expiresIn: response.body.expires_in
-    })
+  .then(data => {
+    res.json({
+      accessToken: data.body.access_token,
+      refreshToken: data.body.refresh_token,
+      expiresIn: data.body.expires_in,
+    });
+    console.log(data);
     // spotifyApi.setAccessToken(accessToken);
     // spotifyApi.setRefreshToken(refreshToken);
-  }).catch(() => res.sendStatus(400));
+  }).catch((err) => {
+    console.log(err);
+    res.sendStatus(400)
+  });
 }
+
+export default { Login }
