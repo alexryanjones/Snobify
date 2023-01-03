@@ -1,7 +1,7 @@
 import SpotifyWebApi from 'spotify-web-api-node'; 
 
-
 function Login (req, res) {
+  console.log('login hit');
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
       clientId: '3da6dc947ad845449ce3be18572218b8',
@@ -15,13 +15,30 @@ function Login (req, res) {
       refreshToken: data.body.refresh_token,
       expiresIn: data.body.expires_in,
     });
-    console.log(data);
-    // spotifyApi.setAccessToken(accessToken);
-    // spotifyApi.setRefreshToken(refreshToken);
+    // console.log('SUCCESS FROM LOGINNNNNNNNNNNNNNNNNNNN', data);
   }).catch((err) => {
-    console.log(err);
+    // console.log('ERRRRRRR FROM LOGIN', err);
     res.sendStatus(400)
   });
 }
 
-export default { Login }
+function Refresh (req, res) {
+  console.log('refresh hit');
+  const refreshToken = req.body.refreshToken;
+  const spotifyApi = new SpotifyWebApi({
+    clientId: '3da6dc947ad845449ce3be18572218b8',
+    clientSecret: 'e56217866f9b43508b6d705be1b526eb',
+    redirectUri: 'http://localhost:3000',
+    refreshToken: refreshToken,
+  });
+  spotifyApi.refreshAccessToken()
+  .then(data => {
+    res.json({
+      accessToken: data.body.access_token,
+      expiresIn: data.body.expires_in,
+    });
+    // spotifyApi.setAccessToken(data.body)
+  }).catch(err => console.log('ERRRRRRRRRRRRRRR from refresh', err))
+}
+
+export default { Login, Refresh }
