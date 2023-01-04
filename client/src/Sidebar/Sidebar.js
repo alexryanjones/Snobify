@@ -20,13 +20,13 @@ function Sidebar() {
   
   return (
     <div className='sidebar'>
-      <p id='logo'>Snobify</p>
-      <p>Home</p>
-      <button onClick={getHome}>Search</button>
-      <p>Library</p>
-      <p>Create playlist</p>
-      <p>Liked songs</p>
-      <p>Your episodes</p>
+      <div className='sidebar-nav'>
+        <h1 id='logo'>Snobify</h1>
+        <h1 id='this-week'>This week's score:</h1>
+        <h1 id='score'>78% Basic</h1>
+        <p>Home</p>
+        <p>Your Library</p>
+      </div>
       <div id='sidebar-divider'></div>
       <Playlists />
     </div>

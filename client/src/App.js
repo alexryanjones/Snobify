@@ -1,6 +1,9 @@
-import Homescreen from './Dashboard/Homescreen';
+import DashboardMain from './Dashboard/Main';
 import Sidebar from './Sidebar/Sidebar';
 import Login from './Login/Login';
+import CurrentlyPlaying from './NowPlaying/CurrentlyPlaying';
+import MediaControls from './Player/MediaControls';
+
 
 const code = new URLSearchParams(window.location.search).get('code');
 
@@ -11,7 +14,9 @@ function App() {
       {code ? (
         <div id='index'>
           <Sidebar />
-          <Homescreen code={code} />
+          <DashboardMain code={code} />
+          <CurrentlyPlaying />
+          <MediaControls />
         </div>
       ) : (
         <Login />

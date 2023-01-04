@@ -3,8 +3,8 @@ body {
 }
 
 #index {
-  background-color: #181818;
   display: flex;
+  flex-wrap: wrap;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -19,35 +19,56 @@ body {
   background-color: rgba(33, 33, 33, 0.9);
 }
 
-
 .sidebar {
-  height: 100%;
-  width: 25%;
+  height: 90%;
+  width: 20%;
+  background: #000000;
   color: white;
-  padding-left: 25px;
   display: flex;
   flex-direction: column;
-  padding-left: 25px;
+  gap: 10px;
   padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 #sidebar-divider {
   border: 0.5px solid grey;
   width: 100%;
   align-self: center;
+  margin-bottom: 5px;
 }
 
 .playlists {
   color: white;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: auto;
-
 }
 
-.homescreen {
-  height: 100%;
-  width: 75%;
-  overflow: scroll;
+.dashboard {
+  height: 90%;
+  width: 50%;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 25px;
+}
+
+#search {
+  width: 80%;
+  height: 5%;
+  background: white;
+  border-radius: 5px;
+}
+
+#list-items {
+  height: 95%;
+  width: 100%;
+  margin-top: 25px;
+  overflow-y: scroll;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -59,4 +80,61 @@ body {
   height: 200px;
   width: 200px;
   border: 1px solid white;
+  border-radius: 5px;
+}
+
+#currently-playing {
+  height: 90%;
+  width: 30%;
+  background: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 25px;
+  gap: 5%;
+}
+
+.currently-playing-content {
+  padding-left: 5%;
+}
+
+#currently-playing-artwork {
+  height: 500px;
+  width: 500px;
+  border: 1px solid white;
+  align-self: center;
+}
+
+#judgement-container {
+  height: 25%;
+  padding-left: 10%;
+  padding-right: 10%;
+  align-self: center;
+}
+
+#player {
+  width: 100%;
+  height: 10%;
+  background: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+#center {
+  width: 5px;
+  height: 5px;
+}
+
+#media-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#volume-controls {
 }
