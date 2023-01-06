@@ -23,7 +23,7 @@ function Sidebar() {
       <div className='sidebar-nav'>
         <h1 id='logo'>Snobify</h1>
         <h1 id='this-week'>This week's score:</h1>
-        <h1 id='score'>78% Basic</h1>
+        <h1 id='score' style={{textDecoration: 'underline'}}>78% Basic</h1>
         <p>Home</p>
         <p>Your Library</p>
       </div>

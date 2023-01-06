@@ -144,10 +144,11 @@ body {
 #player {
   width: 100%;
   height: 10%;
+  color: white;
   background: #121212;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  justify-content: space-between;
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -165,4 +166,6 @@ body {
 }
 
 #volume-controls {
+  display: flex;
+  justify-content: flex-end;
 }
