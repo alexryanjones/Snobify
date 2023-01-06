@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 #index {
@@ -7,7 +8,7 @@ body {
   flex-wrap: wrap;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+
 }
 
 .blocker {
@@ -64,23 +65,50 @@ body {
   border-radius: 5px;
 }
 
+#list-container {
+  width: 80%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
 #list-items {
   height: 95%;
   width: 100%;
-  margin-top: 25px;
-  overflow-y: scroll;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  justify-items: center;
-  align-items: center;
+  margin-top: 2.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2.5%;
 }
 
-.list-cover {
-  height: 200px;
-  width: 200px;
-  border: 1px solid white;
+.tile-title {
+  width: 100%;
+  height: 7.5%;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+}
+
+.playlist-tile {
+  aspect-ratio: 1 / 1;
+  width: 47.5%;
+  color: white;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #252525;
+  gap: 5%;
+  padding: 2.5%;
+  grid-column: tiles;
+}
+
+.playlist-artwork {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 2.5px;
+
 }
 
 #currently-playing {
@@ -100,8 +128,8 @@ body {
 }
 
 #currently-playing-artwork {
-  height: 500px;
-  width: 500px;
+  aspect-ratio: 1 / 1;
+  height: 80%;
   border: 1px solid white;
   align-self: center;
 }
