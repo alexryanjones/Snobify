@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Playlists from './Playlists';
 
 function Sidebar() {
   const baseUrl = 'http://localhost:4000/';
+  const [weeklyScore, setWeeklyScore] = useState('');
 
   useEffect(() => {
     fetch(baseUrl + 'getHistory', {
       method: 'GET',
-    }).then(res => res.json()).then((data) => {
-      console.log('weekly');
-      console.log(data)
+    }).then(res => res.json())
+      .then((data) => {
+      setWeeklyScore(data)
     });
   }, [])
 
@@ -26,7 +27,7 @@ function Sidebar() {
       <div className='sidebar-nav'>
         <h1 id='logo'>Snobify</h1>
         <h1 id='this-week'>This week's score:</h1>
-        <h1 id='score' style={{textDecoration: 'underline'}}>78% Basic</h1>
+        <h1 id='score' style={{textDecoration: 'underline'}}>{weeklyScore}% Basic</h1>
         <p>Home</p>
         <p>Your Library</p>
       </div>
