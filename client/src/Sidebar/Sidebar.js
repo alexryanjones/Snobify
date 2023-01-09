@@ -1,26 +1,28 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Playlists from './Playlists';
 
 function Sidebar() {
   const baseUrl = 'http://localhost:4000/';
-  const [weeklyScore, setWeeklyScore] = useState('');
-
+  const [weeklyScore, setWeeklyScore] = useState(''); 
+  const { token } = useSelector((state) => state.accessToken)
+  
   useEffect(() => {
-    fetch(baseUrl + 'getHistory', {
-      method: 'GET',
-    }).then(res => res.json())
-      .then((data) => {
-      setWeeklyScore(data)
-    });
-  }, [])
-
-  const getHome = () => {
-    console.log('You just pressed search');
-    fetch(baseUrl + 'sidebar', {
-      method: 'GET'
-    }).then(response => response.json())
-      .then(data => window.alert(data))
-  }
+    if (token) {
+      console.log('Sidebar accesstoken - ', token);
+      axios({
+        method: 'post',
+        url: baseUrl + 'getHistory',
+        data: {
+          accessToken: token,
+        },
+      })
+        .then((res) => {
+          setWeeklyScore(res.data);
+        });
+    }
+  }, [token])
   
   return (
     <div className='sidebar'>

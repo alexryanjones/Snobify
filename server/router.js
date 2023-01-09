@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post('/login', login.Login)
 router.post('/refresh', login.Refresh);
-router.get('/getHistory', history.getHistory)
+router.post('/getHistory', history.getHistory)
 router.get('/homescreen', homescreen.sayHello)
 router.get('/now-listening', nowListening.getCurrentlyListening);
 

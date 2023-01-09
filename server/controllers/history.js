@@ -1,6 +1,7 @@
 import SpotifyWebApi from 'spotify-web-api-node';
 
 function getHistory(req, res) {
+  let accessToken = req.body.accessToken
   let totalTrackPopularity = 0;
   let trackCount = 0;
   let weeklyScore = 100;
@@ -9,9 +10,7 @@ function getHistory(req, res) {
     clientSecret: 'e56217866f9b43508b6d705be1b526eb',
     redirectUri: 'http://localhost:3000',
   });
-  spotifyApi.setAccessToken(
-    'BQA4ODADybl2XHaFV8qVUSkoaMwiLY-O5rKasmvviExRAqv-sPUZkwJ1XMG7pr7dwNmTv94yhlFIdSbOCQCLX9RTOnj-bmMPrkg-2nOwQojwFnzBzTezwu2ibTjLsY-ZPwSOfUGjSE1jXVZWreZxBbOD6waFCyJH4Joadow8M3idG42AVgbHvJWh3hUwMsqauk6XKYHD'
-  );
+  spotifyApi.setAccessToken(accessToken);
   spotifyApi
     .getMyRecentlyPlayedTracks({limit: 50})
     .then(function (data) {
@@ -28,7 +27,8 @@ function getHistory(req, res) {
         trackCount++;
       })
       // Add more complex score logic here
-      weeklyScore -= (totalTrackPopularity / trackCount);
+      weeklyScore -=
+        Math.round((totalTrackPopularity / trackCount)*10)/10;
       res.status(200);
       res.send(`${weeklyScore}`);
     })
