@@ -5,9 +5,12 @@ function Sidebar() {
   const baseUrl = 'http://localhost:4000/';
 
   useEffect(() => {
-    fetch(baseUrl + 'homescreen', {
+    fetch(baseUrl + 'getHistory', {
       method: 'GET',
-    }).then((data) => console.log(data));
+    }).then(res => res.json()).then((data) => {
+      console.log('weekly');
+      console.log(data)
+    });
   }, [])
 
   const getHome = () => {

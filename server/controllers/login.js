@@ -14,10 +14,8 @@ function Login (req, res) {
       accessToken: data.body.access_token,
       refreshToken: data.body.refresh_token,
       expiresIn: data.body.expires_in,
-    });
-    // console.log('SUCCESS FROM LOGINNNNNNNNNNNNNNNNNNNN', data);
+    })
   }).catch((err) => {
-    // console.log('ERRRRRRR FROM LOGIN', err);
     res.sendStatus(400)
   });
 }
