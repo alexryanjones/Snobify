@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Playlists from './Playlists';
+import { ReactSVG } from 'react-svg';
 
 function Sidebar() {
   const baseUrl = 'http://localhost:4000/';
@@ -29,12 +30,14 @@ function Sidebar() {
       <div className='sidebar-nav'>
         <h1 id='logo'>Snobify</h1>
         <h1 id='this-week'>This week's score:</h1>
-        <h1 id='score' style={{textDecoration: 'underline'}}>{weeklyScore}% Basic</h1>
+        <h1 id='score' style={{ textDecoration: 'underline' }}>
+          {weeklyScore}% Basic
+        </h1>
         <p>Home</p>
         <p>Your Library</p>
       </div>
       <div id='sidebar-divider'></div>
-      <Playlists token = { token } baseUrl = {baseUrl}/>
+      <Playlists token={token} baseUrl={baseUrl} />
     </div>
   );
 }

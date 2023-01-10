@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 function Playlists ({token, baseUrl}) {
-  const [playlists, setPlaylists] = useState({});
+  const [playlists, setPlaylists] = useState([]);
 
 
   // Get playlists
@@ -15,18 +15,17 @@ function Playlists ({token, baseUrl}) {
         data: {
           accessToken: token,
         },
-      }).then((res) => {
-        console.log(res.data);
-        setPlaylists(res.data)
-      });
+      }).then((res) => setPlaylists(res.data))
+      .then(() => console.log(playlists));
     }
   }, [token]);
 
   return (
     <div className='playlists'>
-      {playlists.map(playlist => {
+      
+      {playlists.length > 0 ? playlists.map(playlist => {
         return <p key={playlist.playlistName}>{playlist.playlistName}</p>;
-      })}
+      }) : <p>Loading</p>}
     </div>
   );
 }
