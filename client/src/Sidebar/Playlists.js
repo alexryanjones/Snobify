@@ -1,21 +1,32 @@
-function Playlists () {
+import { useEffect, useState } from "react";
+import axios from 'axios';
+
+
+function Playlists ({token, baseUrl}) {
+  const [playlists, setPlaylists] = useState({});
+
+
+  // Get playlists
+  useEffect(() => {
+    if (token) {
+      axios({
+        method: 'post',
+        url: baseUrl + 'playlists',
+        data: {
+          accessToken: token,
+        },
+      }).then((res) => {
+        console.log(res.data);
+        setPlaylists(res.data)
+      });
+    }
+  }, [token]);
+
   return (
     <div className='playlists'>
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
+      {playlists.map(playlist => {
+        return <p key={playlist.playlistName}>{playlist.playlistName}</p>;
+      })}
     </div>
   );
 }

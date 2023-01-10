@@ -5,12 +5,12 @@ import Playlists from './Playlists';
 
 function Sidebar() {
   const baseUrl = 'http://localhost:4000/';
-  const [weeklyScore, setWeeklyScore] = useState(''); 
-  const { token } = useSelector((state) => state.accessToken)
+  const [weeklyScore, setWeeklyScore] = useState('');
+  const { token } = useSelector((state) => state.accessToken);
   
+  // Get recently played tracks
   useEffect(() => {
     if (token) {
-      console.log('Sidebar accesstoken - ', token);
       axios({
         method: 'post',
         url: baseUrl + 'getHistory',
@@ -34,7 +34,7 @@ function Sidebar() {
         <p>Your Library</p>
       </div>
       <div id='sidebar-divider'></div>
-      <Playlists />
+      <Playlists token = { token } baseUrl = {baseUrl}/>
     </div>
   );
 }
