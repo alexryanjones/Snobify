@@ -29,10 +29,10 @@ function Sidebar() {
     <div className='sidebar'>
       <div className='sidebar-nav'>
         <h1 id='logo'>Snobify</h1>
-        <h1 id='this-week'>This week's score:</h1>
-        <h1 id='score' style={{ textDecoration: 'underline' }}>
+        <h3 id='this-week'>This week's score:</h3>
+        <h2 id='score' style={{ textDecoration: 'underline' }}>
           {weeklyScore}% Basic
-        </h1>
+        </h2>
         <p className='sidebar-item'>Home</p>
         <p className='sidebar-item'>Your Library</p>
       </div>
