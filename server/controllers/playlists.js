@@ -17,7 +17,6 @@ function getPlaylists(req, res) {
           playlistName: playlist
         }
       })
-      console.log(playlists);
       res.status(200)
       res.send(playlists)
     },

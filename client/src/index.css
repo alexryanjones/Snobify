@@ -40,6 +40,14 @@ body {
   margin-bottom: 5px;
 }
 
+.sidebar-item {
+  color: #969696;
+}
+
+.sidebar-item:hover {
+  color: white;
+}
+
 .playlists {
   color: white;
   overflow-y: scroll;

@@ -12,6 +12,6 @@ router.post('/refresh', login.Refresh);
 router.post('/getHistory', history.getHistory)
 router.post('/playlists', playlists.getPlaylists)
 router.get('/homescreen', homescreen.sayHello)
-router.get('/now-listening', nowListening.getCurrentlyListening);
+router.post('/now-listening', nowListening.getCurrentlyListening);
 
 export default router;

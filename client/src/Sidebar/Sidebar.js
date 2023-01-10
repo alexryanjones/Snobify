@@ -33,8 +33,8 @@ function Sidebar() {
         <h1 id='score' style={{ textDecoration: 'underline' }}>
           {weeklyScore}% Basic
         </h1>
-        <p>Home</p>
-        <p>Your Library</p>
+        <p className='sidebar-item'>Home</p>
+        <p className='sidebar-item'>Your Library</p>
       </div>
       <div id='sidebar-divider'></div>
       <Playlists token={token} baseUrl={baseUrl} />

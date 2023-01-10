@@ -24,7 +24,11 @@ function Playlists ({token, baseUrl}) {
     <div className='playlists'>
       
       {playlists.length > 0 ? playlists.map(playlist => {
-        return <p key={playlist.playlistName}>{playlist.playlistName}</p>;
+        return (
+          <p className='sidebar-item' key={playlist.playlistName}>
+            {playlist.playlistName}
+          </p>
+        );
       }) : <p>Loading</p>}
     </div>
   );

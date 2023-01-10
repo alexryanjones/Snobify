@@ -1,4 +1,26 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+
 function CurrentlyPlaying () {
+    const baseUrl = 'http://localhost:4000/';
+    const [currentlyPlaying, setCurrentlyPlaying] = useState({})
+    const { token } = useSelector((state) => state.accessToken);
+
+    useEffect(() => {
+      if(token) {
+        axios({
+        method: 'post',
+        url: baseUrl + 'now-listening',
+        data: {
+          accessToken: token,
+        }
+      })
+          .then((res) => console.log(res.data));
+      }
+
+    }, [token])
+
   return (
     <div id='currently-playing'>
       <h1 id='currently-playing-title' className='currently-playing-content'>
