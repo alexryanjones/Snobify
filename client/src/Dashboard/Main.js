@@ -48,20 +48,16 @@ function DashboardMain ({code}) {
   }, [accessToken, search])
 
   return (
-    <div className='dashboard'>
-      <Container
-        className='d-flex flex-column py-2'
-        style={{ height: '100vh' }}
-      >
+    <div id='dashboard'>
+      <Container id='search-container'>
         <Form.Control
-          style={{ width: '45%', position: 'absolute' }}
           id='search'
           type='search'
           placeholder='Search'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         ></Form.Control>
-        <div className='flex-grow-1 my-2' style={{ overflowY: 'auto' }}>
+        <div id='search-results-container' style={{ overflowY: 'scroll' }}>
           {searchResults.map((track) => (
             <TrackSearchItem track={track} key={track.uri} />
           ))}

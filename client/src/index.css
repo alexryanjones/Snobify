@@ -55,7 +55,7 @@ body {
   height: auto;
 }
 
-.dashboard {
+#dashboard {
   height: 90%;
   width: 50%;
   background: #121212;
@@ -66,17 +66,45 @@ body {
   padding-top: 25px;
 }
 
+#search-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  border: 1px solid white;
+  /* position: absolute; */
+  width: 50vw;
+  /* height: 87.5%; */
+  align-items: center;
+  z-index: 1;
+}
+
+#search-results-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 80%;
+  max-height: 62.5%;
+  overflow-y: scroll;
+}
+
 #search {
   width: 80%;
-  height: 5%;
   background: white;
   border-radius: 5px;
+}
+
+.search-result-item {
+  background-color: white;
+  height: 50px;
+  color: black;
 }
 
 #list-container {
   width: 80%;
   height: 100%;
   overflow-y: scroll;
+  border: 1px solid grey;
+  justify-content: flex-start;
 }
 
 #list-items {

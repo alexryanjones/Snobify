@@ -2,7 +2,7 @@
 
 function TrackSearchItem ({track}) {
   return (
-    <div>
+    <div className="search-result-item">
       {track.artist}
     </div>
   )
