@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Playlists from './Playlists';
-import { ReactSVG } from 'react-svg';
 
 function Sidebar() {
   const baseUrl = 'http://localhost:4000/';

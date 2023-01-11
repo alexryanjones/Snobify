@@ -12,7 +12,7 @@ function getCurrentlyListening (req, res) {
 
   spotifyApi.getMyCurrentPlayingTrack()
   .then((data) => {
-    console.log(data);
+    // console.log(data);
   });
 }
 

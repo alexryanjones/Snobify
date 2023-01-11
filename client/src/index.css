@@ -46,8 +46,6 @@ body {
   cursor: pointer;
 }
 
-
-
 .sidebar-item:hover {
   color: white;
 }
@@ -201,6 +199,7 @@ body {
   gap: 5%;
   padding: 2.5%;
   grid-column: tiles;
+  cursor: pointer;
 }
 
 .playlist-artwork {
@@ -209,6 +208,18 @@ body {
   border: 1px solid white;
   border-radius: 2.5px;
 
+}
+
+.playlist-title {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.playlist-description {
+  margin-top: -5%;
+  overflow: hidden;
+  color: #969696;
 }
 
 #currently-playing {

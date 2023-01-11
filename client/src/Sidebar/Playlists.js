@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 
-function Playlists ({token, baseUrl}) {
+function Playlists ({ baseUrl}) {
   const [playlists, setPlaylists] = useState([]);
+  const { token } = useSelector((state) => state.accessToken);
 
 
   // Get playlists
@@ -16,7 +18,6 @@ function Playlists ({token, baseUrl}) {
           accessToken: token,
         },
       }).then((res) => setPlaylists(res.data))
-      .then(() => console.log(playlists));
     }
   }, [token]);
 

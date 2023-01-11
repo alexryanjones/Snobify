@@ -17,7 +17,7 @@ function App() {
       {accessToken ? (
         <div id='index'>
           <Sidebar />
-          <DashboardMain accessToken={accessToken} />
+          <DashboardMain />
           <CurrentlyPlaying />
           <MediaControls />
         </div>

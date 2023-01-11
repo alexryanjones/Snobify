@@ -2,27 +2,30 @@ import { Container, Form } from 'react-bootstrap'
 import { useState, useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import TrackSearchItem from './TrackSearchItem';
-import DashboardHome from './DashboardHome';
+import DashboardHome from './FeaturedPlaylists';
+import { useSelector } from 'react-redux';
 
 const spotifyApi = new SpotifyWebApi({
   clientId: '3da6dc947ad845449ce3be18572218b8',
 });
 
-function DashboardMain({ accessToken }) {
+function DashboardMain() {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   console.log('here results', searchResults);
+  const { token } = useSelector((state) => state.accessToken);
+
 
   // Maybe add another dashboard view for the search results?
 
   useEffect(() => {
-    if (!accessToken) return;
-    spotifyApi.setAccessToken(accessToken);
-  }, [accessToken]);
+    if (!token) return;
+    spotifyApi.setAccessToken(token);
+  }, [token]);
 
   useEffect(() => {
     if (!search) return setSearchResults([]);
-    if (!accessToken) return;
+    if (!token) return;
     // cancels request if another request is made before promise is resolved
     let cancel = false;
     spotifyApi.searchTracks(search).then((res) => {
@@ -43,7 +46,7 @@ function DashboardMain({ accessToken }) {
     });
 
     return () => (cancel = true);
-  }, [accessToken, search]);
+  }, [token, search]);
 
   return (
     <div id='dashboard'>
