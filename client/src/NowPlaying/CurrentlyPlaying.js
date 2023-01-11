@@ -6,6 +6,9 @@ function CurrentlyPlaying () {
     const baseUrl = 'http://localhost:4000/';
     const [currentlyPlaying, setCurrentlyPlaying] = useState({})
     const { token } = useSelector((state) => state.accessToken);
+    const { track } = useSelector((state) => state.currentlySelectedTrack);
+    
+
 
     useEffect(() => {
       if(token) {
@@ -16,7 +19,7 @@ function CurrentlyPlaying () {
           accessToken: token,
         }
       })
-          .then((res) => console.log(res.data));
+          .then((res) => setCurrentlyPlaying(res.data[0]));
       }
 
     }, [token])
@@ -27,10 +30,14 @@ function CurrentlyPlaying () {
         Currently Playing
       </h1>
       <div id='track-info' className='currently-playing-content'>
-        <h1>Track name</h1>
-        <h2>Artist</h2>
+        <h2>{currentlyPlaying.name}</h2>
+        <h3>{currentlyPlaying.artist}</h3>
       </div>
-      <div id='currently-playing-artwork'></div>
+      <img
+        id='currently-playing-artwork'
+        src={currentlyPlaying.albumArtwork}
+        alt='album artwork'
+      />
       <div id='judgement-container'>
         <p>
           Really? Taylor Swift for the 5th time this week? I’ve gone ahead and

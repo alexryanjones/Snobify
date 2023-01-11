@@ -2,38 +2,28 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 import { useSelector } from 'react-redux';
 
 
-function MediaControls (trackUri) {
+function MediaControls () {
   const { token } = useSelector((state) => state.accessToken);
-
+  const { track } = useSelector((state) => state.currentlySelectedTrack);
+  const trackUri = track.uri;
 
   if (!token) return null;
   return (
     <SpotifyPlayer
+      id='player'
       token={token}
       showSaveIcon
-      uris={trackUri ? [trackUri] : []}
+      uris={trackUri ? trackUri : []}
       styles={{
         activeColor: '#fff',
         bgColor: '#121212',
         color: '#fff',
         loaderColor: '#fff',
-        sliderColor: '#1cb954',
+        sliderColor: '#969696',
         trackArtistColor: '#ccc',
         trackNameColor: '#fff',
       }}
     />
-    // <div id='player'>
-    //   <div id='center'></div>
-    //   <div id='media-controls'>
-    //     <div id='track-controls'>Back Play Skip</div>
-    //     <div id='track-seeking'>
-    //       SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEKING
-    //     </div>
-    //   </div>
-    //   <div id='volume-controls'>
-    //     VOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLUME
-    //   </div>
-    // </div>
   );
 }
 

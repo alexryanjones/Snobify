@@ -4,15 +4,14 @@ export const accessTokenSlice = createSlice({
   name: 'accessToken',
   initialState: {token: ''},
   reducers: { 
-    checker: (state) => {
-      console.log(state);
-    },
     setReduxAccessToken: (state, action) => {
       state.token = action.payload;
+      console.log('redux token', state.token);
       }
     }
 })
 
-export const { checker, setReduxAccessToken } = accessTokenSlice.actions;
 
-export default accessTokenSlice.reducer;
+export const { setReduxAccessToken } = accessTokenSlice.actions;
+
+export default  accessTokenSlice.reducer;

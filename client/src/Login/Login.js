@@ -10,7 +10,7 @@ const authUrl = `https:/accounts.spotify.com/authorize?client_id=${client_id}&re
 
 function Login () {
     return (
-    <div className='blocker'>
+    <div className='screen-blocker'>
         <Container className='d-flex justify-content-center align-items-center' style={{minHeight: "100vh"}}>
         <a className='btn btn-success btn-lg' href={authUrl}>
             Login with Spotify

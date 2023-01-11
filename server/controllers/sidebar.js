@@ -14,8 +14,7 @@ function getHistory(req, res) {
       // Output items
       console.log('Your 50 most recently played tracks are:');
       data.body.items.forEach((item) => {
-        console.log(item.track.name)
-        console.log(item.track.id);
+
       });
     },
     function (err) {

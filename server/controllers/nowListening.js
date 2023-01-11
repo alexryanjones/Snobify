@@ -10,9 +10,19 @@ function getCurrentlyListening (req, res) {
   });
     spotifyApi.setAccessToken(accessToken);
 
-  spotifyApi.getMyCurrentPlayingTrack()
-  .then((data) => {
-    // console.log(data);
+  spotifyApi.getMyCurrentPlayingTrack().then((data) => {
+    console.log('currently', data.body.item);
+    const currentlyPlaying = [data.body.item].map((track) => {
+      return {
+        name: track.name,
+        artist: track.artists[0].name,
+        uri: track.uri,
+        albumArtwork: track.album.images[0].url,
+      };
+    });
+
+    res.status(200);
+    res.send(currentlyPlaying);
   });
 }
 
