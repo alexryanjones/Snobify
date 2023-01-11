@@ -27,7 +27,7 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  /* gap: 10px; */
   padding-top: 25px;
   padding-left: 25px;
   padding-right: 25px;
@@ -37,22 +37,27 @@ body {
   border: 0.5px solid grey;
   width: 100%;
   align-self: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .sidebar-item {
   color: #969696;
+  display: flex;
+  cursor: pointer;
 }
+
+
 
 .sidebar-item:hover {
   color: white;
 }
 
-.playlists {
+#playlists {
   color: white;
   overflow-y: scroll;
   overflow-x: hidden;
   height: auto;
+  font-size: 14px;
 }
 
 #dashboard {
@@ -70,12 +75,12 @@ body {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   /* position: absolute; */
   width: 50vw;
-  /* height: 87.5%; */
+  /* min-height: 100%; */
   align-items: center;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 #search-results-container {
@@ -83,8 +88,11 @@ body {
   flex-direction: column;
   flex-grow: 1;
   width: 80%;
-  max-height: 62.5%;
+  max-height: 34.85%;
   overflow-y: scroll;
+  z-index: 1;
+  border-radius: 1%;
+
 }
 
 #search {
@@ -95,16 +103,72 @@ body {
 
 .search-result-item {
   background-color: white;
-  height: 50px;
+  min-height: 90px;
+  max-height: 90px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   color: black;
+  border: 1px solid grey;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  /* gap: 2.5%; */
+  border-radius: 5px;
+}
+
+.track-info {
+  max-height: 100%;
+  min-width: 70%;
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  margin-left: 2.5%;
+
+}
+
+.search-track-name {
+  font-size: 16px;
+}
+
+.search-artist-name {
+  font-size: 14px;
+  color: #969696;
+}
+
+.search-album-name {
+  font-size: 14px;
+  color: #969696;
+}
+
+.play-queue-icon {
+  height: 40%;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+}
+
+.queue {
+  margin-left: 2.5%;
+
+}
+
+.play {
+  height: 50%;
 }
 
 #list-container {
   width: 80%;
   height: 100%;
   overflow-y: scroll;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   justify-content: flex-start;
+  /* margin-top: -10px; */
 }
 
 #list-items {
