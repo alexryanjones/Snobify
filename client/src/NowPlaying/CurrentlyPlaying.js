@@ -5,23 +5,39 @@ import { useSelector } from 'react-redux';
 function CurrentlyPlaying () {
     const baseUrl = 'http://localhost:4000/';
     const [currentlyPlaying, setCurrentlyPlaying] = useState({})
+    const [insult, setInsult] = useState('')
     const { token } = useSelector((state) => state.accessToken);
 
+    
     useEffect(() => {
       if(token) {
         axios({
-        method: 'post',
-        url: baseUrl + 'now-listening',
-        data: {
-          accessToken: token,
-        }
-      })
-          .then((res) => setCurrentlyPlaying(res.data));
+          method: 'post',
+          url: baseUrl + 'now-listening',
+          data: {
+            accessToken: token,
+          }
+        })
+        .then((res) => setCurrentlyPlaying(res.data));
       }
     }, [token])
 
-  return (
-    <div id='currently-playing'>
+    useEffect(() => {
+      if (currentlyPlaying) {
+        axios({
+          method: 'post',
+          url: baseUrl + 'generate-insult',
+          data: {
+            artist: currentlyPlaying.artist,
+          },
+        }).then((res) => {
+          setInsult(res.data);
+        });
+      }
+    }, [currentlyPlaying])
+    
+    return (
+      <div id='currently-playing'>
       <h3 id='currently-playing-title' className='currently-playing-content'>
         Currently Playing
       </h3>
@@ -31,12 +47,13 @@ function CurrentlyPlaying () {
       </div>
       <img id='currently-playing-artwork' src={currentlyPlaying.artwork} />
       <div id='judgement-container'>
-        <p>
+        {/* <p>
           Really? Taylor Swift for the 5th time this week? I’ve gone ahead and
           changed your name to Jessica. Listen to 10 tracks by artists outside
           of the top 1000 to get your name back. In the meantime, enjoy your
           pumpkin spiced latte, Jessica.
-        </p>
+        </p> */}
+        {insult ? <p>{insult}</p> : null}
       </div>
     </div>
   );

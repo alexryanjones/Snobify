@@ -12,6 +12,7 @@ function getCurrentlyListening(req, res) {
   spotifyApi.setAccessToken(accessToken);
 
   spotifyApi.getMyCurrentPlayingTrack().then((data) => {
+    // console.log(Object.keys(data.body).length === 0);
     if (Object.keys(data.body).length > 0) {
       const track = {
         title: data.body.item.name,

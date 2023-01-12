@@ -10,6 +10,7 @@ const user = require('./controllers/user.js');
 const playlistTracks = require('./controllers/playlistTracks.js');
 const myLibrary = require('./controllers/myLibrary.js');
 const filterDatabase = require('./controllers/filterDatabase');
+const insultGenerator = require('./controllers/insultGenerator')
 const router = express.Router();
 
 router.post('/login', login.Login)
@@ -23,5 +24,6 @@ router.post('/user', user.getUser);
 router.post('/get-playlist', playlistTracks.getTracks)
 router.post('/get-library', myLibrary.getLibrary);
 router.get('/filter-date', filterDatabase.clearOldTracks)
+router.post('/generate-insult', insultGenerator.generateInsult)
 
 module.exports = router;

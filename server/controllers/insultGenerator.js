@@ -2,8 +2,9 @@ const axios = require('axios');
 
 function generateInsult(req, res) {
 
-  const prompt =
-  'If one fictional character was insulting another fictional character called Alex for listening to too much Taylor Swift, what might the insult be? It would be aggressive and elaborate.';
+  console.log('arteest', req.body.artist);
+
+  const prompt = `If one fictional character was insulting another fictional character called Alex for listening to too much ${req.body.artist}, what might the insult be? It would be aggressive, elaborate and no more than 50 words.`;
   
   // const prompt = 'What is your name?'
 
@@ -23,8 +24,12 @@ function generateInsult(req, res) {
     .post(url, data, { headers: headers })
     // .then((response) => response.json())
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
+      res.status(200);
+      res.send(response.data.choices[0].text)
     });
 }
 
-generateInsult();
+// generateInsult();
+
+module.exports = { generateInsult }
