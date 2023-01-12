@@ -8,6 +8,7 @@ import myPlaylists from './controllers/myPlaylists.js';
 import featuredPlaylists from './controllers/featuredPlaylists.js';
 import user from './controllers/user.js';
 import playlistTracks from './controllers/playlistTracks.js';
+import myLibrary from './controllers/myLibrary.js';
 const router = express.Router();
 
 router.post('/login', login.Login)
@@ -19,5 +20,6 @@ router.get('/homescreen', homescreen.sayHello)
 router.post('/now-listening', nowListening.getCurrentlyListening);
 router.post('/user', user.getUser);
 router.post('/get-playlist', playlistTracks.getTracks)
+router.post('/get-library', myLibrary.getLibrary);
 
 export default router;

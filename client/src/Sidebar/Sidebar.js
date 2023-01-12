@@ -1,13 +1,17 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Playlists from './Playlists';
 import logo from '../assets/Snobify-Logo.svg'
+import { setCurrentView } from '../Redux/currentView';
+
 
 function Sidebar() {
   const baseUrl = 'http://localhost:4000/';
   const [weeklyScore, setWeeklyScore] = useState('');
   const { token } = useSelector((state) => state.accessToken);
+  const dispatch = useDispatch()
+
   
   // Get recently played tracks
   useEffect(() => {
@@ -36,8 +40,8 @@ function Sidebar() {
         <h3 id='score' style={{ textDecoration: 'underline' }}>
           {weeklyScore}% Basic
         </h3>
-        <p className='sidebar-item'>Home</p>
-        <p className='sidebar-item'>Your Library</p>
+        <p className='sidebar-item' onClick={() => dispatch(setCurrentView({playlistName: 'Home', playlistId: null}))}>Home</p>
+        <p className='sidebar-item' onClick={() => dispatch(setCurrentView({playlistName: 'Your Library', playlistId: null}))}>Your Library</p>
       </div>
       <div id='sidebar-divider'></div>
       <Playlists token={token} baseUrl={baseUrl} />

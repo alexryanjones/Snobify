@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import PlaylistItem from './PlaylistItem';
+import currentView from "../Redux/currentView";
 
 function PlaylistView ({playlist}) {
   const baseUrl = 'http://localhost:4000/';
@@ -9,7 +10,7 @@ function PlaylistView ({playlist}) {
   const [playlistTracks, setPlaylistTracks] = useState([])
 
     useEffect(() => {
-      if (token) {
+      if (token && playlist.playlistName !== 'Your Library') {
         axios({
           method: 'post',
           url: baseUrl + 'get-playlist',
@@ -20,14 +21,24 @@ function PlaylistView ({playlist}) {
         }).then((res) => {
           setPlaylistTracks(res.data);
         });
+      } else if (token && playlist.playlistName === 'Your Library') {
+        axios({
+          method: 'post',
+          url: baseUrl + 'get-library',
+          data: {
+            accessToken: token,
+          },
+        }).then((res) => {
+          setPlaylistTracks(res.data);
+        });
       }
-    }, [token]);
+    }, [token, playlistTracks]);
 
   return (
-    <div class='list-container'>
+    <div className='list-container'>
       <h1 className='playlist-title'>{playlist.playlistName}</h1>
       {playlistTracks.map((track) => (
-        <PlaylistItem track={track} />
+        <PlaylistItem track={track} key={track.id} />
       ))}
     </div>
   );
