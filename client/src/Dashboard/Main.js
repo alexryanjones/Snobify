@@ -2,8 +2,10 @@ import { Container, Form } from 'react-bootstrap'
 import { useState, useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import TrackSearchItem from './TrackSearchItem';
-import DashboardHome from './FeaturedPlaylists';
+import FeaturedPlaylists from './FeaturedPlaylists';
+import PlaylistView from './PlaylistView';
 import { useSelector } from 'react-redux';
+import currentView from '../Redux/currentView';
 
 const spotifyApi = new SpotifyWebApi({
   clientId: '3da6dc947ad845449ce3be18572218b8',
@@ -12,6 +14,8 @@ const spotifyApi = new SpotifyWebApi({
 function DashboardMain() {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  // const [currentView, setCurrentView] = useState('Home');
+  const { playlist } = useSelector((state) => state.currentView)
   const { token } = useSelector((state) => state.accessToken);
 
 
@@ -60,7 +64,11 @@ function DashboardMain() {
           ))}
         </div>
       </Container>
-      <DashboardHome />
+      {playlist.playlistName === 'Home' ? (
+        <FeaturedPlaylists />
+      ) : (
+        <PlaylistView playlist={playlist} />
+      )}
     </div>
   );
 }

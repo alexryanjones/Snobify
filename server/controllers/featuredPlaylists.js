@@ -1,7 +1,6 @@
 import SpotifyWebApi from "spotify-web-api-node";
 
 function getFeaturedPlaylists(req, res) {
-  console.log('getting featured playlists');
   let accessToken = req.body.accessToken;
   const spotifyApi = new SpotifyWebApi({
     clientId: '3da6dc947ad845449ce3be18572218b8',

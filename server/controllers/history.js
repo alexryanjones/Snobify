@@ -33,7 +33,7 @@ function getHistory(req, res) {
       res.send(`${weeklyScore}`);
     })
     .catch(function (error) {
-      console.error(error);
+      res.send(err);
     });
   
 }

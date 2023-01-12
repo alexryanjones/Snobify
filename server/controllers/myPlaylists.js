@@ -11,10 +11,11 @@ function getPlaylists(req, res) {
   spotifyApi.getUserPlaylists('2177zxcr2gynkbeuca7vsrusi')
   .then(
     function (data) {
-      let playlistsArray = data.body.items.map(playlist => playlist.name)
-      const playlists = playlistsArray.map(playlist => {
+      let playlists = data.body.items.map(playlist => {
+      
         return {
-          playlistName: playlist
+          playlistName: playlist.name,
+          playlistId: playlist.id
         }
       })
       res.status(200)

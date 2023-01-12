@@ -8,10 +8,12 @@ function getCurrentlyListening (req, res) {
     clientSecret: 'e56217866f9b43508b6d705be1b526eb',
     redirectUri: 'http://localhost:3000',
   });
-    spotifyApi.setAccessToken(accessToken);
-
+  spotifyApi.setAccessToken(accessToken);
+  
+  
   spotifyApi.getMyCurrentPlayingTrack()
   .then((data) => {
+    if (Object.keys(data.body).length > 0) {
     const track = {
       title: data.body.item.name,
       artist: data.body.item.artists[0].name,
@@ -19,6 +21,10 @@ function getCurrentlyListening (req, res) {
     }
     res.status(200);
     res.send(track);
+    } else {
+      res.status(400);
+      res.send('Nothing playing');
+    }
   });
 }
 

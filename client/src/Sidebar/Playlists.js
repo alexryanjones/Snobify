@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentView } from '../Redux/currentView';
 
 
 function Playlists ({ baseUrl}) {
   const [playlists, setPlaylists] = useState([]);
+  const dispatch = useDispatch()
   const { token } = useSelector((state) => state.accessToken);
 
 
@@ -13,11 +15,13 @@ function Playlists ({ baseUrl}) {
     if (token) {
       axios({
         method: 'post',
-        url: baseUrl + 'playlists',
+        url: baseUrl + 'my-playlists',
         data: {
           accessToken: token,
         },
-      }).then((res) => setPlaylists(res.data))
+      }).then((res) => {
+        setPlaylists(res.data);
+      });
     }
   }, [token]);
 
@@ -26,7 +30,11 @@ function Playlists ({ baseUrl}) {
       
       {playlists.length > 0 ? playlists.map(playlist => {
         return (
-          <p className='sidebar-item playlist-item' key={playlist.playlistName}>
+          <p
+            className='sidebar-item playlist-item'
+            key={playlist.playlistName}
+            onClick={() => dispatch(setCurrentView(playlist))}
+          >
             {playlist.playlistName}
           </p>
         );

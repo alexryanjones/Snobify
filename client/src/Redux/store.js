@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import accessTokenReducer from './accessToken';
 import queueReducer from './queue';
+import currentViewReducer from './currentView';
 
 export default configureStore({
   reducer: {
-    queue: queueReducer,
     accessToken: accessTokenReducer,
+    currentView: currentViewReducer,
+    queue: queueReducer,
   },
 });
