@@ -13,6 +13,13 @@ function Sidebar() {
   const dispatch = useDispatch()
 
   
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: baseUrl + 'filter-date'
+    })
+  }, [])
+
   // Get recently played tracks
   useEffect(() => {
     if (token) {

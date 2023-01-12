@@ -16,7 +16,6 @@ function getHistory(req, res) {
   spotifyApi
     .getMyRecentlyPlayedTracks({ limit: 50 })
     .then(function (data) {
-      console.log('=====================', data.body.items[0]);
       data.body.items.forEach(item => {
         listeningHistory.create({
           title: item.track.name,
@@ -36,8 +35,6 @@ function getHistory(req, res) {
     })
     .then(function (data) {
       data.body.tracks.forEach((track) => {
-        
-        // console.log(('track info ==========>', track));
         totalTrackPopularity += track.popularity;
         trackCount++;
       });
