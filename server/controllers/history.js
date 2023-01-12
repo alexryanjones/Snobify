@@ -16,7 +16,17 @@ function getHistory(req, res) {
   spotifyApi
     .getMyRecentlyPlayedTracks({ limit: 50 })
     .then(function (data) {
-      console.log(data.body.items[0].track);
+      console.log('=====================', data.body.items[0]);
+      data.body.items.forEach(item => {
+        listeningHistory.create({
+          title: item.track.name,
+          artist: item.track.artists[0].name,
+          popularity: item.track.popularity,
+          playedAt: item.played_at,
+          releaseDate: item.track.album.release_date,
+          explicit: item.track.explicit,
+        });
+      })
       return data.body.items.map(function (t) {
         return t.track.id;
       });
@@ -26,6 +36,8 @@ function getHistory(req, res) {
     })
     .then(function (data) {
       data.body.tracks.forEach((track) => {
+        
+        // console.log(('track info ==========>', track));
         totalTrackPopularity += track.popularity;
         trackCount++;
       });
@@ -35,7 +47,7 @@ function getHistory(req, res) {
       res.send(`${weeklyScore}`);
     })
     .catch(function (error) {
-      res.send(err);
+      res.send(error);
     });
 }
 

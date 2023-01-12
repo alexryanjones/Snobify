@@ -2,7 +2,7 @@
 const SpotifyWebApi = require('spotify-web-api-node');
 
 function getHistory(req, res) {
-  console.log('getting history');
+  // console.log('getting history');
   let accessToken = req.body.accessToken;
   const spotifyApi = new SpotifyWebApi({
     clientId: '3da6dc947ad845449ce3be18572218b8',
@@ -13,10 +13,10 @@ function getHistory(req, res) {
   spotifyApi.getMyRecentlyPlayedTracks({ limit: 50 }).then(
     function (data) {
       // Output items
-      console.log('Your 50 most recently played tracks are:');
+      // console.log('Your 50 most recently played tracks are:');
       data.body.items.forEach((item) => {
-        console.log(item.track.name);
-        console.log(item.track.id);
+        // console.log(item.track.name);
+        // console.log(item.track.id);
       });
     },
     function (err) {

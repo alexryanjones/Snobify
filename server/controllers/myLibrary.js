@@ -24,7 +24,7 @@ function getLibrary(req, res) {
         artwork: tracks[i].track.album.images[2].url,
       });
     }
-    console.log(playlist);
+    // console.log(playlist);
     res.status(200);
     res.send(playlist);
   });
