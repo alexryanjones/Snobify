@@ -1,8 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-// import bodyParser from 'body-parser';
+// import express from 'express';
+const express = require('express')
+// import cors from 'cors';
+const cors = require('cors')
+// import router from './router.js';
+const router = require('./router.js')
+
 const app = express();
-import router from './router.js';
 const server = express();
 
 server.use(cors());

@@ -1,4 +1,5 @@
-import SpotifyWebApi from 'spotify-web-api-node';
+// import SpotifyWebApi from "spotify-web-api-node";
+const SpotifyWebApi = require('spotify-web-api-node');
 
 function getLibrary(req, res) {
   let accessToken = req.body.accessToken;
@@ -29,4 +30,4 @@ function getLibrary(req, res) {
   });
 }
 
-export default { getLibrary };
+module.exports = { getLibrary };

@@ -10,4 +10,4 @@ function sayHello(req, res) {
   }
 }
 
-export default { sayHello }
+module.exports = { sayHello };

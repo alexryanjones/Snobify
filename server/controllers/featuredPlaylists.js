@@ -1,4 +1,5 @@
-import SpotifyWebApi from "spotify-web-api-node";
+// import SpotifyWebApi from "spotify-web-api-node";
+const SpotifyWebApi = require('spotify-web-api-node');
 
 function getFeaturedPlaylists(req, res) {
   let accessToken = req.body.accessToken;
@@ -24,4 +25,4 @@ function getFeaturedPlaylists(req, res) {
     })
 }
 
-export default {getFeaturedPlaylists};
+module.exports = { getFeaturedPlaylists };

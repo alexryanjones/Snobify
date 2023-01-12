@@ -1,6 +1,7 @@
-import SpotifyWebApi from "spotify-web-api-node";
+// import SpotifyWebApi from "spotify-web-api-node";
+const SpotifyWebApi = require('spotify-web-api-node');
 
-function getCurrentlyListening (req, res) {
+function getCurrentlyListening(req, res) {
   console.log('getting currently playing');
   let accessToken = req.body.accessToken;
   const spotifyApi = new SpotifyWebApi({
@@ -9,18 +10,16 @@ function getCurrentlyListening (req, res) {
     redirectUri: 'http://localhost:3000',
   });
   spotifyApi.setAccessToken(accessToken);
-  
-  
-  spotifyApi.getMyCurrentPlayingTrack()
-  .then((data) => {
+
+  spotifyApi.getMyCurrentPlayingTrack().then((data) => {
     if (Object.keys(data.body).length > 0) {
-    const track = {
-      title: data.body.item.name,
-      artist: data.body.item.artists[0].name,
-      artwork: data.body.item.album.images[0].url
-    }
-    res.status(200);
-    res.send(track);
+      const track = {
+        title: data.body.item.name,
+        artist: data.body.item.artists[0].name,
+        artwork: data.body.item.album.images[0].url,
+      };
+      res.status(200);
+      res.send(track);
     } else {
       res.status(400);
       res.send('Nothing playing');
@@ -28,4 +27,4 @@ function getCurrentlyListening (req, res) {
   });
 }
 
-export default { getCurrentlyListening }
+module.exports = { getCurrentlyListening };

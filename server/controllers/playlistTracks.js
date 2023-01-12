@@ -1,4 +1,5 @@
-import SpotifyWebApi from 'spotify-web-api-node';
+// import SpotifyWebApi from "spotify-web-api-node";
+const SpotifyWebApi = require('spotify-web-api-node');
 
 function getTracks(req, res) {
   let accessToken = req.body.accessToken;
@@ -9,24 +10,23 @@ function getTracks(req, res) {
     redirectUri: 'http://localhost:3000',
   });
   spotifyApi.setAccessToken(accessToken);
-  spotifyApi.getPlaylistTracks(playlistId).then(
-    function (data) {
-      const playlist = []
-      const tracks = data.body.items;
-      for (let i = 0; i < tracks.length; i++) {
-        playlist.push({
-          id: i+1,
-          title: tracks[i].track.name,
-          artist: tracks[i].track.artists[0].name,
-          album: tracks[i].track.album.name,
-          duration: tracks[i].track.duration_ms,
-          popularity: tracks[i].track.popularity,
-          artwork: tracks[i].track.album.images[2].url,
-        });
-      }
-      res.status(200);
-      res.send(playlist);
-      })
+  spotifyApi.getPlaylistTracks(playlistId).then(function (data) {
+    const playlist = [];
+    const tracks = data.body.items;
+    for (let i = 0; i < tracks.length; i++) {
+      playlist.push({
+        id: i + 1,
+        title: tracks[i].track.name,
+        artist: tracks[i].track.artists[0].name,
+        album: tracks[i].track.album.name,
+        duration: tracks[i].track.duration_ms,
+        popularity: tracks[i].track.popularity,
+        artwork: tracks[i].track.album.images[2].url,
+      });
+    }
+    res.status(200);
+    res.send(playlist);
+  });
 }
 
-export default { getTracks };
+module.exports = { getTracks };

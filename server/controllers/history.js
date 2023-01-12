@@ -1,6 +1,6 @@
-import SpotifyWebApi from 'spotify-web-api-node';
-import listeningHistory from '../models/listeningHistory.js';
-import { database } from '../models/listeningHistory';
+// import SpotifyWebApi from "spotify-web-api-node";
+const SpotifyWebApi = require('spotify-web-api-node');
+const listeningHistory = require('../models/listeningHistory.js');
 
 function getHistory(req, res) {
   let accessToken = req.body.accessToken;
@@ -14,7 +14,7 @@ function getHistory(req, res) {
   });
   spotifyApi.setAccessToken(accessToken);
   spotifyApi
-    .getMyRecentlyPlayedTracks({limit: 50})
+    .getMyRecentlyPlayedTracks({ limit: 50 })
     .then(function (data) {
       console.log(data.body.items[0].track);
       return data.body.items.map(function (t) {
@@ -26,21 +26,17 @@ function getHistory(req, res) {
     })
     .then(function (data) {
       data.body.tracks.forEach((track) => {
-
-
         totalTrackPopularity += track.popularity;
         trackCount++;
-      })
+      });
       // Add more complex score logic here
-      weeklyScore -=
-        Math.round((totalTrackPopularity / trackCount)*10)/10;
+      weeklyScore -= Math.round((totalTrackPopularity / trackCount) * 10) / 10;
       res.status(200);
       res.send(`${weeklyScore}`);
     })
     .catch(function (error) {
       res.send(err);
     });
-  
 }
 
-export default { getHistory };
+module.exports = { getHistory };
