@@ -1,7 +1,9 @@
 import SpotifyWebApi from 'spotify-web-api-node';
+import listeningHistory from '../models/listeningHistory.js';
+import { database } from '../models/listeningHistory';
 
 function getHistory(req, res) {
-  let accessToken = req.body.accessToken
+  let accessToken = req.body.accessToken;
   let totalTrackPopularity = 0;
   let trackCount = 0;
   let weeklyScore = 100;
@@ -14,6 +16,7 @@ function getHistory(req, res) {
   spotifyApi
     .getMyRecentlyPlayedTracks({limit: 50})
     .then(function (data) {
+      console.log(data.body.items[0].track);
       return data.body.items.map(function (t) {
         return t.track.id;
       });
@@ -23,6 +26,8 @@ function getHistory(req, res) {
     })
     .then(function (data) {
       data.body.tracks.forEach((track) => {
+
+
         totalTrackPopularity += track.popularity;
         trackCount++;
       })
