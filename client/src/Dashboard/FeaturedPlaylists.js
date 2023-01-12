@@ -19,7 +19,6 @@ function DashboardHome () {
         },
       }).then((res) => {
         setFeaturedPlaylists(res.data)
-        console.log(featuredPlaylists);
       });
     }
   }, [token]);

@@ -22,12 +22,12 @@ function CurrentlyPlaying () {
 
   return (
     <div id='currently-playing'>
-      <h2 id='currently-playing-title' className='currently-playing-content'>
+      <h3 id='currently-playing-title' className='currently-playing-content'>
         Currently Playing
-      </h2>
+      </h3>
       <div id='track-info' className='currently-playing-content'>
-        <h2>{currentlyPlaying.title}</h2>
-        <h3>{currentlyPlaying.artist}</h3>
+        <h4>{currentlyPlaying.title}</h4>
+        <h5>{currentlyPlaying.artist}</h5>
       </div>
       <img id='currently-playing-artwork' src={currentlyPlaying.artwork} />
       <div id='judgement-container'>

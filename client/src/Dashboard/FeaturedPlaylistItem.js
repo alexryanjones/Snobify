@@ -1,5 +1,4 @@
 function FeaturedPlaylistItem ({ playlist}) {
-  console.log(playlist.playlistArtwork);
 
   return (
     <div className='playlist-tile'>

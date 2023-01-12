@@ -12,7 +12,6 @@ const spotifyApi = new SpotifyWebApi({
 function DashboardMain() {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  console.log('here results', searchResults);
   const { token } = useSelector((state) => state.accessToken);
 
 

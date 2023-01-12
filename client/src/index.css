@@ -29,6 +29,40 @@ h1, h2, h3 {
   background-color: rgba(33, 33, 33, 0.9);
 }
 
+#user-container {
+  position: absolute;
+  border: 2px solid #969696;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 5px;
+  top: 5px;
+  right: 5px;
+}
+
+#display-picture {
+  height: 34px;
+  border-radius: 50%;
+  padding-left: 1px;
+
+}
+
+#display-name {
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: medium;
+  font-weight: 600;
+
+}
+
+#dropdown {
+  width: 20px;
+  margin-right: 10px;
+}
+
 .sidebar {
   height: 90%;
   width: 20%;
@@ -255,12 +289,16 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding-top: 25px;
+  padding-top: 75px;
   gap: 2.5%;
 }
 
 .currently-playing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   padding-left: 5%;
+  align-items: flex-start;
 }
 
 #currently-playing-artwork {

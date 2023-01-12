@@ -6,6 +6,7 @@ import login from './controllers/login.js';
 import history from './controllers/history.js';
 import playlists from './controllers/playlists.js';
 import featuredPlaylists from './controllers/featuredPlaylists.js';
+import user from './controllers/user.js';
 const router = express.Router();
 
 router.post('/login', login.Login)
@@ -15,5 +16,6 @@ router.post('/playlists', playlists.getPlaylists)
 router.post('/featured-playlists', featuredPlaylists.getFeaturedPlaylists)
 router.get('/homescreen', homescreen.sayHello)
 router.post('/now-listening', nowListening.getCurrentlyListening);
+router.post('/user', user.getUser);
 
 export default router;
