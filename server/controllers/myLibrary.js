@@ -8,7 +8,7 @@ function getLibrary(req, res) {
     redirectUri: 'http://localhost:3000',
   });
   spotifyApi.setAccessToken(accessToken);
-  spotifyApi.getMySavedTracks({limit: 5}).then(function (data) {
+  spotifyApi.getMySavedTracks({ limit: 50 }).then(function (data) {
     const playlist = [];
     // console.log(data.body.items[0].track);
     const tracks = data.body.items;

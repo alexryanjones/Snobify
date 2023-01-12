@@ -291,21 +291,49 @@ h1, h2, h3 {
   padding-top: 20px;
 }
 
-.track-container {
+#playlist-info-header {
   display: grid;
+  grid-template-columns: 0.5fr 1fr 6fr 6fr 1fr;
+  gap: 5px;
   justify-content: center;
+  align-items: center;
   color: #969696;
   min-width: 100%;
-  border: 1px solid white;
+  margin-bottom: 10px;
+  font-size: small;
+  padding: 5px;
+
+}
+
+.track-container {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 6fr 6fr 1fr;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  color: #969696;
+  min-width: 100%;
   margin-bottom: 5px;
+  font-size: small;
+  padding: 5px;
+
+}
+
+.track-container:hover {
+  color: white;
+  background:rgba(33, 33, 33, 0.9);
 }
 
 .playlist-item-track-info {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  border: 1px solid grey;
+  align-items: flex-start;
+}
+
+.playlist-item-track-title {
+  color: white;
+  font-size: medium;
 }
 
 #currently-playing {
