@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Playlists from './Playlists';
-import logoSVG from '../assets/Snobify-Logo.svg'
 
 function Sidebar() {
   const baseUrl = 'http://localhost:4000/';
@@ -28,14 +27,11 @@ function Sidebar() {
   return (
     <div className='sidebar'>
       <div className='sidebar-nav'>
-        <div id='logo-container'>
-        <img src={logoSVG} alt='snobify logo' id='logo' />
-        <h1 id='snobify'>Snobify</h1>
-        </div>
+        <h1 id='logo'>Snobify</h1>
         <h3 id='this-week'>This week's score:</h3>
-        <h3 id='score' style={{ textDecoration: 'underline' }}>
+        <h2 id='score' style={{ textDecoration: 'underline' }}>
           {weeklyScore}% Basic
-        </h3>
+        </h2>
         <p className='sidebar-item'>Home</p>
         <p className='sidebar-item'>Your Library</p>
       </div>

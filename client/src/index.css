@@ -1,8 +1,3 @@
-@font-face {
-    font-family: SpotifyFont;
-    src: url(./assets/GothamBold.ttf);
-}
-
 body {
   margin: 0;
   overflow: hidden;
@@ -16,7 +11,7 @@ body {
 
 }
 
-.screen-blocker {
+.blocker {
   position: absolute;
   top: 0;
   left: 0;
@@ -26,38 +21,17 @@ body {
 }
 
 .sidebar {
-  height: 95%;
+  height: 90%;
   width: 20%;
   background: #000000;
   color: white;
   display: flex;
   flex-direction: column;
+  /* gap: 10px; */
   padding-top: 25px;
   padding-left: 25px;
   padding-right: 25px;
 }
-
-#logo-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 5px;
-}
-
-#logo {
-  max-height: 57.5px;
-  /* padding-top: 7.5px; */
-  padding-right: 5px;
-}
-
-#snobify {
-  padding-top: 8px;
-}
-
-h1, h2, h3 {
-  font-family: SpotifyFont;
-}
-
 
 #sidebar-divider {
   border: 0.5px solid grey;
@@ -65,7 +39,6 @@ h1, h2, h3 {
   align-self: center;
   margin-bottom: 10px;
 }
-
 
 .sidebar-item {
   color: #969696;
@@ -86,7 +59,7 @@ h1, h2, h3 {
 }
 
 #dashboard {
-  height: 95%;
+  height: 90%;
   width: 50%;
   background: #121212;
   display: flex;
@@ -199,7 +172,7 @@ h1, h2, h3 {
 #list-items {
   height: 95%;
   width: 100%;
-  margin-top: 5%;
+  margin-top: 2.5%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -212,7 +185,6 @@ h1, h2, h3 {
   color: white;
   display: flex;
   align-items: flex-end;
-  margin-top: 5%;
 }
 
 .playlist-tile {
@@ -251,15 +223,15 @@ h1, h2, h3 {
 }
 
 #currently-playing {
-  height: 95%;
+  height: 90%;
   width: 30%;
   background: #000000;
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding-top: 25px;
-  /* gap: 5%; */
+  gap: 5%;
 }
 
 .currently-playing-content {
@@ -268,7 +240,7 @@ h1, h2, h3 {
 
 #currently-playing-artwork {
   aspect-ratio: 1 / 1;
-  max-height: 350px;
+  height: 80%;
   border: 1px solid white;
   align-self: center;
 }
@@ -282,7 +254,7 @@ h1, h2, h3 {
 
 #player {
   width: 100%;
-  height: 500px;
+  height: 10%;
   color: white;
   background: #121212;
   display: grid;

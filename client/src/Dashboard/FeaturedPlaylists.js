@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import FeaturedPlaylistItem from "./FeaturedPlaylistItem";
 
-function FeaturedPlaylists () {
+function DashboardHome () {
   const baseUrl = 'http://localhost:4000/';
   const [featuredPlaylists, setFeaturedPlaylists] = useState([])
   const { token } = useSelector((state) => state.accessToken);
@@ -19,6 +19,7 @@ function FeaturedPlaylists () {
         },
       }).then((res) => {
         setFeaturedPlaylists(res.data)
+        console.log(featuredPlaylists);
       });
     }
   }, [token]);
@@ -37,4 +38,4 @@ function FeaturedPlaylists () {
   );
 }
 
-export default FeaturedPlaylists;
+export default DashboardHome

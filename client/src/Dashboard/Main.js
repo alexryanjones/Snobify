@@ -2,7 +2,7 @@ import { Container, Form } from 'react-bootstrap'
 import { useState, useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import TrackSearchItem from './TrackSearchItem';
-import FeaturedPlaylists from './FeaturedPlaylists';
+import DashboardHome from './FeaturedPlaylists';
 import { useSelector } from 'react-redux';
 
 const spotifyApi = new SpotifyWebApi({
@@ -12,6 +12,7 @@ const spotifyApi = new SpotifyWebApi({
 function DashboardMain() {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  console.log('here results', searchResults);
   const { token } = useSelector((state) => state.accessToken);
 
 
@@ -31,6 +32,7 @@ function DashboardMain() {
       if (cancel) return;
       // console.log('all the items',res.body.tracks.items);
       const searchResultItems = res.body.tracks.items.map((track) => {
+        console.log(track);
         return {
           artist: track.artists[0].name,
           title: track.name,
@@ -39,6 +41,7 @@ function DashboardMain() {
           album: track.album.name,
         };
       });
+      console.log('searchyres', searchResultItems);
       setSearchResults(searchResultItems);
     });
 
@@ -61,7 +64,7 @@ function DashboardMain() {
           ))}
         </div>
       </Container>
-      <FeaturedPlaylists />
+      <DashboardHome />
     </div>
   );
 }
