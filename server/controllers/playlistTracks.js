@@ -11,9 +11,21 @@ function getTracks(req, res) {
   spotifyApi.setAccessToken(accessToken);
   spotifyApi.getPlaylistTracks(playlistId).then(
     function (data) {
-      console.log('playlist tracks', data.body.items[0].track);
+      const playlist = []
+      const tracks = data.body.items;
+      for (let i = 0; i < tracks.length; i++) {
+        playlist.push({
+          id: i+1,
+          title: tracks[i].track.name,
+          artist: tracks[i].track.artists[0].name,
+          album: tracks[i].track.album.name,
+          duration: tracks[i].track.duration_ms,
+          popularity: tracks[i].track.popularity,
+          artwork: tracks[i].track.album.images[2].url,
+        });
+      }
       res.status(200);
-      // res.send(playlists);
+      res.send(playlist);
       })
 }
 

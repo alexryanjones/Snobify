@@ -23,8 +23,8 @@ function FeaturedPlaylists() {
   }, [token]);
 
   return (
-    <div id='list-container'>
-      <h2 className='tile-title'>Good morning</h2>
+    <div className='list-container'>
+      <h2 className='playlist-title'>Good morning</h2>
       <div id='list-items'>
         {featuredPlaylists.map((playlist) => (
           <FeaturedPlaylistItem playlist={playlist} key={playlist.uri} />

@@ -124,19 +124,20 @@ h1, h2, h3 {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 25px;
+  /* padding-top: 25px; */
 }
 
 #search-container {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  /* border: 1px solid white; */
-  /* position: absolute; */
   width: 50vw;
-  /* min-height: 100%; */
+  max-height: 90%;
+  background-color: none;
   align-items: center;
   /* z-index: 1; */
+  position: absolute;
+  padding-top: 25px;
 }
 
 #search-results-container {
@@ -146,8 +147,7 @@ h1, h2, h3 {
   width: 80%;
   max-height: 34.85%;
   overflow-y: scroll;
-  z-index: 1;
-  border-radius: 1%;
+  /* z-index: 1; */
 
 }
 
@@ -163,10 +163,10 @@ h1, h2, h3 {
   max-height: 90px;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   color: black;
-  border: 1px solid grey;
+  border: 1px solid #969696;
   padding-left: 2.5%;
   padding-right: 2.5%;
   /* gap: 2.5%; */
@@ -175,7 +175,7 @@ h1, h2, h3 {
 
 .track-info {
   max-height: 100%;
-  min-width: 70%;
+  min-width: 60%;
   max-width: 70%;
   display: flex;
   flex-direction: column;
@@ -186,7 +186,6 @@ h1, h2, h3 {
   flex-wrap: nowrap;
   overflow: hidden;
   margin-left: 2.5%;
-
 }
 
 .search-track-name {
@@ -204,13 +203,18 @@ h1, h2, h3 {
 }
 
 .play-queue-icon {
-  height: 40%;
+  height: 100%;
   aspect-ratio: 1/1;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .queue {
   margin-left: 2.5%;
+  height: 30%;
+
 
 }
 
@@ -218,13 +222,14 @@ h1, h2, h3 {
   height: 50%;
 }
 
-#list-container {
-  width: 80%;
+.list-container {
+  width: 90%;
   height: 100%;
   overflow-y: scroll;
   /* border: 1px solid grey; */
   justify-content: flex-start;
-  /* margin-top: -10px; */
+  padding-top: 10%;
+
 }
 
 #list-items {
@@ -237,9 +242,9 @@ h1, h2, h3 {
   gap: 2.5%;
 }
 
-.tile-title {
+.playlist-title {
   width: 100%;
-  height: 7.5%;
+  /* height: 7.5%; */
   color: white;
   display: flex;
   align-items: flex-end;
@@ -257,7 +262,7 @@ h1, h2, h3 {
   background-color: #252525;
   gap: 5%;
   padding: 2.5%;
-  grid-column: tiles;
+  /* grid-column: tiles; */
   cursor: pointer;
 }
 
@@ -279,6 +284,28 @@ h1, h2, h3 {
   margin-top: -5%;
   overflow: hidden;
   color: #969696;
+}
+
+.user-playlist-title {
+  color: white;
+  padding-top: 20px;
+}
+
+.track-container {
+  display: grid;
+  justify-content: center;
+  color: #969696;
+  min-width: 100%;
+  border: 1px solid white;
+  margin-bottom: 5px;
+}
+
+.playlist-item-track-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid grey;
 }
 
 #currently-playing {

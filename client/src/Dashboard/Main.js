@@ -50,7 +50,7 @@ function DashboardMain() {
 
   return (
     <div id='dashboard'>
-      <Container id='search-container'>
+      <div id='search-container'>
         <Form.Control
           id='search'
           type='search'
@@ -63,7 +63,7 @@ function DashboardMain() {
             <TrackSearchItem track={track} key={track.uri} />
           ))}
         </div>
-      </Container>
+      </div>
       {playlist.playlistName === 'Home' ? (
         <FeaturedPlaylists />
       ) : (

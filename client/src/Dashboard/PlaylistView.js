@@ -24,8 +24,8 @@ function PlaylistView ({playlist}) {
     }, [token]);
 
   return (
-    <div id='list-container'>
-      <h2>{playlist.playlistName}</h2>
+    <div class='list-container'>
+      <h1 className='playlist-title'>{playlist.playlistName}</h1>
       {playlistTracks.map((track) => (
         <PlaylistItem track={track} />
       ))}

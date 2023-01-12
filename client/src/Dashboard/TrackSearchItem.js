@@ -15,18 +15,20 @@ function TrackSearchItem ({track}) {
         <div className='search-artist-name'>{track.artist}</div>
         <div className='search-album-name'>{track.album}</div>
       </div>
-      <img
-        className='play-queue-icon queue'
-        src={queueSVG}
-        alt='queueSVG'
-        onClick={() => dispatch(addToQueue(track))}
-      />
-      <img
-        className='play-queue-icon play'
-        src={playSVG}
-        alt='playSVG'
-        onClick={() => dispatch(play(track))}
-      />
+      <div className='play-queue-icon'>
+        <img
+          className='queue'
+          src={queueSVG}
+          alt='queueSVG'
+          onClick={() => dispatch(addToQueue(track))}
+        />
+        <img
+          className='play'
+          src={playSVG}
+          alt='playSVG'
+          onClick={() => dispatch(play(track))}
+        />
+      </div>
     </div>
   );
 }
