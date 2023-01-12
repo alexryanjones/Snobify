@@ -29,9 +29,7 @@ function DashboardMain() {
     let cancel = false;
     spotifyApi.searchTracks(search).then((res) => {
       if (cancel) return;
-      // console.log('all the items',res.body.tracks.items);
       const searchResultItems = res.body.tracks.items.map((track) => {
-        console.log(track);
         return {
           artist: track.artists[0].name,
           title: track.name,
@@ -40,7 +38,6 @@ function DashboardMain() {
           album: track.album.name,
         };
       });
-      console.log('searchyres', searchResultItems);
       setSearchResults(searchResultItems);
     });
 

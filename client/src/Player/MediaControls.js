@@ -1,9 +1,23 @@
 import SpotifyPlayer from 'react-spotify-web-playback';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 
 function MediaControls (trackUri) {
   const { token } = useSelector((state) => state.accessToken);
+  const { queue } = useSelector((state) => state.queue);
+  const [play, setPlay] = useState(false);
+  const [playingTrack, setPlayingTrack] = useState('')
+
+  useEffect(() => {
+    if (queue.length >= 1) {
+      setPlayingTrack(queue[0])
+    }
+  }, [queue])
+
+  useEffect(() => {
+    setPlay(true)
+  }, [playingTrack])
 
 
   if (!token) return null;
@@ -11,7 +25,11 @@ function MediaControls (trackUri) {
     <SpotifyPlayer
       token={token}
       showSaveIcon
-      uris={trackUri ? [trackUri] : []}
+      callback={state => {
+        if (!state.isPlaying) setPlay(false)
+      }}
+      play={play}
+      uris={playingTrack.uri ? [playingTrack.uri] : []}
       styles={{
         activeColor: '#fff',
         bgColor: '#121212',
