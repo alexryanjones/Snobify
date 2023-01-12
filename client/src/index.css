@@ -1,6 +1,15 @@
+@font-face {
+  font-family: 'Spotify';
+  src: url('./assets/GothamBold.ttf')
+}
+
 body {
   margin: 0;
   overflow: hidden;
+}
+
+h1, h2, h3 {
+  font-family: Spotify;
 }
 
 #index {
@@ -31,6 +40,21 @@ body {
   padding-top: 25px;
   padding-left: 25px;
   padding-right: 25px;
+}
+
+#logo-container {
+  /* width: 100%; */
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+#logo {
+  width: 35px;
+}
+
+#snobify {
+  padding-top: 20px;
 }
 
 #sidebar-divider {
@@ -185,6 +209,7 @@ body {
   color: white;
   display: flex;
   align-items: flex-end;
+  margin-top: 25px;
 }
 
 .playlist-tile {
@@ -231,7 +256,7 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   padding-top: 25px;
-  gap: 5%;
+  gap: 2.5%;
 }
 
 .currently-playing-content {
@@ -240,7 +265,7 @@ body {
 
 #currently-playing-artwork {
   aspect-ratio: 1 / 1;
-  height: 80%;
+  max-height: 300px;
   border: 1px solid white;
   align-self: center;
 }

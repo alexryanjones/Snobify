@@ -16,21 +16,20 @@ function CurrentlyPlaying () {
           accessToken: token,
         }
       })
-          .then((res) => console.log(res.data));
+          .then((res) => setCurrentlyPlaying(res.data));
       }
-
     }, [token])
 
   return (
     <div id='currently-playing'>
-      <h1 id='currently-playing-title' className='currently-playing-content'>
+      <h2 id='currently-playing-title' className='currently-playing-content'>
         Currently Playing
-      </h1>
+      </h2>
       <div id='track-info' className='currently-playing-content'>
-        <h1>Track name</h1>
-        <h2>Artist</h2>
+        <h2>{currentlyPlaying.title}</h2>
+        <h3>{currentlyPlaying.artist}</h3>
       </div>
-      <div id='currently-playing-artwork'></div>
+      <img id='currently-playing-artwork' src={currentlyPlaying.artwork} />
       <div id='judgement-container'>
         <p>
           Really? Taylor Swift for the 5th time this week? I’ve gone ahead and

@@ -12,7 +12,13 @@ function getCurrentlyListening (req, res) {
 
   spotifyApi.getMyCurrentPlayingTrack()
   .then((data) => {
-    // console.log(data);
+    const track = {
+      title: data.body.item.name,
+      artist: data.body.item.artists[0].name,
+      artwork: data.body.item.album.images[0].url
+    }
+    res.status(200);
+    res.send(track);
   });
 }
 

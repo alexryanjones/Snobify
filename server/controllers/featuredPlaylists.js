@@ -12,7 +12,6 @@ function getFeaturedPlaylists(req, res) {
   spotifyApi.getFeaturedPlaylists()
     .then((data) => {
       const featuredPlaylists = data.body.playlists.items.map((playlist) => {
-        console.log(playlist.description);
         return {
           name: playlist.name,
           description: playlist.description.replace(/<[^>]*>/g, ''),
