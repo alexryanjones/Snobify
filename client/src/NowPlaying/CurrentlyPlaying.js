@@ -10,35 +10,39 @@ function CurrentlyPlaying () {
     const { user } = useSelector((state) => state.currentUser)
     const { currentPlayState } = useSelector((state) => state.currentPlayState);
     const { queue } = useSelector((state) => state.queue);
-    console.log('queue', queue[0]);
+    console.log('queue', queue);
 
-
-    
     // useEffect(() => {
-    //   if(token) {
+    //   if (queue[0] !== 'undefined') {
+    //     console.log('current', queue[0]);
     //     axios({
     //       method: 'post',
-    //       url: baseUrl + 'now-listening',
+    //       url: baseUrl + 'generate-insult',
     //       data: {
-    //         accessToken: token,
-    //       }
-    //     })
-    //     .then((res) => setCurrentlyPlaying(res.data));
+    //         trackInfo: queue[0],
+    //         userInfo: user
+    //       },
+    //     }).then((res) => {
+    //       setInsult(res.data);
+    //     });
     //   }
-    // }, [token])
+    // }, [queue])
 
-    useEffect(() => {
-      if (currentPlayState) {
-        console.log('current', queue[0]);
-        axios({
-          method: 'post',
-          url: baseUrl + 'generate-insult',
-          data: queue[0],
-        }).then((res) => {
-          setInsult(res.data);
-        });
-      }
-    }, [queue])
+        useEffect(() => {
+          if (currentPlayState && queue.length > 0) {
+            console.log('curre88888888nt', queue);
+            axios({
+              method: 'post',
+              url: baseUrl + 'generate-insult',
+              data: {
+                trackInfo: queue[0],
+                userInfo: user,
+              },
+            }).then((res) => {
+              setInsult(res.data);
+            });
+          }
+        }, [queue]);
     
     return (
       <div id='currently-playing'>

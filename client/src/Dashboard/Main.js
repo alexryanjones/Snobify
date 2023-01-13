@@ -36,8 +36,9 @@ function DashboardMain() {
           artist: track.artists[0].name,
           title: track.name,
           uri: track.uri,
-          albumUrl: track.album.images[2].url,
+          artwork: track.album.images[2].url,
           album: track.album.name,
+          popularity: track.popularity
         };
       });
       setSearchResults(searchResultItems);

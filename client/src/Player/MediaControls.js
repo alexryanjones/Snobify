@@ -11,18 +11,12 @@ function MediaControls (trackUri) {
   const { token } = useSelector((state) => state.accessToken);
   const { queue } = useSelector((state) => state.queue);
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
-  const [playingTrack, setPlayingTrack] = useState('');
   const baseUrl = 'http://localhost:4000/';
   const dispatch = useDispatch()
 
 
   useEffect(() => {
-    if (queue.length >= 1) {
-      setPlayingTrack(queue[0])
-    }
-  }, [queue])
-
-  useEffect(() => {
+    console.log('media controls loaded');
     axios
       .post(baseUrl + 'get-queue', {
         data: {
@@ -30,13 +24,10 @@ function MediaControls (trackUri) {
         },
       })
       .then((res) => {
+        console.log('this will set the queue', res.data);
         dispatch(setQueue(res.data));
       });
   }, [currentPlayState]);
-
-  useEffect(() => {
-    dispatch(setPlayState(true));
-  }, [])
 
 
   if (!token) return null;
@@ -50,7 +41,7 @@ function MediaControls (trackUri) {
         if (state.isPlaying) dispatch(setPlayState(true));
       }}
       play={currentPlayState}
-      uris={playingTrack.uri ? [playingTrack.uri] : []}
+      uris={queue[0] ? [queue[0].uri] : []}
       styles={{
         activeColor: '#fff',
         bgColor: '#121212',

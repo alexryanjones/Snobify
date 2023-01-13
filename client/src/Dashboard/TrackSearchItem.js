@@ -37,7 +37,7 @@ function TrackSearchItem ({track}) {
 
   return (
     <div className='search-result-item'>
-      <img src={track.albumUrl} alt='albumArt' />
+      <img src={track.artwork} alt='albumArt' />
       <div className='track-info'>
         <div className='search-track-name'>{track.title}</div>
         <div className='search-artist-name'>{track.artist}</div>

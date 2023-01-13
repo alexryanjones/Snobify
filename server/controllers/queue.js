@@ -13,19 +13,28 @@ function getQueue(req, res) {
     .then((response) => {
       const queue = response.data.queue.map((track) => {
         return {
-          name: track.name,
+          title: track.name,
           artist: track.artists[0].name,
+          album: track.album.name,
           uri: track.uri,
+          popularity: track.popularity,
+          artwork: track.album.images[0].url
         }
       })
       const current = response.data.currently_playing;
       if (current) {
-        const currentTrack = {
-        title: current.name,
-        artist: current.artists[0].name,
-        uri: current.uri,
-      }
-      queue.unshift(currentTrack);
+        axios.get(`https://api.spotify.com/v1/tracks/${current.id}`, {headers})
+          .then(response => {
+            const currentTrack = {
+              title: response.data.name,
+              artist: response.data.artists[0].name,
+              album: response.data.album.name,
+              uri: response.data.uri,
+              artwork: response.data.album.images[0].url,
+              popularity: response.data.popularity,
+            };
+            queue.unshift(currentTrack);
+          })
     }
       res.status(200);
       res.send(queue);
@@ -33,6 +42,7 @@ function getQueue(req, res) {
 }
 
 function addToQueue(req, res) {
+  console.log(req.body.data);
   const accessToken = req.body.data.accessToken;
   const trackUri = req.body.data.trackUri;
   const url = `https://api.spotify.com/v1/me/player/queue?uri=${trackUri}`;
