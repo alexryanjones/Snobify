@@ -15,6 +15,8 @@ const code = new URLSearchParams(window.location.search).get('code');
 function App() {
   const accessToken = UseAuth(code);
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
+  // const { queue } = useSelector((state) => state.queue);
+
 
   return (
     <div>

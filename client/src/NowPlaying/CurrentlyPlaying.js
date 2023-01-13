@@ -50,17 +50,11 @@ function CurrentlyPlaying () {
           Currently Playing
         </h3>
         <div id='track-info' className='currently-playing-content'>
-          {/* <h4>{queue[0].title}</h4> */}
-          {/* <h5>{queue[0].artist}</h5> */}
+          <h4>{queue[0].title}</h4>
+          <h5>{queue[0].artist}</h5>
         </div>
-        {/* <img id='currently-playing-artwork' src={queue[0].artwork} alt='artwork' /> */}
+        <img id='currently-playing-artwork' src={queue[0].artwork} alt='artwork' />
         <div id='judgement-container'>
-          {/* <p>
-          Really? Taylor Swift for the 5th time this week? I’ve gone ahead and
-          changed your name to Jessica. Listen to 10 tracks by artists outside
-          of the top 1000 to get your name back. In the meantime, enjoy your
-          pumpkin spiced latte, Jessica.
-        </p> */}
           {insult ? <p>{insult}</p> : null}
         </div>
       </div>

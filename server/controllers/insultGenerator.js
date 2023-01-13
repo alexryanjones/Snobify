@@ -8,12 +8,15 @@ async function generateInsult(req, res) {
   const artist = req.body.trackInfo.artist;
   const popularity = Math.ceil(req.body.trackInfo.popularity / 10) * 10;
   
-  const artistWeeklyListens = await listeningHistory.count({artist: artist})
-  console.log('stuff', user, artist, popularity, artistWeeklyListens);
-  const promptBuilder = insults.find({popularityRange: popularity, artistWeeklyListens: artistWeeklyListens})
-  // console.log('prompt', promptBuilder);
+  let weeklyListens = await listeningHistory.count({artist: artist})
+  weeklyListens = Math.ceil(weeklyListens / 10) * 10;
+  if (weeklyListens > 40) weeklyListens = 40;
+  console.log('stuff', user, artist, popularity, weeklyListens);
+  const promptBuilder = await insults.find({popularityRange: popularity, artistWeeklyListens: weeklyListens});
+  console.log('prompt', promptBuilder);
 
-  const prompt = `If one fictional character was insulting another fictional character called ${user} for listening to too much ${artist}, what might the insult be? It would be aggressive, elaborate and no more than 50 words.`;
+  const prompt = `If one fictional character was ${promptBuilder[0].keyword} another fictional character called ${user} for listening to ${promptBuilder[0].listeningAmount} ${artist},  what might they way? It would be ${promptBuilder[0].strength}, elaborate, talk about their ${promptBuilder[0].target} and no more than 100 words.`;
+  console.log(prompt);
 
   const apiKey = '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';
   const url = 'https://api.openai.com/v1/engines/text-davinci-003/completions';
