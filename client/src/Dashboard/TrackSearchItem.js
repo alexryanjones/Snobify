@@ -1,14 +1,39 @@
 import playSVG from '../assets/play.svg'
 import queueSVG from '../assets/queue.svg'
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { moveToQueueFront, setQueue } from '../Redux/queue';
+import { moveToQueueFront } from '../Redux/queue';
 import { setPlayState } from '../Redux/currentPlayState';
-import { getQueue } from '../ApiService';
+// import { getQueue } from '../ApiService';
 
 
 function TrackSearchItem ({track}) {
-  const dispatch = useDispatch()
+  const baseUrl = 'http://localhost:4000/';
+  const dispatch = useDispatch();
   const { token } = useSelector((state) => state.accessToken);
+
+  // ADD TO QUEUE FUNCTION HERE!!!!!!!
+
+  const getQueue = () => {
+    console.log(track);
+    axios
+      .post(baseUrl + 'get-queue', {
+        data: {
+          accessToken: token,
+        },
+      })
+      .then((res) => res.data);
+  };
+
+  const addToQueue = () => {
+    console.log(track);
+    axios.post(baseUrl + 'add-to-queue', {
+      data: {
+        accessToken: token,
+        trackUri: track.uri,
+      },
+    });
+  }
 
   return (
     <div className='search-result-item'>
@@ -24,8 +49,7 @@ function TrackSearchItem ({track}) {
           src={queueSVG}
           alt='queueSVG'
           onClick={() => {
-            console.log(track);
-            getQueue(token, track.uri).then((res) => dispatch(setQueue(res)));
+            addToQueue();
           }}
         />
         <img
@@ -33,7 +57,6 @@ function TrackSearchItem ({track}) {
           src={playSVG}
           alt='playSVG'
           onClick={() => {
-            console.log('play');
             dispatch(moveToQueueFront(track));
             dispatch(setPlayState(true));
           }}

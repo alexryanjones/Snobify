@@ -5,8 +5,6 @@ function generateInsult(req, res) {
   // console.log('arteest', req.body);
 
   const prompt = `If one fictional character was insulting another fictional character called ${req.body.user} for listening to too much ${req.body.artist}, what might the insult be? It would be aggressive, elaborate and no more than 50 words.`;
-  
-  // const prompt = 'What is your name?'
 
   const apiKey = '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';
   const url = 'https://api.openai.com/v1/engines/text-davinci-003/completions';

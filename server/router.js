@@ -27,6 +27,6 @@ router.post('/get-library', myLibrary.getLibrary);
 router.get('/filter-date', filterDatabase.clearOldTracks)
 router.post('/generate-insult', insultGenerator.generateInsult)
 router.post('/get-queue', queue.getQueue)
-router.post('/addToQueue', queue.addToQueue);
+router.post('/add-to-queue', queue.addToQueue);
 
 module.exports = router;

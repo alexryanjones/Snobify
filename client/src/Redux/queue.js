@@ -11,7 +11,6 @@ export const queueSlice = createSlice({
       state.queue.push(action.payload)
     },
     moveToQueueFront: (state, action) => {
-      console.log('from queue');
       state.queue[0] = action.payload;
     }
   }

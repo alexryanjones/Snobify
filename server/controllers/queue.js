@@ -4,6 +4,7 @@ const axios = require('axios');
 
 function getQueue(req, res) {
   const accessToken = req.body.data.accessToken;
+  console.log(accessToken);
   const url = `https://api.spotify.com/v1/me/player/queue`;
   const headers = {
     'Authorization': `Bearer ${accessToken}`,
@@ -19,7 +20,6 @@ function getQueue(req, res) {
         }
       })
       const current = response.data.currently_playing;
-      console.log(current);
       if (current) {
         const currentTrack = {
         name: current.name,
@@ -35,17 +35,17 @@ function getQueue(req, res) {
 
 function addToQueue(req, res) {
   const accessToken = req.body.data.accessToken;
+  console.log(accessToken);
   const trackUri = req.body.data.trackUri;
-  console.log(trackUri);
-  const url = `https://api.spotify.com/v1/me/player/queue`;
+  const url = `https://api.spotify.com/v1/me/player/queue?uri=${trackUri}`;
   console.log(url);
   const headers = {
-    Authorization: `Bearer ${accessToken}`,
-    'Content-Type': 'application/json',
+    "Authorization": `Bearer ${accessToken}`,
   };
-  params = { uri: `trackUri` };
 
-  axios.get(url, { headers }).then((res) => console.log(res.data));
+  axios.post(url, {}, {headers}).then((res) => {
+    res.sendStatus(204);
+  }).catch((err) => console.log('axios add to queue error', err.message))
 }
 
 module.exports = { getQueue, addToQueue };

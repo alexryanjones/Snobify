@@ -2,6 +2,7 @@
 const SpotifyWebApi = require('spotify-web-api-node');
 
 function getUser(req, res) {
+  console.log('user');
   let accessToken = req.body.accessToken;
   const spotifyApi = new SpotifyWebApi({
     clientId: '3da6dc947ad845449ce3be18572218b8',

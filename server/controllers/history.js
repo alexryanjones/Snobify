@@ -3,6 +3,7 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const listeningHistory = require('../models/listeningHistory.js');
 
 function getHistory(req, res) {
+  console.log('getting history')
   let accessToken = req.body.accessToken;
   let totalTrackPopularity = 0;
   let trackCount = 0;

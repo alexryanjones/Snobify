@@ -18,11 +18,7 @@ function MediaControls (trackUri) {
 
   useEffect(() => {
     if (queue.length >= 1) {
-      console.log('useEffect trigered');
-      console.log('queue', queue);
-      console.log('current state', currentPlayState);
       setPlayingTrack(queue[0])
-      console.log('playing track', playingTrack);
     }
   }, [queue])
 
