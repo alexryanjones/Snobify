@@ -2,9 +2,11 @@ import DashboardMain from './Dashboard/Main';
 import Sidebar from './Sidebar/Sidebar';
 import Login from './Login/Login';
 import UseAuth from './Login/UseAuth';
-import CurrentlyPlaying from './NowPlaying/CurrentlyPlaying';
+import { useSelector } from 'react-redux';
 import MediaControls from './Player/MediaControls';
 import User from './User';
+import HistoryAnalysis from './NowPlaying/HistoryAnalysis';
+import CurrentlyPlaying from './NowPlaying/CurrentlyPlaying';
 
 
 const code = new URLSearchParams(window.location.search).get('code');
@@ -12,6 +14,7 @@ const code = new URLSearchParams(window.location.search).get('code');
 
 function App() {
   const accessToken = UseAuth(code);
+  const { currentPlayState } = useSelector((state) => state.currentPlayState);
 
   return (
     <div>
@@ -20,7 +23,7 @@ function App() {
           <User />
           <Sidebar />
           <DashboardMain />
-          <CurrentlyPlaying />
+          {currentPlayState ? <CurrentlyPlaying /> : <HistoryAnalysis />}
           <MediaControls />
         </div>
       ) : (

@@ -1,0 +1,322 @@
+[
+  {
+    "popularityRange": "0-10",
+    "artistWeeklyListens": 0,
+    "keyword": "praise",
+    "listeningAmount": "a good amount",
+    "strength": "flattering",
+    "target": "musical individuality"
+  },
+  {
+    "popularityRange": "0-10",
+    "artistWeeklyListens": 5,
+    "keyword": "praise",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "0-10",
+    "artistWeeklyListens": 10,
+    "keyword": "insult",
+    "listeningAmount": "more than enough",
+    "strength": "not nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "0-10",
+    "artistWeeklyListens": 15,
+    "keyword": "berate",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "10-20",
+    "artistWeeklyListens": 0,
+    "keyword": "praise",
+    "listeningAmount": "a good amount",
+    "strength": "flattering",
+    "target": "musical individuality"
+  },
+  {
+    "popularityRange": "10-20",
+    "artistWeeklyListens": 5,
+    "keyword": "praise",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "10-20",
+    "artistWeeklyListens": 10,
+    "keyword": "insult",
+    "listeningAmount": "more than enough",
+    "strength": "not nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "10-20",
+    "artistWeeklyListens": 15,
+    "keyword": "berate",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "20-30",
+    "artistWeeklyListens": 0,
+    "keyword": "praise",
+    "listeningAmount": "a good amount",
+    "strength": "flattering",
+    "target": "musical individuality"
+  },
+  {
+    "popularityRange": "20-30",
+    "artistWeeklyListens": 5,
+    "keyword": "praise",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "20-30",
+    "artistWeeklyListens": 10,
+    "keyword": "insult",
+    "listeningAmount": "more than enough",
+    "strength": "neutral",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "20-30",
+    "artistWeeklyListens": 15,
+    "keyword": "berate",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "30-40",
+    "artistWeeklyListens": 0,
+    "keyword": "praise",
+    "listeningAmount": "a good amount",
+    "strength": "flattering",
+    "target": "musical individuality"
+  },
+  {
+    "popularityRange": "30-40",
+    "artistWeeklyListens": 5,
+    "keyword": "praise",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "30-40",
+    "artistWeeklyListens": 10,
+    "keyword": "insult",
+    "listeningAmount": "more than enough",
+    "strength": "not nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "30-40",
+    "artistWeeklyListens": 15,
+    "keyword": "berate",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "40-50",
+    "artistWeeklyListens": 0,
+    "keyword": "praise",
+    "listeningAmount": "a good amount",
+    "strength": "flattering",
+    "target": "musical individuality"
+  },
+  {
+    "popularityRange": "40-50",
+    "artistWeeklyListens": 5,
+    "keyword": "comment",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "40-50",
+    "artistWeeklyListens": 10,
+    "keyword": "insult",
+    "listeningAmount": "more than enough",
+    "strength": "not nice",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "40-50",
+    "artistWeeklyListens": 15,
+    "keyword": "berate",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "musical diversity"
+  },
+  {
+    "popularityRange": "50-60",
+    "artistWeeklyListens": 0,
+    "keyword": "affront",
+    "listeningAmount": "a good amount",
+    "strength": "flattering",
+    "target": "lack of musical diversity"
+  },
+  {
+    "popularityRange": "50-60",
+    "artistWeeklyListens": 5,
+    "keyword": "insult",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical conformity"
+  },
+  {
+    "popularityRange": "50-60",
+    "artistWeeklyListens": 10,
+    "keyword": "berate",
+    "listeningAmount": "more than enough",
+    "strength": "not nice",
+    "target": "musical stupidity"
+  },
+  {
+    "popularityRange": "50-60",
+    "artistWeeklyListens": 15,
+    "keyword": "comment",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "not having any friends"
+  },
+  {
+    "popularityRange": "60-70",
+    "artistWeeklyListens": 0,
+    "keyword": "affront",
+    "listeningAmount": "a good amount",
+    "strength": "flattering",
+    "target": "musical conformity"
+  },
+  {
+    "popularityRange": "60-70",
+    "artistWeeklyListens": 5,
+    "keyword": "insult",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical conformity"
+  },
+  {
+    "popularityRange": "60-70",
+    "artistWeeklyListens": 10,
+    "keyword": "berate",
+    "listeningAmount": "more than enough",
+    "strength": "not nice",
+    "target": "musical stupidity"
+  },
+  {
+    "popularityRange": "60-70",
+    "artistWeeklyListens": 15,
+    "keyword": "comment",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "not having any friends"
+  },
+  {
+    "popularityRange": "70-80",
+    "artistWeeklyListens": 0,
+    "keyword": "affront",
+    "listeningAmount": "a good amount",
+    "strength": "flattering",
+    "target": "musical conformity"
+  },
+  {
+    "popularityRange": "70-80",
+    "artistWeeklyListens": 5,
+    "keyword": "insult",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical stupidity"
+  },
+  {
+    "popularityRange": "70-80",
+    "artistWeeklyListens": 10,
+    "keyword": "berate",
+    "listeningAmount": "more than enough",
+    "strength": "not nice",
+    "target": "bad music taste"
+  },
+  {
+    "popularityRange": "70-80",
+    "artistWeeklyListens": 15,
+    "keyword": "comment",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "not having a brain"
+  },
+  {
+    "popularityRange": "80-90",
+    "artistWeeklyListens": 0,
+    "keyword": "affront",
+    "listeningAmount": "a good amount",
+    "strength": "mean",
+    "target": "musical conformity"
+  },
+  {
+    "popularityRange": "80-90",
+    "artistWeeklyListens": 5,
+    "keyword": "insult",
+    "listeningAmount": "an ok amount",
+    "strength": "nice",
+    "target": "musical stupidity"
+  },
+  {
+    "popularityRange": "80-90",
+    "artistWeeklyListens": 10,
+    "keyword": "berate",
+    "listeningAmount": "more than enough",
+    "strength": "not nice",
+    "target": "bad music taste"
+  },
+  {
+    "popularityRange": "80-90",
+    "artistWeeklyListens": 15,
+    "keyword": "comment",
+    "listeningAmount": "too much",
+    "strength": "nasty",
+    "target": "parents dropping them as a child"
+  },
+  {
+    "popularityRange": "90-100",
+    "artistWeeklyListens": 0,
+    "keyword": "affront",
+    "listeningAmount": "a good amount",
+    "strength": "not nice",
+    "target": "musical conformity"
+  },
+  {
+    "popularityRange": "90-100",
+    "artistWeeklyListens": 5,
+    "keyword": "insult",
+    "listeningAmount": "an ok amount",
+    "strength": "mean",
+    "target": "musical stupidity"
+  },
+  {
+    "popularityRange": "90-100",
+    "artistWeeklyListens": 10,
+    "keyword": "berate",
+    "listeningAmount": "more than enough",
+    "strength": "aggressive",
+    "target": "bad music taste"
+  },
+  {
+    "popularityRange": "90-100",
+    "artistWeeklyListens": 15,
+    "keyword": "comment",
+    "listeningAmount": "too much",
+    "strength": "very nasty",
+    "target": "bad upbringing"
+  }
+]
