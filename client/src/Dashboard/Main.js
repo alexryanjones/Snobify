@@ -14,7 +14,6 @@ function DashboardMain() {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const { playlist } = useSelector((state) => state.currentView);
-  console.log('playlist', playlist);
   const { token } = useSelector((state) => state.accessToken);
 
 

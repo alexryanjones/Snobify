@@ -11,6 +11,7 @@ const playlistTracks = require('./controllers/playlistTracks.js');
 const myLibrary = require('./controllers/myLibrary.js');
 const filterDatabase = require('./controllers/filterDatabase');
 const insultGenerator = require('./controllers/insultGenerator')
+const queue = require('./controllers/queue')
 const router = express.Router();
 
 router.post('/login', login.Login)
@@ -25,5 +26,7 @@ router.post('/get-playlist', playlistTracks.getTracks)
 router.post('/get-library', myLibrary.getLibrary);
 router.get('/filter-date', filterDatabase.clearOldTracks)
 router.post('/generate-insult', insultGenerator.generateInsult)
+router.post('/get-queue', queue.getQueue)
+router.post('/addToQueue', queue.addToQueue);
 
 module.exports = router;

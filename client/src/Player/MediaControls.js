@@ -1,23 +1,46 @@
 import SpotifyPlayer from 'react-spotify-web-playback';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setQueue } from '../Redux/queue';
+import { setPlayState } from '../Redux/currentPlayState';
+
 
 
 function MediaControls (trackUri) {
   const { token } = useSelector((state) => state.accessToken);
   const { queue } = useSelector((state) => state.queue);
-  const [play, setPlay] = useState(false);
-  const [playingTrack, setPlayingTrack] = useState('')
+  const { currentPlayState } = useSelector((state) => state.currentPlayState);
+  const [playingTrack, setPlayingTrack] = useState('');
+  const baseUrl = 'http://localhost:4000/';
+  const dispatch = useDispatch()
+
 
   useEffect(() => {
     if (queue.length >= 1) {
+      console.log('useEffect trigered');
+      console.log('queue', queue);
+      console.log('current state', currentPlayState);
       setPlayingTrack(queue[0])
+      console.log('playing track', playingTrack);
     }
   }, [queue])
 
   useEffect(() => {
-    setPlay(true)
-  }, [playingTrack])
+    axios
+      .post(baseUrl + 'get-queue', {
+        data: {
+          accessToken: token,
+        },
+      })
+      .then((res) => {
+        dispatch(setQueue(res.data));
+      });
+  }, [currentPlayState]);
+
+  useEffect(() => {
+    dispatch(setPlayState(true));
+  }, [])
 
 
   if (!token) return null;
@@ -25,10 +48,10 @@ function MediaControls (trackUri) {
     <SpotifyPlayer
       token={token}
       showSaveIcon
-      callback={state => {
-        if (!state.isPlaying) setPlay(false)
+      callback={(state) => {
+        if (!state.isPlaying) dispatch(setPlayState(false));
       }}
-      play={play}
+      play={currentPlayState}
       uris={playingTrack.uri ? [playingTrack.uri] : []}
       styles={{
         activeColor: '#fff',
@@ -38,21 +61,9 @@ function MediaControls (trackUri) {
         sliderColor: '#1cb954',
         trackArtistColor: '#ccc',
         trackNameColor: '#fff',
-        height: '10%'
+        height: '10%',
       }}
     />
-    // <div id='player'>
-    //   <div id='center'></div>
-    //   <div id='media-controls'>
-    //     <div id='track-controls'>Back Play Skip</div>
-    //     <div id='track-seeking'>
-    //       SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEKING
-    //     </div>
-    //   </div>
-    //   <div id='volume-controls'>
-    //     VOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLUME
-    //   </div>
-    // </div>
   );
 }
 

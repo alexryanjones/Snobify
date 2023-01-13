@@ -4,15 +4,19 @@ export const queueSlice = createSlice({
   name: 'queue',
   initialState: {queue: []},
   reducers : {
+    setQueue: (state, action) => {
+      state.queue = action.payload
+    },
     addToQueue: (state, action) => {
       state.queue.push(action.payload)
     },
-    play: (state, action) => {
+    moveToQueueFront: (state, action) => {
+      console.log('from queue');
       state.queue[0] = action.payload;
     }
   }
 })
 
-export const { addToQueue, play } = queueSlice.actions;
+export const { setQueue, addToQueue, moveToQueueFront } = queueSlice.actions;
 
 export default queueSlice.reducer;

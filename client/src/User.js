@@ -19,7 +19,6 @@ function User() {
           accessToken: token,
         },
       }).then((res) => {
-        console.log(res.data);
         setUser(res.data)
         dispatch(setCurrentUser(res.data))
       });

@@ -11,13 +11,16 @@ function getFeaturedPlaylists(req, res) {
     spotifyApi.setAccessToken(accessToken);
   spotifyApi.getFeaturedPlaylists()
     .then((data) => {
+      console.log('playlists', data.body);
       const featuredPlaylists = data.body.playlists.items.map((playlist) => {
-        return {
+        if (playlist) {
+          return {
           name: playlist.name,
           description: playlist.description.replace(/<[^>]*>/g, ''),
           uri: playlist.uri,
           playlistArtwork: playlist.images[0].url,
-        };
+        }
+      };
       })
 
       res.status(200);

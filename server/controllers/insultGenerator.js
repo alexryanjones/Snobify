@@ -2,7 +2,7 @@ const axios = require('axios');
 
 function generateInsult(req, res) {
 
-  console.log('arteest', req.body);
+  // console.log('arteest', req.body);
 
   const prompt = `If one fictional character was insulting another fictional character called ${req.body.user} for listening to too much ${req.body.artist}, what might the insult be? It would be aggressive, elaborate and no more than 50 words.`;
   

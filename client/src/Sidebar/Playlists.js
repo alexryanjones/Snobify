@@ -4,10 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentView } from '../Redux/currentView';
 
 
+
 function Playlists ({ baseUrl}) {
   const [playlists, setPlaylists] = useState([]);
   const dispatch = useDispatch()
   const { token } = useSelector((state) => state.accessToken);
+  // Example
+  // const { getPlaylists, postSong } = useAPI();
+  // getPlaylists();
+  // postSong(data);
 
 
   // Get playlists
