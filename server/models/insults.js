@@ -1,8 +1,8 @@
 const mongoose = require('./../database.js');
 
-const listeningHistorySchema = mongoose.Schema({
+const insultsSchema = mongoose.Schema({
   popularityRange: {
-    type: Number,
+    type: String,
     required: true,
   },
   artistWeeklyListens: {
@@ -26,4 +26,4 @@ const listeningHistorySchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('listeningHistory', listeningHistorySchema);
+module.exports = mongoose.model('insults', insultsSchema);

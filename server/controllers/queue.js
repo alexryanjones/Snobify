@@ -35,10 +35,8 @@ function getQueue(req, res) {
 
 function addToQueue(req, res) {
   const accessToken = req.body.data.accessToken;
-  console.log(accessToken);
   const trackUri = req.body.data.trackUri;
   const url = `https://api.spotify.com/v1/me/player/queue?uri=${trackUri}`;
-  console.log(url);
   const headers = {
     "Authorization": `Bearer ${accessToken}`,
   };

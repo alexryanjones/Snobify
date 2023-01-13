@@ -20,6 +20,10 @@ function Sidebar() {
     })
   }, [])
 
+  useEffect(() => {
+    axios.get(baseUrl + 'load-insults')
+  }, [])
+
   // Get recently played tracks
   useEffect(() => {
     if (token) {

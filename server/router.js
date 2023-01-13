@@ -12,6 +12,7 @@ const myLibrary = require('./controllers/myLibrary.js');
 const filterDatabase = require('./controllers/filterDatabase');
 const insultGenerator = require('./controllers/insultGenerator')
 const queue = require('./controllers/queue')
+const insults = require('./controllers/populateInsults');
 const router = express.Router();
 
 router.post('/login', login.Login)
@@ -28,5 +29,6 @@ router.get('/filter-date', filterDatabase.clearOldTracks)
 router.post('/generate-insult', insultGenerator.generateInsult)
 router.post('/get-queue', queue.getQueue)
 router.post('/add-to-queue', queue.addToQueue);
+router.get('/load-insults', insults.loadInsults);
 
 module.exports = router;

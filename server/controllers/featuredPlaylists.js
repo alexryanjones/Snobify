@@ -11,7 +11,6 @@ function getFeaturedPlaylists(req, res) {
     spotifyApi.setAccessToken(accessToken);
   spotifyApi.getFeaturedPlaylists()
     .then((data) => {
-      console.log('playlists', data.body);
       const featuredPlaylists = data.body.playlists.items.map((playlist) => {
         if (playlist) {
           return {

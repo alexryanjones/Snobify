@@ -1,6 +1,14 @@
 const axios = require('axios');
+const listeningHistory = require('../models/listeningHistory');
+const insults = require('../models/insults') 
 
-function generateInsult(req, res) {
+async function generateInsult(req, res) {
+
+  const user = req.body.user;
+  const artist = req.body.artist;
+  
+  const weeklyHistory = await (await listeningHistory.find({artist: artist})).length;
+  // const
 
   // console.log('arteest', req.body);
 
@@ -28,6 +36,5 @@ function generateInsult(req, res) {
     });
 }
 
-// generateInsult();
 
 module.exports = { generateInsult }
