@@ -36,7 +36,7 @@ function DashboardMain() {
           artist: track.artists[0].name,
           title: track.name,
           uri: track.uri,
-          artwork: track.album.images[2].url,
+          artwork: track.album.images[0].url,
           album: track.album.name,
           popularity: track.popularity
         };

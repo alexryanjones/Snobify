@@ -10,6 +10,7 @@ function CurrentlyPlaying () {
     const { user } = useSelector((state) => state.currentUser)
     const { currentPlayState } = useSelector((state) => state.currentPlayState);
     const { queue } = useSelector((state) => state.queue);
+    const [currentTrack, setCurrentTrack] = useState(queue[0])
     console.log('queue', queue);
 
     // useEffect(() => {
@@ -28,9 +29,12 @@ function CurrentlyPlaying () {
     //   }
     // }, [queue])
 
+    useEffect(() =>{
+      setCurrentTrack(queue[0])
+    }, queue[0])
+
         useEffect(() => {
           if (currentPlayState && queue.length > 0) {
-            console.log('curre88888888nt', queue);
             axios({
               method: 'post',
               url: baseUrl + 'generate-insult',

@@ -138,7 +138,7 @@
   {
     "popularityRange": 50,
     "artistWeeklyListens": 10,
-    "keyword": "commenting",
+    "keyword": "commenting on",
     "listeningAmount": "an ok amount",
     "strength": "nice",
     "target": "musical diversity"
@@ -186,7 +186,7 @@
   {
     "popularityRange": 60,
     "artistWeeklyListens": 40,
-    "keyword": "commenting",
+    "keyword": "commenting on",
     "listeningAmount": "too much",
     "strength": "nasty",
     "target": "not having any friends"
@@ -218,7 +218,7 @@
   {
     "popularityRange": 70,
     "artistWeeklyListens": 40,
-    "keyword": "commenting",
+    "keyword": "commenting on",
     "listeningAmount": "too much",
     "strength": "nasty",
     "target": "not having any friends"
@@ -250,7 +250,7 @@
   {
     "popularityRange": 80,
     "artistWeeklyListens": 40,
-    "keyword": "commenting",
+    "keyword": "commenting on",
     "listeningAmount": "too much",
     "strength": "nasty",
     "target": "not having a brain"
@@ -282,7 +282,7 @@
   {
     "popularityRange": 90,
     "artistWeeklyListens": 40,
-    "keyword": "commenting",
+    "keyword": "commenting on",
     "listeningAmount": "too much",
     "strength": "basically a death threat",
     "target": "parents dropping them as a child"
@@ -314,7 +314,7 @@
   {
     "popularityRange": 100,
     "artistWeeklyListens": 40,
-    "keyword": "commenting",
+    "keyword": "commenting on",
     "listeningAmount": "too much",
     "strength": "very nasty",
     "target": "bad upbringing"

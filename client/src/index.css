@@ -188,6 +188,10 @@ h1, h2, h3 {
   margin-left: 2.5%;
 }
 
+.search-artwork {
+  max-height: 60px;
+}
+
 .search-track-name {
   font-size: 16px;
 }

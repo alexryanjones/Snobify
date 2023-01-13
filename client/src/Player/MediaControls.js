@@ -42,15 +42,18 @@ function MediaControls (trackUri) {
       }}
       play={currentPlayState}
       uris={queue[0] ? [queue[0].uri] : []}
+      name='Snobify'
       styles={{
         activeColor: '#fff',
         bgColor: '#121212',
         color: '#fff',
         loaderColor: '#fff',
         sliderColor: '#1cb954',
+        sliderHandleBorderRadius: '50%',
+        sliderHandleColor: '#969696',
         trackArtistColor: '#ccc',
         trackNameColor: '#fff',
-        height: '10%',
+        height: '5%',
       }}
     />
   );
