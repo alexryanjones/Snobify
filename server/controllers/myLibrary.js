@@ -11,7 +11,6 @@ function getLibrary(req, res) {
   spotifyApi.setAccessToken(accessToken);
   spotifyApi.getMySavedTracks({ limit: 50 }).then(function (data) {
     const playlist = [];
-    // console.log(data.body.items[0].track);
     const tracks = data.body.items;
     for (let i = 0; i < tracks.length; i++) {
       playlist.push({
@@ -24,7 +23,6 @@ function getLibrary(req, res) {
         artwork: tracks[i].track.album.images[2].url,
       });
     }
-    // console.log(playlist);
     res.status(200);
     res.send(playlist);
   });

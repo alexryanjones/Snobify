@@ -4,7 +4,6 @@ const axios = require('axios');
 
 function getQueue(req, res) {
   const accessToken = req.body.data.accessToken;
-  console.log(accessToken);
   const url = `https://api.spotify.com/v1/me/player/queue`;
   const headers = {
     'Authorization': `Bearer ${accessToken}`,
@@ -22,7 +21,7 @@ function getQueue(req, res) {
       const current = response.data.currently_playing;
       if (current) {
         const currentTrack = {
-        name: current.name,
+        title: current.name,
         artist: current.artists[0].name,
         uri: current.uri,
       }

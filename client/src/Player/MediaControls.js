@@ -45,7 +45,9 @@ function MediaControls (trackUri) {
       token={token}
       showSaveIcon
       callback={(state) => {
+        // state.isPlaying = currentPlayState;
         if (!state.isPlaying) dispatch(setPlayState(false));
+        if (state.isPlaying) dispatch(setPlayState(true));
       }}
       play={currentPlayState}
       uris={playingTrack.uri ? [playingTrack.uri] : []}

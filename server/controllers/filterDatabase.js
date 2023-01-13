@@ -5,7 +5,6 @@ const date = Date.now() - (7*24*60*60*1000);
 
 
 async function clearOldTracks(req, res) {
-  console.log('cleared');
   await listeningHistory.deleteMany({playedAt: {$lt: date}});
   res.sendStatus(200);
 }

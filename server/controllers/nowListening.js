@@ -2,7 +2,6 @@
 const SpotifyWebApi = require('spotify-web-api-node');
 
 function getCurrentlyListening(req, res) {
-  console.log('getting currently playing');
   let accessToken = req.body.accessToken;
   const spotifyApi = new SpotifyWebApi({
     clientId: '3da6dc947ad845449ce3be18572218b8',
@@ -12,12 +11,12 @@ function getCurrentlyListening(req, res) {
   spotifyApi.setAccessToken(accessToken);
 
   spotifyApi.getMyCurrentPlayingTrack().then((data) => {
-    // console.log(Object.keys(data.body).length === 0);
     if (Object.keys(data.body).length > 0) {
       const track = {
         title: data.body.item.name,
         artist: data.body.item.artists[0].name,
         artwork: data.body.item.album.images[0].url,
+        popularity: data.body.item.popularity
       };
       res.status(200);
       res.send(track);

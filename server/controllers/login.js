@@ -2,7 +2,6 @@
 const SpotifyWebApi = require('spotify-web-api-node');
 
 function Login(req, res) {
-  console.log('login hit');
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
     clientId: '3da6dc947ad845449ce3be18572218b8',
@@ -24,7 +23,6 @@ function Login(req, res) {
 }
 
 function Refresh(req, res) {
-  console.log('refresh hit');
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWebApi({
     clientId: '3da6dc947ad845449ce3be18572218b8',

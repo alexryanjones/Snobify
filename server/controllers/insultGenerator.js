@@ -6,11 +6,13 @@ async function generateInsult(req, res) {
 
   const user = req.body.user;
   const artist = req.body.artist;
+  const popularity = Math.ceil(req.body.popularity / 10) * 10;
+  console.log(req.body);
   
-  const weeklyHistory = await (await listeningHistory.find({artist: artist})).length;
-  // const
-
-  // console.log('arteest', req.body);
+  const artistWeeklyListens = await (listeningHistory.find({artist: artist})).length;
+  console.log('stuff', user, artist, popularity, artistWeeklyListens);
+  const promptBuilder = await insults.find({popularityRange: popularity, artistWeeklyListens: artistWeeklyListens})
+  console.log('prompt', promptBuilder);
 
   const prompt = `If one fictional character was insulting another fictional character called ${req.body.user} for listening to too much ${req.body.artist}, what might the insult be? It would be aggressive, elaborate and no more than 50 words.`;
 
@@ -28,9 +30,7 @@ async function generateInsult(req, res) {
   
   axios
     .post(url, data, { headers: headers })
-    // .then((response) => response.json())
     .then((response) => {
-      // console.log(response.data);
       res.status(200);
       res.send(response.data.choices[0].text)
     });
