@@ -1,12 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import dropdown from './assets/dropdown.svg'
+import { setCurrentUser } from './Redux/currentUser';
 
 function User() {
   const baseUrl = 'http://localhost:4000/';
   const [user, setUser] = useState(null)
   const { token } = useSelector((state) => state.accessToken);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (token) {
@@ -19,6 +21,7 @@ function User() {
       }).then((res) => {
         console.log(res.data);
         setUser(res.data)
+        dispatch(setCurrentUser(res.data))
       });
     }
   }, [token]);

@@ -12,6 +12,7 @@ function getUser(req, res) {
   spotifyApi.getMe().then((data) => {
     const user = {
       name: data.body.display_name,
+      userId: data.body.id,
       image: data.body.images[0].url,
     };
     res.status(200);

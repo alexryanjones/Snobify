@@ -7,6 +7,7 @@ function CurrentlyPlaying () {
     const [currentlyPlaying, setCurrentlyPlaying] = useState({})
     const [insult, setInsult] = useState('')
     const { token } = useSelector((state) => state.accessToken);
+    const { user } = useSelector((state) => state.currentUser)
 
     
     useEffect(() => {
@@ -29,6 +30,7 @@ function CurrentlyPlaying () {
           url: baseUrl + 'generate-insult',
           data: {
             artist: currentlyPlaying.artist,
+            user: user.name
           },
         }).then((res) => {
           setInsult(res.data);
