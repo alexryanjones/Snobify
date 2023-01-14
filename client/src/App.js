@@ -19,7 +19,7 @@ const code = new URLSearchParams(window.location.search).get('code');
 function App() {
   const accessToken = UseAuth(code);
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
-  const { currentTrack } = useSelector((state) => state.currentTrack);
+  const currentTrack = useSelector((state) => state.currentTrack);
   const [playingTrack, setPlayingTrack] = useState(null)
   const [weeklyScore, setWeeklyScore] = useState(null);
   const [user, setUser] = useState(null);
@@ -27,14 +27,13 @@ function App() {
   const dispatch = useDispatch();
   const baseUrl = 'http://localhost:4000/';
 
+  console.log('cyrr track', currentTrack?.title);
+
   // const { queue } = useSelector((state) => state.queue);
 
-  // useEffect(() => {
-  //   if (currentTrack.track.title !== 'No') {
-  //   setPlayingTrack(currentTrack.track)
-  //   console.log(playingTrack);
-  // }
-  // }, [currentTrack.track.title])
+  useEffect(() => {
+    console.log('currentracbhjdjsb', currentTrack);
+  }, [currentTrack.title])
 
   // Get recently played tracks
   useEffect(() => {
@@ -98,8 +97,8 @@ function App() {
           <Sidebar weeklyScore={weeklyScore} playlists={playlists} />
           <DashboardMain />
 
-          {currentTrack?.track ? (
-            <CurrentlyPlaying playingTrack={playingTrack} />
+          {currentTrack?.title.length > 0 ? (
+            <CurrentlyPlaying currentTrack={currentTrack} />
           ) : weeklyScore ? (
             <HistoryAnalysis />
           ) : null}

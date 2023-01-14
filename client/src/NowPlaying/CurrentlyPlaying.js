@@ -20,7 +20,7 @@ function CurrentlyPlaying({ currentTrack }) {
         method: 'post',
         url: baseUrl + 'generate-insult',
         data: {
-          trackInfo: currentTrack.track,
+          trackInfo: currentTrack,
           userInfo: user,
         },
       }).then((res) => {
@@ -38,12 +38,12 @@ function CurrentlyPlaying({ currentTrack }) {
         Currently Playing
       </h3>
       <div id='track-info' className='currently-playing-content'>
-        <h4>{currentTrack.track.title}</h4>
-        <h5>{currentTrack.track.artist}</h5>
+        <h4>{currentTrack.title}</h4>
+        <h5>{currentTrack.artist}</h5>
       </div>
       <img
         id='currently-playing-artwork'
-        src={currentTrack.track.artwork}
+        src={currentTrack.artwork}
         alt='artwork'
       />
       <div id='judgement-container'>{insult ? <p>{insult}</p> : null}</div>

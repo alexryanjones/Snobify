@@ -69,6 +69,7 @@ function TrackSearchItem ({track}) {
             dispatch(setCurrentTrack(track))
             dispatch(moveToQueueFront(track));
             dispatch(setPlayState(true));
+            console.log(track);
           }}
         />
       </div>
