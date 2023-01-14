@@ -6,9 +6,8 @@ import logo from '../assets/Snobify-Logo.svg'
 import { setCurrentView } from '../Redux/currentView';
 
 
-function Sidebar() {
+function Sidebar({weeklyScore}) {
   const baseUrl = 'http://localhost:4000/';
-  const [weeklyScore, setWeeklyScore] = useState('');
   const { token } = useSelector((state) => state.accessToken);
   const dispatch = useDispatch()
 
@@ -24,24 +23,24 @@ function Sidebar() {
       axios.get(baseUrl + 'load-insults');
   }, [])
 
-  // Get recently played tracks
-  useEffect(() => {
-    try {
-      if (token) {
-        axios({
-          method: 'post',
-          url: baseUrl + 'getHistory',
-          data: {
-            accessToken: token,
-          },
-        }).then((res) => {
-          setWeeklyScore(res.data);
-        });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }, [token])
+  // // Get recently played tracks
+  // useEffect(() => {
+  //   try {
+  //     if (token) {
+  //       axios({
+  //         method: 'post',
+  //         url: baseUrl + 'get-history',
+  //         data: {
+  //           accessToken: token,
+  //         },
+  //       }).then((res) => {
+  //         setWeeklyScore(res.data);
+  //       });
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, [token])
   
   return (
     <div className='sidebar'>

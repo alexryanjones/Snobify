@@ -16,7 +16,7 @@ const router = express.Router();
 
 router.post('/login', login.Login)
 router.post('/refresh', login.Refresh);
-router.post('/getHistory', history.getHistory)
+router.post('/get-history', history.getHistory)
 router.post('/my-playlists', myPlaylists.getPlaylists);
 router.post('/featured-playlists', featuredPlaylists.getFeaturedPlaylists);
 router.post('/now-listening', nowListening.getCurrentlyListening);
