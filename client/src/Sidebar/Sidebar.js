@@ -6,7 +6,7 @@ import logo from '../assets/Snobify-Logo.svg'
 import { setCurrentView } from '../Redux/currentView';
 
 
-function Sidebar({weeklyScore}) {
+function Sidebar({weeklyScore, playlists}) {
   const baseUrl = 'http://localhost:4000/';
   const { token } = useSelector((state) => state.accessToken);
   const dispatch = useDispatch()
@@ -34,11 +34,27 @@ function Sidebar({weeklyScore}) {
         <h3 id='score' style={{ textDecoration: 'underline' }}>
           {weeklyScore}% Basic
         </h3>
-        <p className='sidebar-item' onClick={() => dispatch(setCurrentView({playlistName: 'Home', playlistId: null}))}>Home</p>
-        <p className='sidebar-item' onClick={() => dispatch(setCurrentView({playlistName: 'Your Library', playlistId: null}))}>Your Library</p>
+        <p
+          className='sidebar-item'
+          onClick={() =>
+            dispatch(setCurrentView({ playlistName: 'Home', playlistId: null }))
+          }
+        >
+          Home
+        </p>
+        <p
+          className='sidebar-item'
+          onClick={() =>
+            dispatch(
+              setCurrentView({ playlistName: 'Your Library', playlistId: null })
+            )
+          }
+        >
+          Your Library
+        </p>
       </div>
       <div id='sidebar-divider'></div>
-      <Playlists token={token} baseUrl={baseUrl} />
+      <Playlists token={token} playlists={playlists} />
     </div>
   );
 }

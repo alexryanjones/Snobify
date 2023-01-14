@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 function CurrentlyPlaying () {
     const baseUrl = 'http://localhost:4000/';
-    // const [currentlyPlaying, setCurrentlyPlaying] = useState({})
     const [insult, setInsult] = useState('')
     const { token } = useSelector((state) => state.accessToken);
     const { user } = useSelector((state) => state.currentUser)
@@ -24,7 +23,7 @@ function CurrentlyPlaying () {
             method: 'post',
             url: baseUrl + 'generate-insult',
             data: {
-              trackInfo: queue[0],
+              trackInfo: currentTrack,
               userInfo: user,
             },
           }).then((res) => {

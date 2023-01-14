@@ -5,8 +5,8 @@ import { setCurrentView } from '../Redux/currentView';
 
 
 
-function Playlists ({ baseUrl}) {
-  const [playlists, setPlaylists] = useState([]);
+function Playlists ({ playlists}) {
+  // const [playlists, setPlaylists] = useState([]);
   const dispatch = useDispatch()
   const { token } = useSelector((state) => state.accessToken);
   // Example
@@ -16,23 +16,23 @@ function Playlists ({ baseUrl}) {
 
 
   // Get playlists
-  useEffect(() => {
-    try {
-      if (token) {
-        axios({
-          method: 'post',
-          url: baseUrl + 'my-playlists',
-          data: {
-            accessToken: token,
-          },
-        }).then((res) => {
-          setPlaylists(res.data);
-        });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   try {
+  //     if (token) {
+  //       axios({
+  //         method: 'post',
+  //         url: baseUrl + 'my-playlists',
+  //         data: {
+  //           accessToken: token,
+  //         },
+  //       }).then((res) => {
+  //         setPlaylists(res.data);
+  //       });
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, [token]);
 
   return (
     <div id='playlists'>

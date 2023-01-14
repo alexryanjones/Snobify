@@ -21,9 +21,9 @@ function App() {
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
   const [weeklyScore, setWeeklyScore] = useState('');
   const [user, setUser] = useState(null);
+  const [playlists, setPlaylists] = useState([]);
   const dispatch = useDispatch();
   const baseUrl = 'http://localhost:4000/';
-
 
   // const { queue } = useSelector((state) => state.queue);
 
@@ -47,27 +47,46 @@ function App() {
   }, [accessToken]);
 
   // Get user info
-    useEffect(() => {
+  useEffect(() => {
+    if (accessToken) {
+      axios({
+        method: 'post',
+        url: baseUrl + 'user',
+        data: {
+          accessToken: accessToken,
+        },
+      }).then((res) => {
+        setUser(res.data);
+        dispatch(setCurrentUser(res.data));
+      });
+    }
+  }, [accessToken]);
+
+  // Get playlists
+  useEffect(() => {
+    try {
       if (accessToken) {
         axios({
           method: 'post',
-          url: baseUrl + 'user',
+          url: baseUrl + 'my-playlists',
           data: {
             accessToken: accessToken,
           },
         }).then((res) => {
-          setUser(res.data);
-          dispatch(setCurrentUser(res.data));
+          setPlaylists(res.data);
         });
       }
-    }, [accessToken]);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [accessToken]);
 
   return (
     <div>
       {accessToken ? (
         <div id='index'>
           <User user={user} />
-          <Sidebar weeklyScore={weeklyScore} />
+          <Sidebar weeklyScore={weeklyScore} playlists={playlists}/>
           <DashboardMain />
           {currentPlayState ? <CurrentlyPlaying /> : <HistoryAnalysis />}
           {/* <MediaControls /> */}
