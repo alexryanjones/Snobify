@@ -19,13 +19,22 @@ const code = new URLSearchParams(window.location.search).get('code');
 function App() {
   const accessToken = UseAuth(code);
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
-  const [weeklyScore, setWeeklyScore] = useState('');
+  const { currentTrack } = useSelector((state) => state.currentTrack);
+  const [playingTrack, setPlayingTrack] = useState(null)
+  const [weeklyScore, setWeeklyScore] = useState(null);
   const [user, setUser] = useState(null);
   const [playlists, setPlaylists] = useState([]);
   const dispatch = useDispatch();
   const baseUrl = 'http://localhost:4000/';
 
   // const { queue } = useSelector((state) => state.queue);
+
+  // useEffect(() => {
+  //   if (currentTrack.track.title !== 'No') {
+  //   setPlayingTrack(currentTrack.track)
+  //   console.log(playingTrack);
+  // }
+  // }, [currentTrack.track.title])
 
   // Get recently played tracks
   useEffect(() => {
@@ -86,9 +95,14 @@ function App() {
       {accessToken ? (
         <div id='index'>
           <User user={user} />
-          <Sidebar weeklyScore={weeklyScore} playlists={playlists}/>
+          <Sidebar weeklyScore={weeklyScore} playlists={playlists} />
           <DashboardMain />
-          {currentPlayState ? <CurrentlyPlaying /> : <HistoryAnalysis />}
+
+          {currentTrack?.track ? (
+            <CurrentlyPlaying playingTrack={playingTrack} />
+          ) : weeklyScore ? (
+            <HistoryAnalysis />
+          ) : null}
           {/* <MediaControls /> */}
         </div>
       ) : (

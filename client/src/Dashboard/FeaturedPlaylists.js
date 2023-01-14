@@ -19,6 +19,7 @@ function FeaturedPlaylists() {
           accessToken: token,
         },
       }).then((res) => {
+        console.log('featured playlists', res.data);
         setFeaturedPlaylists(res.data);
       });
     } catch (err) {

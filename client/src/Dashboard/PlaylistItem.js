@@ -1,5 +1,11 @@
-function PlaylistItem ({track}) {
-  
+import { useDispatch } from 'react-redux';
+import { moveToQueueFront } from '../Redux/queue';
+import { setCurrentTrack } from '../Redux/currentTrack';
+import { setPlayState } from '../Redux/currentPlayState';
+
+function PlaylistItem({ track }) {
+  const dispatch = useDispatch();
+
   // Format track duration
   const millisecondsToMinutes =
     Math.floor(track.duration / 60000) +
@@ -8,7 +14,14 @@ function PlaylistItem ({track}) {
     ((track.duration % 60000) / 1000).toFixed(0);
 
   return (
-    <div className='track-container'>
+    <div
+      className='track-container'
+      onClick={() => {
+        dispatch(setCurrentTrack(track));
+        dispatch(moveToQueueFront(track));
+        dispatch(setPlayState(true));
+      }}
+    >
       <div className='track-id'>{track.id}</div>
       <img id='playlist-item-artwork' src={track.artwork} alt='album artwork' />
       <div className='playlist-item-track-info'>
@@ -18,7 +31,6 @@ function PlaylistItem ({track}) {
       <div>{track.album}</div>
       <div>{millisecondsToMinutes}</div>
     </div>
-    
   );
 }
 

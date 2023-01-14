@@ -321,7 +321,7 @@ h1, h2, h3 {
   margin-bottom: 5px;
   font-size: small;
   padding: 5px;
-
+  cursor: pointer;
 }
 
 .track-container:hover {
@@ -351,6 +351,30 @@ h1, h2, h3 {
   justify-content: space-evenly;
   padding-top: 75px;
   gap: 2.5%;
+}
+
+#weekly-stats {
+  height: 90%;
+  width: 30%;
+  background: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 75px;
+  gap: 2.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+
+}
+
+#weekly-stats-container {
+  height: 80%;
+  font-family: Spotify;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .currently-playing-content {
@@ -402,4 +426,30 @@ h1, h2, h3 {
 #volume-controls {
   display: flex;
   justify-content: flex-end;
+}
+
+.typing-text {
+  display: flex;
+  align-items: center;
+}
+
+.typing-text__text {
+  animation: typing 2s steps(30, end), blink-caret .5s step-end infinite;
+  white-space: wrap;
+}
+
+.typing-text__cursor {
+  animation: blink-caret .5s step-end infinite;
+  border-right: 2px solid;
+  margin-left: 2px;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #000; }
 }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { moveToQueueFront } from '../Redux/queue';
 import { setPlayState } from '../Redux/currentPlayState';
+import { setCurrentTrack } from '../Redux/currentTrack';
 // import { getQueue } from '../ApiService';
 
 
@@ -14,20 +15,20 @@ function TrackSearchItem ({track}) {
 
   // ADD TO QUEUE FUNCTION HERE!!!!!!!
 
-  const getQueue = () => {
-    try {
-    console.log(track);
-    axios
-      .post(baseUrl + 'get-queue', {
-        data: {
-          accessToken: token,
-        },
-      })
-      .then((res) => res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getQueue = () => {
+  //   try {
+  //   console.log(track);
+  //   axios
+  //     .post(baseUrl + 'get-queue', {
+  //       data: {
+  //         accessToken: token,
+  //       },
+  //     })
+  //     .then((res) => res.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const addToQueue = () => {
     try {
@@ -65,6 +66,7 @@ function TrackSearchItem ({track}) {
           src={playSVG}
           alt='playSVG'
           onClick={() => {
+            dispatch(setCurrentTrack(track))
             dispatch(moveToQueueFront(track));
             dispatch(setPlayState(true));
           }}

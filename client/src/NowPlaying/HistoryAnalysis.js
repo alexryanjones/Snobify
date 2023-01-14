@@ -32,14 +32,17 @@ function HistoryAnalysis () {
   }, [])
 
   return (
-    <div id='currently-playing'>
+    <div id='weekly-stats'>
       {/* <h2>This week you listened to</h2> */}
-      <h6>{topTrack}</h6>
-      <h6>{topArtist}</h6>
-      <h6>{uniqueArtists}</h6>
-      <h6>{repeatedTracksPercentage}</h6>
-      <h6>{explicitPercentage}</h6>
-      <h6>{topYear}</h6>
+      <h2>Your weekly stats</h2>
+      <div id='weekly-stats-container' className="typing-text">
+      <div className="typing-text__text">{topTrack}</div>
+      <div>{topArtist}</div>
+      <div>{uniqueArtists}</div>
+      <div>{repeatedTracksPercentage}</div>
+      <div>{explicitPercentage}</div>
+      <div>{topYear}</div>
+      </div>
     </div>
   );
 }

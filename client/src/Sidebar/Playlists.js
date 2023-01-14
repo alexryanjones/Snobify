@@ -1,38 +1,11 @@
-import { useEffect, useState } from "react";
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setCurrentView } from '../Redux/currentView';
 
 
 
-function Playlists ({ playlists}) {
-  // const [playlists, setPlaylists] = useState([]);
+function Playlists ({playlists}) {
   const dispatch = useDispatch()
-  const { token } = useSelector((state) => state.accessToken);
-  // Example
-  // const { getPlaylists, postSong } = useAPI();
-  // getPlaylists();
-  // postSong(data);
-
-
-  // Get playlists
-  // useEffect(() => {
-  //   try {
-  //     if (token) {
-  //       axios({
-  //         method: 'post',
-  //         url: baseUrl + 'my-playlists',
-  //         data: {
-  //           accessToken: token,
-  //         },
-  //       }).then((res) => {
-  //         setPlaylists(res.data);
-  //       });
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, [token]);
+  console.log('user playlists', playlists);
 
   return (
     <div id='playlists'>

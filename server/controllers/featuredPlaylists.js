@@ -13,11 +13,13 @@ function getFeaturedPlaylists(req, res) {
     .then((data) => {
       const featuredPlaylists = data.body.playlists.items.map((playlist) => {
         if (playlist) {
+          console.log('featured', playlist);
           return {
-          name: playlist.name,
-          description: playlist.description.replace(/<[^>]*>/g, ''),
-          uri: playlist.uri,
+          playlistName: playlist.name,
+          playlistDescription: playlist.description.replace(/<[^>]*>/g, ''),
+          playlistUri: playlist.uri,
           playlistArtwork: playlist.images[0].url,
+          playlistId: playlist.id
         }
       };
       })

@@ -14,6 +14,9 @@ function getPlaylists(req, res) {
       let playlists = data.body.items.map((playlist) => {
         return {
           playlistName: playlist.name,
+          playlistDescription: playlist.description.replace(/<[^>]*>/g, ''),
+          playlistUri: playlist.uri,
+          playlistArtwork: playlist.images[0].url,
           playlistId: playlist.id,
         };
       });
