@@ -19,7 +19,6 @@ function getHistory(req, res) {
       .getMyRecentlyPlayedTracks({ limit: 50 })
       .then(function (data) {
         data.body.items.forEach((item) => {
-          console.log('played at', item.track);
           listeningHistory.create({
             title: item.track.name,
             artist: item.track.artists[0].name,

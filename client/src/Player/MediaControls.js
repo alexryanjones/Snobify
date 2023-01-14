@@ -9,7 +9,7 @@ import { setPlayState } from '../Redux/currentPlayState';
 
 function MediaControls (trackUri) {
   const { token } = useSelector((state) => state.accessToken);
-  const { queue } = useSelector((state) => state.queue);
+  // const { queue } = useSelector((state) => state.queue);
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
   const baseUrl = 'http://localhost:4000/';
   const dispatch = useDispatch()
@@ -45,7 +45,8 @@ function MediaControls (trackUri) {
         if (state.isPlaying) dispatch(setPlayState(true));
       }}
       play={currentPlayState}
-      uris={queue[0] ? [queue[0].uri] : []}
+      // uris={queue[0] ? [queue[0].uri] : []}
+      uris={[]}
       name='Snobify'
       styles={{
         activeColor: '#fff',

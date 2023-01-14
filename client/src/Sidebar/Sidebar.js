@@ -14,22 +14,14 @@ function Sidebar() {
 
   
   useEffect(() => {
-    try {
       axios({
         method: 'get',
         url: baseUrl + 'filter-date',
       });
-    } catch (err) {
-      console.log(err);
-    }
   }, [])
 
   useEffect(() => {
-    try {
       axios.get(baseUrl + 'load-insults');
-    } catch (err) {
-      console.log(err);
-    }
   }, [])
 
   // Get recently played tracks
