@@ -4,6 +4,7 @@ import Login from './Login/Login';
 import UseAuth from './Login/UseAuth';
 import { useSelector, useDispatch } from 'react-redux';
 import MediaControls from './Player/MediaControls';
+import WebPlayback from './Player/Webplayback';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import User from './User';
@@ -18,22 +19,14 @@ const code = new URLSearchParams(window.location.search).get('code');
 
 function App() {
   const accessToken = UseAuth(code);
-  const { currentPlayState } = useSelector((state) => state.currentPlayState);
+  // const { currentPlayState } = useSelector((state) => state.currentPlayState);
   const currentTrack = useSelector((state) => state.currentTrack);
-  const [playingTrack, setPlayingTrack] = useState(null)
+  // const [playingTrack, setPlayingTrack] = useState(null)
   const [weeklyScore, setWeeklyScore] = useState(null);
   const [user, setUser] = useState(null);
   const [playlists, setPlaylists] = useState([]);
   const dispatch = useDispatch();
   const baseUrl = 'http://localhost:4000/';
-
-  console.log('cyrr track', currentTrack?.title);
-
-  // const { queue } = useSelector((state) => state.queue);
-
-  useEffect(() => {
-    console.log('currentracbhjdjsb', currentTrack);
-  }, [currentTrack.title])
 
   // Get recently played tracks
   useEffect(() => {
@@ -103,6 +96,7 @@ function App() {
             <HistoryAnalysis />
           ) : null}
           {/* <MediaControls /> */}
+          <WebPlayback />
         </div>
       ) : (
         <Login />

@@ -16,7 +16,7 @@ function getHistory(req, res) {
         data.body.items.forEach((item) => {});
       },
       function (err) {
-        console.log('Something went wrong!', err);
+        console.log(err);
       }
     );
     res.status(200);

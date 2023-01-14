@@ -39,7 +39,7 @@ function Refresh(req, res) {
       });
       // spotifyApi.setAccessToken(data.body)
     })
-    .catch((err) => console.log('ERRRRRRRRRRRRRRR from refresh', err));
+    .catch((err) => console.log(err));
 }
 
 module.exports = { Login, Refresh };

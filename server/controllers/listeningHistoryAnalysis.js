@@ -70,8 +70,6 @@ async function analyse (req, res) {
       totalTracksPromise,
     ]);
     
-    console.log(values);
-
       const analysis = {
         topTrack: values[0][0],
         topArtist: values[1][0],

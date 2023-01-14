@@ -8,7 +8,6 @@ export const currentViewSlice = createSlice({
   } },
   reducers: {
     setCurrentView: (state, action) => {
-      console.log(action.payload);
       state.playlist.playlistName = action.payload.playlistName;
       state.playlist.playlistId = action.payload.playlistId;
     },

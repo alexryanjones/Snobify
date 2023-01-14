@@ -15,24 +15,8 @@ function TrackSearchItem ({track}) {
 
   // ADD TO QUEUE FUNCTION HERE!!!!!!!
 
-  // const getQueue = () => {
-  //   try {
-  //   console.log(track);
-  //   axios
-  //     .post(baseUrl + 'get-queue', {
-  //       data: {
-  //         accessToken: token,
-  //       },
-  //     })
-  //     .then((res) => res.data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const addToQueue = () => {
     try {
-      console.log(track);
       axios.post(baseUrl + 'add-to-queue', {
         data: {
           accessToken: token,
@@ -69,7 +53,6 @@ function TrackSearchItem ({track}) {
             dispatch(setCurrentTrack(track))
             dispatch(moveToQueueFront(track));
             dispatch(setPlayState(true));
-            console.log(track);
           }}
         />
       </div>

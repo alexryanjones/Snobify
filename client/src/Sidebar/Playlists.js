@@ -5,7 +5,6 @@ import { setCurrentView } from '../Redux/currentView';
 
 function Playlists ({playlists}) {
   const dispatch = useDispatch()
-  console.log('user playlists', playlists);
 
   return (
     <div id='playlists'>

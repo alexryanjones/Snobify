@@ -5,13 +5,9 @@ import { useSelector } from 'react-redux';
 function CurrentlyPlaying({ currentTrack }) {
   const baseUrl = 'http://localhost:4000/';
   const [insult, setInsult] = useState('');
-  // const { token } = useSelector((state) => state.accessToken);
   const { user } = useSelector((state) => state.currentUser);
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
   // const { queue } = useSelector((state) => state.queue);
-  // const [currentTrack, setCurrentTrack] = useState(queue[0])
-  // console.log('queue', queue);
-  console.log(currentTrack, 'from CurrentlyPlaying');
 
   useEffect(() => {
     // try {

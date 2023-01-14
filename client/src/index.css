@@ -399,13 +399,20 @@ h1, h2, h3 {
   align-self: center;
 }
 
-#player {
-  width: 100%;
+.player-container {
+  background: red;
   height: 10%;
+  width: 100%;
+}
+
+.player {
+  height: 10%;
+  width: 100%;
   color: white;
   background: #121212;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
   align-items: center;
   padding-left: 25px;
   padding-right: 25px;
@@ -416,16 +423,51 @@ h1, h2, h3 {
   height: 5px;
 }
 
-#media-controls {
+.playing-track {
+  grid-column-start: 1;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-end;
+  border: 1px solid red;
+}
+
+.now-playing-cover {
+  /* height: ; */
+}
+
+.playing-track-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-controls {
+  height: 100%;
+  grid-column-start: 2;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  border: 1px solid red;
 }
 
 #volume-controls {
   display: flex;
   justify-content: flex-end;
+}
+
+
+.main-wrapper {
+  border: 1px solid white;
+  height: 100%;
+}
+
+.now-playing_name {
+  color: white;
+}
+
+.now-playing_title {
+  color: white;
 }
 
 .typing-text {

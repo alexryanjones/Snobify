@@ -18,7 +18,7 @@ function DashboardMain() {
 
 
   // Maybe add another dashboard view for the search results?
-
+  // Set access token
   useEffect(() => {
     if (!token) return;
     try {
@@ -28,6 +28,7 @@ function DashboardMain() {
     }
   }, [token]);
 
+  // Handle search query
   useEffect(() => {
     if (!search) return setSearchResults([]);
     if (!token) return;
@@ -48,6 +49,8 @@ function DashboardMain() {
       });
       setSearchResults(searchResultItems);
     });
+
+    
 
     return () => (cancel = true);
   } catch (err) {
@@ -72,7 +75,7 @@ function DashboardMain() {
         </div>
       </div>
       {playlist.playlistName === 'Home' ? (
-        <FeaturedPlaylists />
+        <FeaturedPlaylists key={1}/>
       ) : (
         <PlaylistView playlist={playlist} key={playlist.uri}/>
       )}

@@ -48,7 +48,6 @@ function getQueue(req, res) {
 
 function addToQueue(req, res) {
   try {
-    console.log(req.body.data);
     const accessToken = req.body.data.accessToken;
     const trackUri = req.body.data.trackUri;
     const url = `https://api.spotify.com/v1/me/player/queue?uri=${trackUri}`;

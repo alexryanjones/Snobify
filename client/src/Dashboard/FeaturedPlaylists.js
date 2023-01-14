@@ -19,7 +19,6 @@ function FeaturedPlaylists() {
           accessToken: token,
         },
       }).then((res) => {
-        console.log('featured playlists', res.data);
         setFeaturedPlaylists(res.data);
       });
     } catch (err) {
@@ -33,7 +32,7 @@ function FeaturedPlaylists() {
       <h2 className='playlist-title'>Good morning</h2>
       <div id='list-items'>
         {featuredPlaylists.map((playlist) => (
-          <FeaturedPlaylistItem playlist={playlist} key={playlist.uri} />
+          <FeaturedPlaylistItem playlist={playlist} key={playlist.playlistUri} />
         ))}
       </div>
     </div>
