@@ -57,16 +57,21 @@ async function analyse (req, res) {
       { $sort: { count: -1 } },
       { $limit: 1 },
     ]);
-
-  const values = await Promise.all([
-    topTrackPromise,
-    topArtistPromise,
-    uniqueArtistsPromise,
-    explicitPercentagePromise,
-    repeatedTracksPromise,
-    topYearPromise,
-  ])
     
+    let totalTracksPromise = listeningHistory.countDocuments({})
+
+    const values = await Promise.all([
+      topTrackPromise,
+      topArtistPromise,
+      uniqueArtistsPromise,
+      explicitPercentagePromise,
+      repeatedTracksPromise,
+      topYearPromise,
+      totalTracksPromise,
+    ]);
+    
+    console.log(values);
+
       const analysis = {
         topTrack: values[0][0],
         topArtist: values[1][0],
@@ -74,6 +79,7 @@ async function analyse (req, res) {
         explicitPercentage: values[3][0],
         repeatedTracks: values[4][0],
         topYear: values[5][0],
+        totalTracks: values[6]
       };
       res.status(200);
       res.send(analysis);
