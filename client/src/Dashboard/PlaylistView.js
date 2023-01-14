@@ -10,6 +10,7 @@ function PlaylistView ({playlist}) {
   const [playlistTracks, setPlaylistTracks] = useState([])
 
     useEffect(() => {
+      try {
       if (token && playlist.playlistName !== 'Your Library') {
         axios({
           method: 'post',
@@ -32,6 +33,9 @@ function PlaylistView ({playlist}) {
           setPlaylistTracks(res.data);
         });
       }
+    } catch (err) {
+      console.log(err);
+    }
     }, [token, playlistTracks]);
 
   return (

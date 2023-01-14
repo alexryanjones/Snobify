@@ -14,29 +14,40 @@ function Sidebar() {
 
   
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: baseUrl + 'filter-date'
-    })
+    try {
+      axios({
+        method: 'get',
+        url: baseUrl + 'filter-date',
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }, [])
 
   useEffect(() => {
-    axios.get(baseUrl + 'load-insults')
+    try {
+      axios.get(baseUrl + 'load-insults');
+    } catch (err) {
+      console.log(err);
+    }
   }, [])
 
   // Get recently played tracks
   useEffect(() => {
-    if (token) {
-      axios({
-        method: 'post',
-        url: baseUrl + 'getHistory',
-        data: {
-          accessToken: token,
-        },
-      })
-        .then((res) => {
+    try {
+      if (token) {
+        axios({
+          method: 'post',
+          url: baseUrl + 'getHistory',
+          data: {
+            accessToken: token,
+          },
+        }).then((res) => {
           setWeeklyScore(res.data);
         });
+      }
+    } catch (err) {
+      console.log(err);
     }
   }, [token])
   

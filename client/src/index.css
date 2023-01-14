@@ -41,6 +41,7 @@ h1, h2, h3 {
   gap: 5px;
   top: 5px;
   right: 5px;
+  background: rgba(33, 33, 33, 0.9);
 }
 
 #display-picture {

@@ -1,3 +1,4 @@
+const { at } = require('lodash-contrib');
 const mongoose = require('./../database.js');
 
 const listeningHistorySchema = mongoose.Schema({
@@ -11,10 +12,6 @@ const listeningHistorySchema = mongoose.Schema({
   },
   popularity: {
     type: Number,
-    required: true,
-  },
-  playedAt: {
-    type: Date,
     required: true,
   },
   releaseDate: {

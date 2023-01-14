@@ -17,16 +17,20 @@ function MediaControls (trackUri) {
 
   useEffect(() => {
     console.log('media controls loaded');
-    axios
-      .post(baseUrl + 'get-queue', {
-        data: {
-          accessToken: token,
-        },
-      })
-      .then((res) => {
-        console.log('this will set the queue', res.data);
-        dispatch(setQueue(res.data));
-      });
+    try {
+      axios
+        .post(baseUrl + 'get-queue', {
+          data: {
+            accessToken: token,
+          },
+        })
+        .then((res) => {
+          console.log('this will set the queue', res.data);
+          dispatch(setQueue(res.data));
+        });
+    } catch (err) {
+      console.log(err);
+    }
   }, [currentPlayState]);
 
 

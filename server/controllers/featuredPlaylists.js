@@ -8,7 +8,7 @@ function getFeaturedPlaylists(req, res) {
     clientSecret: 'e56217866f9b43508b6d705be1b526eb',
     redirectUri: 'http://localhost:3000',
   });
-    spotifyApi.setAccessToken(accessToken);
+  spotifyApi.setAccessToken(accessToken);
   spotifyApi.getFeaturedPlaylists()
     .then((data) => {
       const featuredPlaylists = data.body.playlists.items.map((playlist) => {

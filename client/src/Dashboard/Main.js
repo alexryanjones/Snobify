@@ -21,13 +21,18 @@ function DashboardMain() {
 
   useEffect(() => {
     if (!token) return;
+    try {
     spotifyApi.setAccessToken(token);
+    } catch (err) {
+      console.log(err);
+    }
   }, [token]);
 
   useEffect(() => {
     if (!search) return setSearchResults([]);
     if (!token) return;
     // cancels request if another request is made before promise is resolved
+    try {
     let cancel = false;
     spotifyApi.searchTracks(search).then((res) => {
       if (cancel) return;
@@ -45,6 +50,9 @@ function DashboardMain() {
     });
 
     return () => (cancel = true);
+  } catch (err) {
+    console.log(err);
+  }
   }, [token, search]);
 
   return (

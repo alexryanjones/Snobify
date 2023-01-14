@@ -17,16 +17,20 @@ function Playlists ({ baseUrl}) {
 
   // Get playlists
   useEffect(() => {
-    if (token) {
-      axios({
-        method: 'post',
-        url: baseUrl + 'my-playlists',
-        data: {
-          accessToken: token,
-        },
-      }).then((res) => {
-        setPlaylists(res.data);
-      });
+    try {
+      if (token) {
+        axios({
+          method: 'post',
+          url: baseUrl + 'my-playlists',
+          data: {
+            accessToken: token,
+          },
+        }).then((res) => {
+          setPlaylists(res.data);
+        });
+      }
+    } catch (err) {
+      console.log(err);
     }
   }, [token]);
 

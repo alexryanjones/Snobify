@@ -8,8 +8,10 @@ function FeaturedPlaylists() {
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
   const { token } = useSelector((state) => state.accessToken);
 
+
   useEffect(() => {
     if (token) {
+      try {
       axios({
         method: 'post',
         url: baseUrl + 'featured-playlists',
@@ -19,6 +21,9 @@ function FeaturedPlaylists() {
       }).then((res) => {
         setFeaturedPlaylists(res.data);
       });
+    } catch (err) {
+      console.log(err);
+    }
     }
   }, [token]);
 

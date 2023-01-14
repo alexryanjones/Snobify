@@ -1,4 +1,6 @@
 function PlaylistItem ({track}) {
+  
+  // Format track duration
   const millisecondsToMinutes =
     Math.floor(track.duration / 60000) +
     ':' +

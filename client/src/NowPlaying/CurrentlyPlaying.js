@@ -13,40 +13,28 @@ function CurrentlyPlaying () {
     const [currentTrack, setCurrentTrack] = useState(queue[0])
     console.log('queue', queue);
 
-    // useEffect(() => {
-    //   if (queue[0] !== 'undefined') {
-    //     console.log('current', queue[0]);
-    //     axios({
-    //       method: 'post',
-    //       url: baseUrl + 'generate-insult',
-    //       data: {
-    //         trackInfo: queue[0],
-    //         userInfo: user
-    //       },
-    //     }).then((res) => {
-    //       setInsult(res.data);
-    //     });
-    //   }
-    // }, [queue])
-
     useEffect(() =>{
       setCurrentTrack(queue[0])
     }, queue[0])
 
-        useEffect(() => {
-          if (currentPlayState && queue.length > 0) {
-            axios({
-              method: 'post',
-              url: baseUrl + 'generate-insult',
-              data: {
-                trackInfo: queue[0],
-                userInfo: user,
-              },
-            }).then((res) => {
-              setInsult(res.data);
-            });
-          }
-        }, [queue]);
+    useEffect(() => {
+      try {
+        if (currentPlayState && queue.length > 0) {
+          axios({
+            method: 'post',
+            url: baseUrl + 'generate-insult',
+            data: {
+              trackInfo: queue[0],
+              userInfo: user,
+            },
+          }).then((res) => {
+            setInsult(res.data);
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }, [queue]);
     
     return (
       <div id='currently-playing'>

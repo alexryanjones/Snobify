@@ -26,7 +26,7 @@ function App() {
           <Sidebar />
           <DashboardMain />
           {currentPlayState ? <CurrentlyPlaying /> : <HistoryAnalysis />}
-          <MediaControls />
+          {/* <MediaControls /> */}
         </div>
       ) : (
         <Login />

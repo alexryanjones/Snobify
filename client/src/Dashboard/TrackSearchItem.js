@@ -15,6 +15,7 @@ function TrackSearchItem ({track}) {
   // ADD TO QUEUE FUNCTION HERE!!!!!!!
 
   const getQueue = () => {
+    try {
     console.log(track);
     axios
       .post(baseUrl + 'get-queue', {
@@ -23,16 +24,23 @@ function TrackSearchItem ({track}) {
         },
       })
       .then((res) => res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const addToQueue = () => {
-    console.log(track);
-    axios.post(baseUrl + 'add-to-queue', {
-      data: {
-        accessToken: token,
-        trackUri: track.uri,
-      },
-    });
+    try {
+      console.log(track);
+      axios.post(baseUrl + 'add-to-queue', {
+        data: {
+          accessToken: token,
+          trackUri: track.uri,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
