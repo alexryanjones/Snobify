@@ -9,6 +9,8 @@ import axios from 'axios';
 import User from './User';
 import HistoryAnalysis from './NowPlaying/HistoryAnalysis';
 import CurrentlyPlaying from './NowPlaying/CurrentlyPlaying';
+import { setCurrentUser } from './Redux/currentUser';
+
 
 
 const code = new URLSearchParams(window.location.search).get('code');
@@ -18,6 +20,8 @@ function App() {
   const accessToken = UseAuth(code);
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
   const [weeklyScore, setWeeklyScore] = useState('');
+  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
   const baseUrl = 'http://localhost:4000/';
 
 
@@ -42,12 +46,28 @@ function App() {
     }
   }, [accessToken]);
 
+  // Get user info
+    useEffect(() => {
+      if (accessToken) {
+        axios({
+          method: 'post',
+          url: baseUrl + 'user',
+          data: {
+            accessToken: accessToken,
+          },
+        }).then((res) => {
+          setUser(res.data);
+          dispatch(setCurrentUser(res.data));
+        });
+      }
+    }, [accessToken]);
+
   return (
     <div>
       {accessToken ? (
         <div id='index'>
-          <User />
-          <Sidebar weeklyScore = {weeklyScore}/>
+          <User user={user} />
+          <Sidebar weeklyScore={weeklyScore} />
           <DashboardMain />
           {currentPlayState ? <CurrentlyPlaying /> : <HistoryAnalysis />}
           {/* <MediaControls /> */}

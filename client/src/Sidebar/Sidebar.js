@@ -22,25 +22,6 @@ function Sidebar({weeklyScore}) {
   useEffect(() => {
       axios.get(baseUrl + 'load-insults');
   }, [])
-
-  // // Get recently played tracks
-  // useEffect(() => {
-  //   try {
-  //     if (token) {
-  //       axios({
-  //         method: 'post',
-  //         url: baseUrl + 'get-history',
-  //         data: {
-  //           accessToken: token,
-  //         },
-  //       }).then((res) => {
-  //         setWeeklyScore(res.data);
-  //       });
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, [token])
   
   return (
     <div className='sidebar'>
