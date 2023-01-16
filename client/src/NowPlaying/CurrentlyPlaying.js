@@ -33,13 +33,13 @@ function CurrentlyPlaying({ currentTrack }) {
     }
   }, [currentTrack]);
 
-      useEffect(() => {
-        const interval = setInterval(() => {
-          setCurrentText(insult.slice(0, i));
-          i++;
-        }, 35);
-        return () => clearInterval(interval);
-      }, [insult]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentText(insult.slice(0, i));
+      i++;
+    }, 35);
+    return () => clearInterval(interval);
+  }, [insult]);
 
   return (
     <div id='currently-playing'>

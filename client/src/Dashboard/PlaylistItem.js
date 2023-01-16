@@ -18,9 +18,10 @@ function PlaylistItem({ track }) {
     (((track.duration % 60000) / 1000).toFixed(0) < 10 ? '0' : '') +
     ((track.duration % 60000) / 1000).toFixed(0);
 
-    const handlePlay = async () => {
+   const handlePlay = async () => {
     try {
-      axios.put(
+      await axios.put(
+        
         `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
         {"uris": [`${track.uri}`]},
         {
@@ -30,7 +31,7 @@ function PlaylistItem({ track }) {
       
       );
     } catch (err) {
-      window.alert('Could not play track: ', err);
+      console.log(err);
     }
   }
 
@@ -38,10 +39,10 @@ function PlaylistItem({ track }) {
     <div
       className='track-container'
       onClick={() => {
-        dispatch(setCurrentTrack(track));
-        // dispatch(moveToQueueFront(track));
-        dispatch(setPlayState(true));
-        handlePlay()
+        dispatch(setCurrentTrack(track))
+            // dispatch(moveToQueueFront(track));
+            dispatch(setPlayState(true));
+            handlePlay()
       }}
     >
       <div className='track-id'>{track.id}</div>
