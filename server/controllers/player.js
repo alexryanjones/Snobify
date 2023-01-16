@@ -2,7 +2,7 @@ const axios = require('axios');
 const SpotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
 
-function getQueue(req, res) {
+async function getQueue(req, res) {
   try {
     const accessToken = req.body.data.accessToken;
     const url = `https://api.spotify.com/v1/me/player/queue`;
@@ -10,8 +10,8 @@ function getQueue(req, res) {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
     };
-    axios.get(url, { headers }).then((response) => {
-      const queue = response.data.queue.map((track) => {
+    const response = axios.get(url, { headers })
+    const queue = response.data.queue.map((track) => {
         return {
           title: track.name,
           artist: track.artists[0].name,
@@ -21,32 +21,33 @@ function getQueue(req, res) {
           artwork: track.album.images[0].url,
         };
       });
-      const current = response.data.currently_playing;
-      if (current) {
-        axios
-          .get(`https://api.spotify.com/v1/tracks/${current.id}`, { headers })
-          .then((response) => {
-            const currentTrack = {
-              title: response.data.name,
-              artist: response.data.artists[0].name,
-              album: response.data.album.name,
-              uri: response.data.uri,
-              artwork: response.data.album.images[0].url,
-              popularity: response.data.popularity,
-            };
-            queue.unshift(currentTrack);
-          });
-      }
-      res.status(200);
-      res.send(queue);
-    });
+    const current = response.data.currently_playing;
+    if (current) {
+
+    const tracks = await axios.get(`https://api.spotify.com/v1/tracks/${current.id}`, { headers })
+        
+    const currentTrack = {
+      title: tracks.data.name,
+      artist: tracks.data.artists[0].name,
+      album: tracks.data.album.name,
+      uri: tracks.data.uri,
+      artwork: tracks.data.album.images[0].url,
+      popularity: tracks.data.popularity,
+    };
+    
+    queue.unshift(currentTrack);
+
+    console.log('QUEUE HERE', queue);
+    res.status(200);
+    res.send(queue);
+    }
   } catch (err) {
     res.status(400);
     res.send(err);
   }
 }
 
-function addToQueue(req, res) {
+async function addToQueue(req, res) {
   try {
     const accessToken = req.body.data.accessToken;
     const trackUri = req.body.data.trackUri;
@@ -55,18 +56,16 @@ function addToQueue(req, res) {
       Authorization: `Bearer ${accessToken}`,
     };
 
-    axios
-      .post(url, {}, { headers })
-      .then((res) => {
-        res.sendStatus(204);
-      })
+    const response = await axios.post(url, {}, { headers })
+    response.sendStatus(204);
+
   } catch (err) {
     res.status(400);
     res.send(err);
   }
 }
 
-function getCurrentlyListening(req, res) {
+async function getCurrentlyListening(req, res) {
   try {
     let accessToken = req.body.accessToken;
     const spotifyApi = new SpotifyWebApi({
@@ -76,21 +75,21 @@ function getCurrentlyListening(req, res) {
     });
     spotifyApi.setAccessToken(accessToken);
 
-    spotifyApi.getMyCurrentPlayingTrack().then((data) => {
-      if (Object.keys(data.body).length > 0) {
-        const track = {
-          title: data.body.item.name,
-          artist: data.body.item.artists[0].name,
-          artwork: data.body.item.album.images[0].url,
-          popularity: data.body.item.popularity,
-        };
-        res.status(200);
-        res.send(track);
-      } else {
-        res.status(400);
-        res.send('Nothing playing');
-      }
-    });
+    const response = await spotifyApi.getMyCurrentPlayingTrack()
+
+    if (Object.keys(response.body).length > 0) {
+      const track = {
+        title: response.body.item.name,
+        artist: response.body.item.artists[0].name,
+        artwork: response.body.item.album.images[0].url,
+        popularity: response.body.item.popularity,
+      };
+      res.status(200);
+      res.send(track);
+    } else {
+      res.status(400);
+      res.send('Nothing playing');
+    }
   } catch (err) {
     res.status(400);
     res.send(err);
