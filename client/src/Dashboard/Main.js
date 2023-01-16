@@ -9,7 +9,7 @@ import React from 'react';
 
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: '3da6dc947ad845449ce3be18572218b8',
+  clientId: process.env.REACT_APP_CLIENT_ID
 });
 
 function DashboardMain() {
