@@ -8,6 +8,9 @@ module.exports = {
         "eslint:recommended",
         "plugin:react/recommended"
     ],
+    "globals": {
+        "process": "readonly"
+    },
     "overrides": [
     ],
     "parserOptions": {

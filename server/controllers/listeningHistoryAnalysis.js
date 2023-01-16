@@ -69,15 +69,15 @@ async function analyse (req, res) {
       topYearPromise,
       totalTracksPromise,
     ]);
-    
+      const totalTracks = values[6]
       const analysis = {
         topTrack: values[0][0],
         topArtist: values[1][0],
-        uniqueArtists: values[2][0],
-        explicitPercentage: values[3][0],
-        repeatedTracks: values[4][0],
+        uniqueArtistCount: values[2][0].count,
+        uniqueArtistPercentage: Math.floor(values[2][0].count / totalTracks * 100),
+        explicitPercentage: Math.round(values[3][0].percentage / totalTracks * 10000),
+        repeatedTracksPercentage: Math.round(values[4][0].duplicateCount / totalTracks * 100),
         topYear: values[5][0],
-        totalTracks: values[6]
       };
       res.status(200);
       res.send(analysis);
