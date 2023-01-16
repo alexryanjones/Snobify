@@ -19,19 +19,21 @@ function HistoryAnalysis () {
     
     useEffect(() => {
       try {
-        axios.get(baseUrl + 'analyse-history')
-        .then(res => {
-          console.log(res.data.explicitPercentage);
+        const getInsights = async () => { 
+          const res = await axios.get(baseUrl + 'analyse-history')
+
           setTopTrack(`Your top song was ${res.data.topTrack._id} with ${res.data.topTrack.count} plays.`);
           setTopArtist(`Your most listened to artist was ${res.data.topArtist._id}. You played ${res.data.topArtist.count} of their songs.`)
           setUniqueArtists(`You listened to ${res.data.uniqueArtistCount} unique artists, that's ${res.data.uniqueArtistPercentage}% of your weekly listens!`)
           setRepeatedTracksPercentage(`${res.data.repeatedTracksPercentage}% of the songs you listened to were songs you'd already heard before.`)
           setExplicitPercentage(`${res.data.explicitPercentage}% of your songs contained explicit material.`)
           setTopYear(`You listened to ${res.data.topYear.count} songs released in ${res.data.topYear._id}, more than any other year.`)
-      }).then(() => {
-        setInsightsText([topTrack, topArtist,uniqueArtists,repeatedTracksPercentage,explicitPercentage,topYear]);
-      })} catch (err) {
-        console.log(err);
+
+          setInsightsText([topTrack, topArtist,uniqueArtists,repeatedTracksPercentage,explicitPercentage,topYear]);
+        }
+        getInsights()
+      } catch (err) {
+        window.alert('Could not get insights: ', err)
       }
     }, [])
     

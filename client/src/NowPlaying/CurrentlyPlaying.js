@@ -15,18 +15,22 @@ function CurrentlyPlaying({ currentTrack }) {
   // const { queue } = useSelector((state) => state.queue);
 
   useEffect(() => {
-    // try {
-      console.log(currentTrack);
-      axios({
-        method: 'post',
-        url: baseUrl + 'generate-insult',
-        data: {
-          trackInfo: currentTrack,
-          userInfo: user,
-        },
-      }).then((res) => {
-        setInsult(res.data);
-      });
+    try {
+      const generateInsult = async () => {
+        const response = await axios({
+          method: 'post',
+          url: baseUrl + 'generate-insult',
+          data: {
+            trackInfo: currentTrack,
+            userInfo: user,
+          },
+        })
+        setInsult(response.data);
+      };
+      generateInsult();
+    } catch (err) {
+      window.alert('Could not generate insult, consider yourself lucky: ', err)
+    }
   }, [currentTrack]);
 
       useEffect(() => {
