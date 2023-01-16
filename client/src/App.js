@@ -31,15 +31,17 @@ function App() {
   useEffect(() => {
     try {
       if (accessToken) {
-        axios({
-          method: 'post',
-          url: baseUrl + 'get-history',
-          data: {
-            accessToken: accessToken,
-          },
-        }).then((res) => {
-          setWeeklyScore(res.data);
-        });
+        const getHistory = async () => {
+          const response = await axios({
+            method: 'post',
+            url: baseUrl + 'get-history',
+            data: {
+              accessToken: accessToken,
+            },
+          })
+          setWeeklyScore(response.data);
+        }
+        getHistory()
       }
     } catch (err) {
       console.log(err);
@@ -48,17 +50,23 @@ function App() {
 
   // Get user info
   useEffect(() => {
-    if (accessToken) {
-      axios({
-        method: 'post',
-        url: baseUrl + 'user',
-        data: {
-          accessToken: accessToken,
-        },
-      }).then((res) => {
-        setUser(res.data);
-        dispatch(setCurrentUser(res.data));
-      });
+    try {
+      if (accessToken) {
+        const getUser = async () => {
+        const response = await axios({
+            method: 'post',
+            url: baseUrl + 'user',
+            data: {
+              accessToken: accessToken,
+            },
+          })
+          setUser(response.data);
+          dispatch(setCurrentUser(response.data));
+        }
+        getUser();
+      }
+    } catch (err) {
+      window.alert('Could not get user: ', err)
     }
   }, [accessToken]);
 
@@ -66,19 +74,21 @@ function App() {
   useEffect(() => {
     try {
       if (accessToken) {
-        axios({
+        const getPlaylists = async () => {
+        const response = await axios({
           method: 'post',
           url: baseUrl + 'my-playlists',
           data: {
             accessToken: accessToken,
-          },
-        }).then((res) => {
-          setPlaylists(res.data);
-        });
+          }
+        })
+        setPlaylists(response.data);
       }
-    } catch (err) {
-      console.log(err);
-    }
+      getPlaylists();
+    } 
+  } catch (err) {
+      window.alert('Could not get playlists: ', err);
+  }
   }, [accessToken]);
 
   return (
@@ -88,13 +98,11 @@ function App() {
           <User user={user} />
           <Sidebar weeklyScore={weeklyScore} playlists={playlists} />
           <DashboardMain />
-
           {currentTrack?.title.length > 0 ? (
             <CurrentlyPlaying currentTrack={currentTrack} />
           ) : weeklyScore ? (
             <HistoryAnalysis />
           ) : null}
-          {/* <MediaControls /> */}
           <WebPlayback />
         </div>
       ) : (
