@@ -3,24 +3,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentTrack } from '../Redux/currentTrack';
 import { setPlayState } from '../Redux/currentPlayState';
 import { setDeviceId } from '../Redux/deviceId';
-import axios from 'axios';
 
 
-// import playSVG from '../assets/play.svg'
+import playSVG from '../assets/playPlayer.svg'
+import pauseSVG from '../assets/pausePlayer.svg'
+import back from '../assets/backwards.svg'
+import skip from '../assets/forwards.svg'
+
+
+
 
 function WebPlayback() {
     const { token } = useSelector((state) => state.accessToken);
-    const { currentPlayState } = useSelector((state) => state.currentPlayState);
+    // const { currentPlayState } = useSelector((state) => state.currentPlayState);
     const currentTrack = useSelector((state) => state.currentTrack);
     const [player, setPlayer] = useState(undefined);
     const [is_paused, setPaused] = useState(false);
     const [is_active, setActive] = useState(false);
     const [current_track, setTrack] = useState(currentTrack);
-    const { deviceId } = useSelector((state) => state.deviceId);
+    // const { deviceId } = useSelector((state) => state.deviceId);
     const dispatch = useDispatch()
-    // const [title, setTitle] = useState('')
-    // const [artist, setArtist] = useState('')
-    // const [artworkUrl, setArtworkUrl] = useState('')
 
 
     useEffect(() => {
@@ -83,36 +85,21 @@ useEffect(() => {
     return (
     <>
         <div className="player">
-
+            {current_track.name? 
             <div className='playing-track'>
-                <img src={current_track.album.images[0].url} 
-                    className="now-playing-cover" alt="" />
-
+                <img src={current_track.album.images[0].url} className="now-playing-cover" alt="" />
                 <div className='playing-track-info'>
-                    <div className="now-playing__name">{
-                                current_track.name
-                                }</div>
-
-                    <div className="now-playing__artist">{
-                                current_track.artists[0].name
-                                }</div>
+                    <div className="now-playing__name">{current_track.name}</div>
+                    <div className="now-playing__artist">{current_track.artists[0].name}</div>
                 </div>
-                </div>
-
-                <div className='media-controls'>
-                <button className="btn-spotify" onClick={() => { player.previousTrack() }} >
-    &lt;&lt;
-</button>
-
-<button className="btn-spotify" onClick={() => { player.togglePlay() }} >
-    { is_paused ? "PLAY" : "PAUSE" }
-</button>
-
-<button className="btn-spotify" onClick={() => { player.nextTrack() }} >
-    &gt;&gt;
-</button>
-</div>
             </div>
+            : null}
+            <div className='media-controls'>
+                <img className="btn-spotify skip" src={back} alt='back' onClick={() => { player.previousTrack() }} />
+                {is_paused ? <img className="btn-spotify" src={playSVG} alt='play' onClick={() => { player.togglePlay() }}/> : <img className="btn-spotify" src={pauseSVG} alt='pause' onClick={() => { player.togglePlay() }}/>}
+                <img className="btn-spotify skip" src={skip} onClick={() => { player.nextTrack() }} />
+            </div>
+        </div>
     </>
 )
 }

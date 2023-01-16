@@ -399,12 +399,6 @@ h1, h2, h3 {
   align-self: center;
 }
 
-.player-container {
-  background: red;
-  height: 10%;
-  width: 100%;
-}
-
 .player {
   height: 10%;
   width: 100%;
@@ -418,17 +412,12 @@ h1, h2, h3 {
   padding-right: 25px;
 }
 
-#center {
-  width: 5px;
-  height: 5px;
-}
-
 .playing-track {
   grid-column-start: 1;
   height: 100%;
   gap: 5px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -453,13 +442,17 @@ h1, h2, h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
-#volume-controls {
-  display: flex;
-  justify-content: flex-end;
+.btn-spotify {
+  height: 60%;
 }
 
+.skip {
+  height: 50%;
+  color: #969696;
+}
 
 .main-wrapper {
   border: 1px solid white;
