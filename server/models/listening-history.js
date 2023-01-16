@@ -1,4 +1,4 @@
-const mongoose = require('./../database.js');
+const mongoose = require('../database.js');
 
 const listeningHistorySchema = mongoose.Schema({
   title: {

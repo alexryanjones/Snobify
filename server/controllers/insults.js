@@ -1,6 +1,7 @@
 const axios = require('axios');
-const listeningHistory = require('../models/listeningHistory');
+const listeningHistory = require('../models/listening-history');
 const insults = require('../models/insults') 
+const prompts = require('./../prompts');
 require('dotenv').config();
 
 
@@ -47,5 +48,20 @@ async function generateInsult(req, res) {
   }
 }
 
+function loadInsults(req, res) {
+  try {
+    insults.deleteMany({}, () => {
+      console.log('collection removed');
+    });
+    prompts.forEach((prompt) => {
+      insults.create(prompt);
+    });
+    res.sendStatus(200);
+  } catch (err) {
+    res.staus(400);
+    res.send(err);
+  }
+}
 
-module.exports = { generateInsult }
+
+module.exports = { generateInsult, loadInsults };
