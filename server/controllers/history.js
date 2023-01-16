@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const date = Date.now() - 7 * 24 * 60 * 60 * 1000;
 
-function getHistory(req, res) {
+async function getHistory(req, res) {
   try {
     let accessToken = req.body.accessToken;
     let totalTrackPopularity = 0;
@@ -17,40 +17,38 @@ function getHistory(req, res) {
       redirectUri: process.env.REDIRECT_URI,
     });
     spotifyApi.setAccessToken(accessToken);
-    spotifyApi
-      .getMyRecentlyPlayedTracks({ limit: 50 })
-      .then(function (data) {
-        data.body.items.forEach((item) => {
-          listeningHistory.create({
-            title: item.track.name,
-            artist: item.track.artists[0].name,
-            popularity: item.track.popularity,
-            releaseDate: item.track.album.release_date,
-            explicit: item.track.explicit,
-          });
-        });
-        return data.body.items.map(function (t) {
-          return t.track.id;
-        });
-      })
-      .then(function (trackIds) {
-        return spotifyApi.getTracks(trackIds);
-      })
-      .then(function (data) {
-        data.body.tracks.forEach((track) => {
-          totalTrackPopularity += track.popularity;
-          trackCount++;
-        });
-        // Add more complex score logic here
-        weeklyScore -=
-          Math.round((totalTrackPopularity / trackCount) * 10) / 10;
-        res.status(200);
-        res.send(`${weeklyScore}`);
-      })
+    const data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: 50 })
+
+    data.body.items.forEach((item) => {
+      listeningHistory.create({
+        title: item.track.name,
+        artist: item.track.artists[0].name,
+        popularity: item.track.popularity,
+        releaseDate: item.track.album.release_date,
+        explicit: item.track.explicit,
+      });
+    });
+
+    const trackIds = data.body.items.map(function (t) {
+      return t.track.id;
+    });
+      
+    const tracks = await spotifyApi.getTracks(trackIds);
+
+    tracks.body.tracks.forEach((track) => {
+      totalTrackPopularity += track.popularity;
+      trackCount++;
+    });
+
+    // Add more complex score logic here
+    weeklyScore -= Math.round((totalTrackPopularity / trackCount) * 10) / 10;
+    res.status(200);
+    res.send(`${weeklyScore}`);
+      
   } catch (err) {
     console.log(err);
     res.status(400);
-    res.send('You stupid cunt');
+    res.send(err);
   }
 }
 
