@@ -27,16 +27,9 @@ function WebPlayback() {
 
     setCurrentTrack(currentTrack)
     setActive(true)
+    console.log(currentTrack.artist, 'info should be here');
     }, [currentTrack])
 
-    // set now playing track info
-    useEffect(() => {
-        if (!current_track) return;
-        // console.log(current_track);
-        // setArtist(current_track.artists[0].name)
-        // setTitle(current_track.name)
-        // setArtworkUrl(current_track.album.images[0].url)
-    }, [current_track])
 
 useEffect(() => {
 
@@ -49,7 +42,7 @@ useEffect(() => {
     window.onSpotifyWebPlaybackSDKReady = () => {
 
         const player = new window.Spotify.Player({
-            name: 'Web Playback SDK',
+            name: 'Snobify',
             getOAuthToken: cb => { cb(token); },
             volume: 0.5
         });
@@ -87,29 +80,12 @@ useEffect(() => {
     };
 }, []);
 
-const handlePause = async () => {
-    try {
-    await axios.put(
-        
-        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
-        // {"uris": [`${track.uri}`]},
-        {
-        headers:
-        {'Authorization': `Bearer ${token}`}
-        },    
-    );
-    console.log('request sent');
-    } catch (err) {
-    console.log(err);
-    }
-}
-
     return (
     <>
         <div className="player">
-            {currentTrack.name ? 
+
             <div className='playing-track'>
-                <img src={current_track.album.images[2].url} 
+                <img src={current_track.album.images[0].url} 
                     className="now-playing-cover" alt="" />
 
                 <div className='playing-track-info'>
@@ -122,15 +98,11 @@ const handlePause = async () => {
                                 }</div>
                 </div>
                 </div>
-                : null}
+
                 <div className='media-controls'>
                 <button className="btn-spotify" onClick={() => { player.previousTrack() }} >
     &lt;&lt;
 </button>
-
-{/* <button className="btn-spotify" onClick={() => { player.togglePlay() }} >
-    { is_paused ? "PLAY" : "PAUSE" }
-</button> */}
 
 <button className="btn-spotify" onClick={() => { player.togglePlay() }} >
     { is_paused ? "PLAY" : "PAUSE" }

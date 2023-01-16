@@ -426,14 +426,20 @@ h1, h2, h3 {
 .playing-track {
   grid-column-start: 1;
   height: 100%;
+  gap: 5px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .now-playing-cover {
-  /* height: ; */
+  height: 60px;
+  border: 1px solid #969696;
+}
+
+.now-playing__artist {
+  color: #969696;
+  font-size: small;
 }
 
 .playing-track-info {
