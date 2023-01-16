@@ -20,9 +20,9 @@ function getTracks(req, res) {
           title: tracks[i].track.name,
           artist: tracks[i].track.artists[0].name,
           album: tracks[i].track.album.name,
-          duration: tracks[i].track.duration_ms,
           popularity: tracks[i].track.popularity,
           artwork: tracks[i].track.album.images[2].url,
+          uri: tracks[i].track.uri
         });
       }
       res.status(200);

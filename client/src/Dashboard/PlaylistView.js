@@ -38,7 +38,7 @@ function PlaylistView ({playlist}) {
     } catch (err) {
       console.log(err);
     }
-    }, [token, playlistTracks]);
+    }, [token]);
 
   return (
     <div className='list-container'>

@@ -24,6 +24,7 @@ function DashboardMain() {
   useEffect(() => {
     if (!token) return;
     try {
+      console.log('Access Token - ', token);
     spotifyApi.setAccessToken(token);
     } catch (err) {
       console.log(err);

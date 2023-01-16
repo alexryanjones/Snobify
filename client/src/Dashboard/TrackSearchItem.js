@@ -14,6 +14,8 @@ function TrackSearchItem ({track}) {
   const baseUrl = 'http://localhost:4000/';
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.accessToken);
+  const { deviceId } = useSelector((state) => state.deviceId);
+
 
   // ADD TO QUEUE FUNCTION HERE!!!!!!!
 
@@ -25,6 +27,23 @@ function TrackSearchItem ({track}) {
           trackUri: track.uri,
         },
       });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handlePlay = async () => {
+    try {
+      await axios.put(
+        
+        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
+        {"uris": [`${track.uri}`]},
+        {
+          headers:
+          {'Authorization': `Bearer ${token}`}
+        },
+      
+      );
     } catch (err) {
       console.log(err);
     }
@@ -53,8 +72,9 @@ function TrackSearchItem ({track}) {
           alt='playSVG'
           onClick={() => {
             dispatch(setCurrentTrack(track))
-            dispatch(moveToQueueFront(track));
+            // dispatch(moveToQueueFront(track));
             dispatch(setPlayState(true));
+            handlePlay()
           }}
         />
       </div>

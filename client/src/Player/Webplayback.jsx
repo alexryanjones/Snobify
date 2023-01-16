@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentTrack } from '../Redux/currentTrack';
 import { setPlayState } from '../Redux/currentPlayState';
+import { setDeviceId } from '../Redux/deviceId';
 
 // import playSVG from '../assets/play.svg'
 
@@ -16,17 +17,17 @@ function WebPlayback() {
     const dispatch = useDispatch()
 
 
-  useEffect(() => {
+    useEffect(() => {
 
     setCurrentTrack(currentTrack)
     // setActive(true)
-  }, [currentTrack])
+    }, [currentTrack])
 
-  useEffect(() => {
-      
+    useEffect(() => {
+
     //   console.log('currentTrack', state.track_window.current_track);
-    console.log('current track state', currentTrack);
-    console.log('current play state', currentPlayState);
+    // console.log('current track state', currentTrack);
+    // console.log('current play state', currentPlayState);
 
     const script = document.createElement("script");
     script.src = "https://sdk.scdn.co/spotify-player.js";
@@ -45,6 +46,7 @@ function WebPlayback() {
         setPlayer(player);
 
         player.addListener('ready', ({ device_id }) => {
+            dispatch(setDeviceId(device_id))
             console.log('Ready with Device ID', device_id);
         });
 
@@ -61,8 +63,8 @@ function WebPlayback() {
         return;
     }
 
-    // setTrack(state.track_window.current_track);
-    setTrack(currentTrack);
+    setTrack(state.track_window.current_track);
+    // setTrack(currentTrack);
 
 
     setPaused(state.paused);

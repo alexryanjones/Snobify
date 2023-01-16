@@ -15,7 +15,6 @@ async function generateInsult(req, res) {
       popularityRange: popularity,
       artistWeeklyListens: weeklyListens,
     });
-    console.log('prompt', promptBuilder, artist, user);
 
     const prompt = `If one fictional character was ${promptBuilder[0].keyword} another fictional character called ${user} for listening to ${promptBuilder[0].listeningAmount} ${artist},  what might they way? It would be ${promptBuilder[0].strength}, elaborate, talk about their ${promptBuilder[0].target} and no more than 100 words.`;
 
