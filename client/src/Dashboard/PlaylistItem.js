@@ -20,8 +20,7 @@ function PlaylistItem({ track }) {
 
     const handlePlay = async () => {
     try {
-      await axios.put(
-        
+      axios.put(
         `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
         {"uris": [`${track.uri}`]},
         {
@@ -31,7 +30,7 @@ function PlaylistItem({ track }) {
       
       );
     } catch (err) {
-      console.log(err);
+      window.alert('Could not play track: ', err);
     }
   }
 
@@ -43,7 +42,6 @@ function PlaylistItem({ track }) {
         // dispatch(moveToQueueFront(track));
         dispatch(setPlayState(true));
         handlePlay()
-
       }}
     >
       <div className='track-id'>{track.id}</div>

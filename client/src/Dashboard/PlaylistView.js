@@ -11,34 +11,36 @@ function PlaylistView ({playlist}) {
   const { token } = useSelector((state) => state.accessToken);
   const [playlistTracks, setPlaylistTracks] = useState([])
 
-    useEffect(() => {
+  useEffect(() => {
       try {
-      if (token && playlist.playlistName !== 'Your Library') {
-        axios({
-          method: 'post',
-          url: baseUrl + 'get-playlist',
-          data: {
-            playlistId: playlist.playlistId,
-            accessToken: token,
-          },
-        }).then((res) => {
-          setPlaylistTracks(res.data);
-        });
-      } else if (token && playlist.playlistName === 'Your Library') {
-        axios({
-          method: 'post',
-          url: baseUrl + 'get-library',
-          data: {
-            accessToken: token,
-          },
-        }).then((res) => {
-          setPlaylistTracks(res.data);
-        });
-      }
+      const getPlaylists = async () => {
+        if (token && playlist.playlistName !== 'Your Library') {
+          const response = await axios({
+            method: 'post',
+            url: baseUrl + 'get-playlist',
+            data: {
+              playlistId: playlist.playlistId,
+              accessToken: token,
+            },
+          })
+          setPlaylistTracks(response.data);
+        
+        } else if (token && playlist.playlistName === 'Your Library') {
+          const response = await axios({
+            method: 'post',
+            url: baseUrl + 'get-library',
+            data: {
+              accessToken: token,
+            },
+          })
+            setPlaylistTracks(response.data);
+        }
+    } 
+    getPlaylists()
     } catch (err) {
-      console.log(err);
+      window.alert('Could not get playlists: ', err);
     }
-    }, [token, playlist]);
+  }, [token, playlist]);
 
   return (
     <div className='list-container'>
