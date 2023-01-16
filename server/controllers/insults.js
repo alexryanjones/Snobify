@@ -19,8 +19,6 @@ async function generateInsult(req, res) {
       artistWeeklyListens: weeklyListens,
     });
 
-    console.log(promptBuilder[0]);
-
     const prompt = `If one fictional character was ${promptBuilder[0].keyword} another fictional character called ${user} for listening to ${promptBuilder[0].listeningAmount} ${artist},  what might they way? It would be ${promptBuilder[0].strength}, elaborate, talk about their ${promptBuilder[0].target} and no more than 80 words.`;
 
     const apiKey = process.env.OPEN_AI_API_KEY;
@@ -37,10 +35,10 @@ async function generateInsult(req, res) {
       max_tokens: 150,
     };
 
-    axios.post(url, data, { headers: headers }).then((response) => {
-      res.status(200);
-      res.send(response.data.choices[0].text);
-    });
+    const response = await axios.post(url, data, { headers: headers });
+
+    res.status(200);
+    res.send(response.data.choices[0].text);
   } catch (err) {
     console.log(err);
     res.status(400);
@@ -50,18 +48,16 @@ async function generateInsult(req, res) {
 
 function loadInsults(req, res) {
   try {
-    insults.deleteMany({}, () => {
-      console.log('collection removed');
-    });
+    insults.deleteMany({});
     prompts.forEach((prompt) => {
       insults.create(prompt);
     });
+    console.log('collection updated');
     res.sendStatus(200);
   } catch (err) {
     res.staus(400);
     res.send(err);
   }
 }
-
 
 module.exports = { generateInsult, loadInsults };

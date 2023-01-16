@@ -58,7 +58,8 @@ async function clearOldTracks(req, res) {
     res.sendStatus(200);
   } catch (err) {
     console.log(err);
-    res.sendStatus(400);
+    res.status(400);
+    res.send(err);
   }
 }
 
