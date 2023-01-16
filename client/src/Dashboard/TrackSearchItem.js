@@ -44,6 +44,7 @@ function TrackSearchItem ({track}) {
         },
       
       );
+      console.log('request sent');
     } catch (err) {
       console.log(err);
     }

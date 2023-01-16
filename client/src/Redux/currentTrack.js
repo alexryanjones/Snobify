@@ -18,6 +18,7 @@ export const currentTrackSlice = createSlice({
       state.artwork = action.payload.artwork;
       state.uri = action.payload.uri;
       state.popularity = action.payload.popularity;
+      console.log('current track changed to', state.title);
     },
   },
 });

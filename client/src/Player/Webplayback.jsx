@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentTrack } from '../Redux/currentTrack';
 import { setPlayState } from '../Redux/currentPlayState';
 import { setDeviceId } from '../Redux/deviceId';
+import axios from 'axios';
+
 
 // import playSVG from '../assets/play.svg'
 
@@ -12,22 +14,31 @@ function WebPlayback() {
     const currentTrack = useSelector((state) => state.currentTrack);
     const [player, setPlayer] = useState(undefined);
     const [is_paused, setPaused] = useState(false);
-    // const [is_active, setActive] = useState(currentPlayState);
+    const [is_active, setActive] = useState(false);
     const [current_track, setTrack] = useState(currentTrack);
+    const { deviceId } = useSelector((state) => state.deviceId);
     const dispatch = useDispatch()
+    // const [title, setTitle] = useState('')
+    // const [artist, setArtist] = useState('')
+    // const [artworkUrl, setArtworkUrl] = useState('')
 
 
     useEffect(() => {
 
     setCurrentTrack(currentTrack)
-    // setActive(true)
+    setActive(true)
     }, [currentTrack])
 
+    // set now playing track info
     useEffect(() => {
+        if (!current_track) return;
+        // console.log(current_track);
+        // setArtist(current_track.artists[0].name)
+        // setTitle(current_track.name)
+        // setArtworkUrl(current_track.album.images[0].url)
+    }, [current_track])
 
-    //   console.log('currentTrack', state.track_window.current_track);
-    // console.log('current track state', currentTrack);
-    // console.log('current play state', currentPlayState);
+useEffect(() => {
 
     const script = document.createElement("script");
     script.src = "https://sdk.scdn.co/spotify-player.js";
@@ -38,7 +49,7 @@ function WebPlayback() {
     window.onSpotifyWebPlaybackSDKReady = () => {
 
         const player = new window.Spotify.Player({
-            name: 'Snobify',
+            name: 'Web Playback SDK',
             getOAuthToken: cb => { cb(token); },
             volume: 0.5
         });
@@ -64,22 +75,34 @@ function WebPlayback() {
     }
 
     setTrack(state.track_window.current_track);
-    // setTrack(currentTrack);
-
-
     setPaused(state.paused);
 
 
-    player.getCurrentState().then( () => { 
-        dispatch(setPlayState(currentPlayState)) 
+    player.getCurrentState().then( state => { 
+        (!state)? setActive(false) : setActive(true) 
     });
 
 }));
 
     };
+}, []);
 
-    
-}, [currentTrack]);
+const handlePause = async () => {
+    try {
+    await axios.put(
+        
+        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
+        // {"uris": [`${track.uri}`]},
+        {
+        headers:
+        {'Authorization': `Bearer ${token}`}
+        },    
+    );
+    console.log('request sent');
+    } catch (err) {
+    console.log(err);
+    }
+}
 
     return (
     <>
@@ -104,6 +127,10 @@ function WebPlayback() {
                 <button className="btn-spotify" onClick={() => { player.previousTrack() }} >
     &lt;&lt;
 </button>
+
+{/* <button className="btn-spotify" onClick={() => { player.togglePlay() }} >
+    { is_paused ? "PLAY" : "PAUSE" }
+</button> */}
 
 <button className="btn-spotify" onClick={() => { player.togglePlay() }} >
     { is_paused ? "PLAY" : "PAUSE" }

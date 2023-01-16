@@ -11,24 +11,21 @@ function CurrentlyPlaying({ currentTrack }) {
   const { currentPlayState } = useSelector((state) => state.currentPlayState);
   // const { queue } = useSelector((state) => state.queue);
 
-  useEffect(() => {
-    // try {
-    if (currentTrack) {
-      axios({
-        method: 'post',
-        url: baseUrl + 'generate-insult',
-        data: {
-          trackInfo: currentTrack,
-          userInfo: user,
-        },
-      }).then((res) => {
-        setInsult(res.data);
-      });
-    }
-    // } catch (err) {
-    //   console.log(err);
-    // }
-  }, [currentTrack, currentPlayState]);
+  // useEffect(() => {
+  //   // try {
+  //   if (currentTrack) {
+  //     axios({
+  //       method: 'post',
+  //       url: baseUrl + 'generate-insult',
+  //       data: {
+  //         trackInfo: currentTrack,
+  //         userInfo: user,
+  //       },
+  //     }).then((res) => {
+  //       setInsult(res.data);
+  //     });
+  //   }
+  // }, [currentTrack, currentPlayState]);
 
   return (
     <div id='currently-playing'>

@@ -14,7 +14,6 @@ function getFeaturedPlaylists(req, res) {
       
       const featuredPlaylists = data.body.playlists.items.filter(x => x != null).map((playlist) => {
         if (playlist) {
-          console.log('featured', playlist);
           return {
             playlistName: playlist.name,
             playlistDescription: playlist.description.replace(/<[^>]*>/g, ''),
