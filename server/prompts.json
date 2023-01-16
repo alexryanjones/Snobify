@@ -21,7 +21,7 @@
     "keyword": "insulting",
     "listeningAmount": "more than enough",
     "strength": "not nice",
-    "target": "musical diversity"
+    "target": "edginess"
   },
   {
     "popularityRange": 10,
@@ -29,7 +29,7 @@
     "keyword": "berating",
     "listeningAmount": "too much",
     "strength": "nasty",
-    "target": "musical diversity"
+    "target": "coolness"
   },
   {
     "popularityRange": 20,
@@ -50,7 +50,7 @@
   {
     "popularityRange": 20,
     "artistWeeklyListens": 20,
-    "keyword": "insulting",
+    "keyword": "commenting on",
     "listeningAmount": "more than enough",
     "strength": "not nice",
     "target": "musical diversity"
@@ -170,9 +170,9 @@
   {
     "popularityRange": 60,
     "artistWeeklyListens": 10,
-    "keyword": "insulting",
+    "keyword": "commenting on",
     "listeningAmount": "an ok amount",
-    "strength": "nice",
+    "strength": "neutral",
     "target": "musical conformity"
   },
   {
@@ -204,16 +204,16 @@
     "artistWeeklyListens": 10,
     "keyword": "insulting",
     "listeningAmount": "an ok amount",
-    "strength": "nice",
-    "target": "musical conformity"
+    "strength": "neutral",
+    "target": "basicness"
   },
   {
     "popularityRange": 70,
     "artistWeeklyListens": 20,
     "keyword": "berating",
     "listeningAmount": "more than enough",
-    "strength": "not nice",
-    "target": "musical stupidity"
+    "strength": "mean",
+    "target": "basicness"
   },
   {
     "popularityRange": 70,
@@ -229,7 +229,7 @@
     "keyword": "affronting",
     "listeningAmount": "a good amount",
     "strength": "flattering",
-    "target": "musical conformity"
+    "target": "being the least loved child even if they are an only child"
   },
   {
     "popularityRange": 80,
@@ -237,7 +237,7 @@
     "keyword": "insulting",
     "listeningAmount": "an ok amount",
     "strength": "nice",
-    "target": "musical stupidity"
+    "target": "being a burden on society"
   },
   {
     "popularityRange": 80,
@@ -261,7 +261,7 @@
     "keyword": "affronting",
     "listeningAmount": "a good amount",
     "strength": "mean",
-    "target": "musical conformity"
+    "target": "conformity"
   },
   {
     "popularityRange": 90,
@@ -269,7 +269,7 @@
     "keyword": "insulting",
     "listeningAmount": "an ok amount",
     "strength": "nice",
-    "target": "musical stupidity"
+    "target": "bad music taste"
   },
   {
     "popularityRange": 90,
@@ -277,7 +277,7 @@
     "keyword": "berating",
     "listeningAmount": "more than enough",
     "strength": "not nice",
-    "target": "bad music taste"
+    "target": "letting their parents down"
   },
   {
     "popularityRange": 90,
@@ -293,7 +293,7 @@
     "keyword": "affronting",
     "listeningAmount": "a good amount",
     "strength": "not nice",
-    "target": "musical conformity"
+    "target": "aimlessness in life"
   },
   {
     "popularityRange": 100,
@@ -301,7 +301,7 @@
     "keyword": "insulting",
     "listeningAmount": "an ok amount",
     "strength": "mean",
-    "target": "musical stupidity"
+    "target": "bad music taste"
   },
   {
     "popularityRange": 100,
@@ -309,7 +309,7 @@
     "keyword": "berating",
     "listeningAmount": "more than enough",
     "strength": "aggressive",
-    "target": "bad music taste"
+    "target": "terrible music taste"
   },
   {
     "popularityRange": 100,

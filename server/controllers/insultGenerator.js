@@ -1,6 +1,8 @@
 const axios = require('axios');
 const listeningHistory = require('../models/listeningHistory');
 const insults = require('../models/insults') 
+require('dotenv').config();
+
 
 async function generateInsult(req, res) { 
   try {
@@ -20,7 +22,8 @@ async function generateInsult(req, res) {
 
     const prompt = `If one fictional character was ${promptBuilder[0].keyword} another fictional character called ${user} for listening to ${promptBuilder[0].listeningAmount} ${artist},  what might they way? It would be ${promptBuilder[0].strength}, elaborate, talk about their ${promptBuilder[0].target} and no more than 80 words.`;
 
-    const apiKey = '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';
+    const apiKey = process.env.OPEN_AI_API_KEY;
+
     const url =
       'https://api.openai.com/v1/engines/text-davinci-003/completions';
     const headers = {
