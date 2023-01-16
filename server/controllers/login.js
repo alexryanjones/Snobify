@@ -12,7 +12,6 @@ async function Login(req, res) {
     redirectUri: process.env.REDIRECT_URI,
   });
   const data = await spotifyApi.authorizationCodeGrant(code)
-    console.log(data);
     res.json({
       accessToken: data.body.access_token,
       refreshToken: data.body.refresh_token,

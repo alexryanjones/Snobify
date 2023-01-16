@@ -2,7 +2,7 @@
 const SpotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
 
-function getUser(req, res) {
+async function getUser(req, res) {
   try {
     let accessToken = req.body.accessToken;
     const spotifyApi = new SpotifyWebApi({
@@ -11,15 +11,16 @@ function getUser(req, res) {
       redirectUri: process.env.REDIRECT_URI,
     });
     spotifyApi.setAccessToken(accessToken);
-    spotifyApi.getMe().then((data) => {
-      const user = {
-        name: data.body.display_name,
-        userId: data.body.id,
-        image: data.body.images[0].url,
-      };
-      res.status(200);
-      res.send(user);
-    });
+    const reponse = await spotifyApi.getMe()
+    const user = {
+      name: reponse.body.display_name,
+      userId: reponse.body.id,
+      image: reponse.body.images[0].url,
+    };
+    
+    res.status(200);
+    res.send(user);
+
   } catch (err) {
     res.status(400);
     res.send(err);
