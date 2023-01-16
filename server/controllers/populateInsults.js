@@ -3,7 +3,7 @@ const prompts = require('./../prompts');
 
 function loadInsults(req, res) {
     try {
-      insults.deleteMany({}, function (err) {
+      insults.deleteMany({}, () => {
       console.log('collection removed');
     });
     prompts.forEach((prompt) => {

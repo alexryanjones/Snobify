@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
+import React from 'react';
+
 
 function CurrentlyPlaying({ currentTrack }) {
   const baseUrl = 'http://localhost:4000/';

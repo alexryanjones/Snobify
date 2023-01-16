@@ -5,6 +5,8 @@ import SpotifyWebApi from 'spotify-web-api-node';
 import TrackSearchItem from './TrackSearchItem';
 import FeaturedPlaylists from './FeaturedPlaylists';
 import PlaylistView from './PlaylistView';
+import React from 'react';
+
 
 const spotifyApi = new SpotifyWebApi({
   clientId: '3da6dc947ad845449ce3be18572218b8',

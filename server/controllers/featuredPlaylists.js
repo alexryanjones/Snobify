@@ -22,7 +22,7 @@ function getFeaturedPlaylists(req, res) {
             playlistArtwork: playlist.images[0].url,
             playlistId: playlist.id,
           };
-        };
+        }
       })
 
       res.status(200);

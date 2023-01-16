@@ -1,4 +1,6 @@
 import { Container } from 'react-bootstrap'
+import React from 'react';
+
 
 const client_id = '3da6dc947ad845449ce3be18572218b8';
 const response_type = 'code';

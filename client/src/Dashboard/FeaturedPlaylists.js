@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import FeaturedPlaylistItem from "./FeaturedPlaylistItem";
+import React from 'react';
+
 
 function FeaturedPlaylists() {
   const baseUrl = 'http://localhost:4000/';

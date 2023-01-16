@@ -1,4 +1,3 @@
-const { at } = require('lodash-contrib');
 const mongoose = require('./../database.js');
 
 const listeningHistorySchema = mongoose.Schema({

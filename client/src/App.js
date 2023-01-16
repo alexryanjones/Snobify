@@ -3,7 +3,7 @@ import Sidebar from './Sidebar/Sidebar';
 import Login from './Login/Login';
 import UseAuth from './Login/UseAuth';
 import { useSelector, useDispatch } from 'react-redux';
-import MediaControls from './Player/MediaControls';
+// import MediaControls from './Player/MediaControls';
 import WebPlayback from './Player/Webplayback';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -11,6 +11,7 @@ import User from './User';
 import HistoryAnalysis from './NowPlaying/HistoryAnalysis';
 import CurrentlyPlaying from './NowPlaying/CurrentlyPlaying';
 import { setCurrentUser } from './Redux/currentUser';
+import React from 'react';
 
 
 

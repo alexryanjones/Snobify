@@ -11,13 +11,13 @@ function getHistory(req, res) {
     });
     spotifyApi.setAccessToken(accessToken);
     spotifyApi.getMyRecentlyPlayedTracks({ limit: 50 }).then(
-      function (data) {
-        // Output items
-        data.body.items.forEach((item) => {});
-      },
-      function (err) {
-        console.log(err);
-      }
+      // function (data) {
+      //   // Output items
+      //   data.body.items.forEach((item) => {});
+      // },
+      // function (err) {
+      //   console.log(err);
+      // }
     );
     res.status(200);
   } catch (err) {

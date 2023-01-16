@@ -1,5 +1,4 @@
 // import SpotifyWebApi from "spotify-web-api-node";
-const { default: axios } = require('axios');
 const SpotifyWebApi = require('spotify-web-api-node');
 const listeningHistory = require('../models/listeningHistory.js');
 

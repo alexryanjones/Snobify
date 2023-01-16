@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { setCurrentView } from '../Redux/currentView';
+import React from 'react';
+
 
 
 

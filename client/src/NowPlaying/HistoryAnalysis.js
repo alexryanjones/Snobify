@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import React from 'react';
+
 
 function HistoryAnalysis () {
   const baseUrl = 'http://localhost:4000/';

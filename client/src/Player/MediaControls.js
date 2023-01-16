@@ -1,9 +1,11 @@
 import SpotifyPlayer from 'react-spotify-web-playback';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setQueue } from '../Redux/queue';
 import { setPlayState } from '../Redux/currentPlayState';
+import React from 'react';
+
 
 
 

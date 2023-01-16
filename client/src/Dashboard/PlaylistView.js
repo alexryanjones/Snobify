@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import PlaylistItem from './PlaylistItem';
-import currentView from "../Redux/currentView";
+// import currentView from "../Redux/currentView";
+import React from 'react';
+
 
 function PlaylistView ({playlist}) {
   const baseUrl = 'http://localhost:4000/';
@@ -52,6 +54,6 @@ function PlaylistView ({playlist}) {
       ))}
     </div>
   );
-};
+}
 
 export default PlaylistView;

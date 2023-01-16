@@ -5,7 +5,6 @@ const cors = require('cors')
 // import router from './router.js';
 const router = require('./router.js')
 
-const app = express();
 const server = express();
 
 server.use(cors());

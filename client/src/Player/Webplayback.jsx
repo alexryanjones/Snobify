@@ -1,22 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentTrack } from '../Redux/currentTrack';
-// import { setCurrentTrack } from '../Redux/currentTrack';
+import { setPlayState } from '../Redux/currentPlayState';
 
-function WebPlayback(props) {
-  const [player, setPlayer] = useState(undefined);
-  const [is_paused, setPaused] = useState(false);
-  const [is_active, setActive] = useState(false);
-  const currentTrack = useSelector((state) => state.currentTrack);
-  const [current_track, setTrack] = useState(currentTrack);
-  const { token } = useSelector((state) => state.accessToken);
+// import playSVG from '../assets/play.svg'
+
+function WebPlayback() {
+    const { token } = useSelector((state) => state.accessToken);
+    const { currentPlayState } = useSelector((state) => state.currentPlayState);
+    const currentTrack = useSelector((state) => state.currentTrack);
+    const [player, setPlayer] = useState(undefined);
+    const [is_paused, setPaused] = useState(false);
+    // const [is_active, setActive] = useState(currentPlayState);
+    const [current_track, setTrack] = useState(currentTrack);
+    const dispatch = useDispatch()
+
 
   useEffect(() => {
+
     setCurrentTrack(currentTrack)
-    setActive(true)
+    // setActive(true)
   }, [currentTrack])
 
   useEffect(() => {
+      
+    //   console.log('currentTrack', state.track_window.current_track);
+    console.log('current track state', currentTrack);
+    console.log('current play state', currentPlayState);
 
     const script = document.createElement("script");
     script.src = "https://sdk.scdn.co/spotify-player.js";
@@ -51,14 +61,15 @@ function WebPlayback(props) {
         return;
     }
 
-    setTrack(state.track_window.current_track);
-    console.log('currentTrack', state.track_window.current_track);
+    // setTrack(state.track_window.current_track);
+    setTrack(currentTrack);
+
 
     setPaused(state.paused);
 
 
-    player.getCurrentState().then( state => { 
-        (!state)? setActive(false) : setActive(true) 
+    player.getCurrentState().then( () => { 
+        dispatch(setPlayState(currentPlayState)) 
     });
 
 }));
@@ -66,30 +77,30 @@ function WebPlayback(props) {
     };
 
     
-}, []);
+}, [currentTrack]);
 
-  return (
+    return (
     <>
         <div className="player">
-          {currentTrack.name ? 
-          <div className='playing-track'>
+            {currentTrack.name ? 
+            <div className='playing-track'>
                 <img src={current_track.album.images[2].url} 
                     className="now-playing-cover" alt="" />
 
                 <div className='playing-track-info'>
                     <div className="now-playing__name">{
-                                  current_track.name
-                                  }</div>
+                                current_track.name
+                                }</div>
 
                     <div className="now-playing__artist">{
-                                  current_track.artists[0].name
-                                  }</div>
+                                current_track.artists[0].name
+                                }</div>
                 </div>
                 </div>
                 : null}
                 <div className='media-controls'>
                 <button className="btn-spotify" onClick={() => { player.previousTrack() }} >
-      &lt;&lt;
+    &lt;&lt;
 </button>
 
 <button className="btn-spotify" onClick={() => { player.togglePlay() }} >
@@ -97,7 +108,7 @@ function WebPlayback(props) {
 </button>
 
 <button className="btn-spotify" onClick={() => { player.nextTrack() }} >
-      &gt;&gt;
+    &gt;&gt;
 </button>
 </div>
             </div>

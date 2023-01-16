@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setCurrentView } from '../Redux/currentView';
+import React from 'react';
 
 function FeaturedPlaylistItem({ playlist }) {
   const dispatch = useDispatch();
