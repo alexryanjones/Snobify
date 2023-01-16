@@ -20,9 +20,7 @@ const code = new URLSearchParams(window.location.search).get('code');
 
 function App() {
   const accessToken = UseAuth(code);
-  // const { currentPlayState } = useSelector((state) => state.currentPlayState);
   const currentTrack = useSelector((state) => state.currentTrack);
-  // const [playingTrack, setPlayingTrack] = useState(null)
   const [weeklyScore, setWeeklyScore] = useState(null);
   const [user, setUser] = useState(null);
   const [playlists, setPlaylists] = useState([]);

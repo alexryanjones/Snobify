@@ -6,7 +6,6 @@ export const currentPlayStateSlice = createSlice({
   reducers: {
     setPlayState: (state, action) => {
       state.currentPlayState = action.payload
-      console.log('current play state changed to', state.currentPlayState);
     },
   },
 });

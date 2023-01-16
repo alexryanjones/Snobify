@@ -19,7 +19,6 @@ function PlaylistItem({ track }) {
     ((track.duration % 60000) / 1000).toFixed(0);
 
     const handlePlay = async () => {
-      console.log('track from playlist', track);
     try {
       await axios.put(
         
@@ -48,7 +47,7 @@ function PlaylistItem({ track }) {
       }}
     >
       <div className='track-id'>{track.id}</div>
-      <img id='playlist-item-artwork' src={track.artwork} alt='album artwork' />
+      <img className='playlist-item-artwork' src={track.artwork} alt='album artwork' />
       <div className='playlist-item-track-info'>
         <div className='playlist-item-track-title'>{track.title}</div>
         <div>{track.artist}</div>

@@ -23,7 +23,7 @@ function getTracks(req, res) {
           album: tracks[i].track.album.name,
           duration: tracks[i].track.duration_ms,
           popularity: tracks[i].track.popularity,
-          artwork: tracks[i].track.album.images[2].url,
+          artwork: tracks[i].track.album.images[0].url,
           uri: tracks[i].track.uri,
         });
       }

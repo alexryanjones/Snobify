@@ -271,7 +271,7 @@ h1, h2, h3 {
   cursor: pointer;
 }
 
-.playlist-artwork {
+.playlist-item-artwork {
   aspect-ratio: 1 / 1;
   width: 100%;
   border: 1px solid white;
@@ -363,7 +363,7 @@ h1, h2, h3 {
   justify-content: flex-start;
   align-items: flex-start;
   padding-top: 75px;
-  gap: 2.5%;
+  gap: 7.5%;
   padding-left: 1%;
   padding-right: 1%;
 
@@ -397,6 +397,10 @@ h1, h2, h3 {
   padding-left: 10%;
   padding-right: 10%;
   align-self: center;
+}
+
+.judgement-text {
+  font-size: small;
 }
 
 .player {
@@ -472,7 +476,7 @@ h1, h2, h3 {
   align-items: center;
 }
 
-.typing-text{
+.typing-text_{
     animation: typing 2s linear infinite;
     width: 0;
     overflow: hidden;

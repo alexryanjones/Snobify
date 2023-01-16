@@ -29,7 +29,6 @@ function WebPlayback() {
 
     setCurrentTrack(currentTrack)
     setActive(true)
-    console.log(currentTrack.artist, 'info should be here');
     }, [currentTrack])
 
 

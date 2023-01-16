@@ -21,12 +21,13 @@ function HistoryAnalysis () {
       try {
         axios.get(baseUrl + 'analyse-history')
         .then(res => {
-          setTopTrack(`Your top song of this week is ${res.data.topTrack._id} with ${res.data.topTrack.count} plays.`);
-          setTopArtist(`Your most listened to artst this week is ${res.data.topArtist._id}. You played ${res.data.topArtist.count} of their songs.`)
-          setUniqueArtists(`You listened to ${res.data.uniqueArtists.count} unique artists this week, that's ${Math.floor((res.data.uniqueArtists.count/res.data.totalTracks) * 100)}% of your weekly listens!`)
-          setRepeatedTracksPercentage(`${Math.floor(res.data.repeatedTracks.duplicateCount / res.data.totalTracks * 100)} of the songs you listened to this week were songs you'd already heard before.`)
-          setExplicitPercentage(`${(res.data.explicitPercentage.percentage / res.data.totalTracks) * 1000}% of your songs contained explicit material.`)
-          setTopYear(`You listened to ${res.data.topYear.count} songs from ${res.data.topYear._id} this week, more than any other year.`)
+          console.log(res.data.explicitPercentage);
+          setTopTrack(`Your top song was ${res.data.topTrack._id} with ${res.data.topTrack.count} plays.`);
+          setTopArtist(`Your most listened to artist was ${res.data.topArtist._id}. You played ${res.data.topArtist.count} of their songs.`)
+          setUniqueArtists(`You listened to ${res.data.uniqueArtistCount} unique artists, that's ${res.data.uniqueArtistPercentage}% of your weekly listens!`)
+          setRepeatedTracksPercentage(`${res.data.repeatedTracksPercentage}% of the songs you listened to were songs you'd already heard before.`)
+          setExplicitPercentage(`${res.data.explicitPercentage}% of your songs contained explicit material.`)
+          setTopYear(`You listened to ${res.data.topYear.count} songs released in ${res.data.topYear._id}, more than any other year.`)
       }).then(() => {
         setInsightsText([topTrack, topArtist,uniqueArtists,repeatedTracksPercentage,explicitPercentage,topYear]);
       })} catch (err) {
@@ -48,7 +49,12 @@ function HistoryAnalysis () {
     <div id='weekly-stats'>
       {/* <h2>This week you listened to</h2> */}
       <h2>Your weekly insights</h2>
-        <div>{currentText}</div>
+      <div>{topTrack}</div>
+      <div>{topArtist}</div>
+      <div>{uniqueArtists}</div>
+      <div>{repeatedTracksPercentage}</div>
+      <div>{explicitPercentage}</div>
+      <div>{topYear}</div>
     </div>
   );
 }

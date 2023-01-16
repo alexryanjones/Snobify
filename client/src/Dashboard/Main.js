@@ -17,7 +17,6 @@ function DashboardMain() {
   const [searchResults, setSearchResults] = useState([]);
   const { playlist } = useSelector((state) => state.currentView);
   const { token } = useSelector((state) => state.accessToken);
-  console.log(playlist, 'from main');
 
   // Set access token
   useEffect(() => {

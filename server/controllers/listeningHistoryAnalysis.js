@@ -4,7 +4,7 @@ async function analyse (req, res) {
   try {
   // Get top track
   let topTrackPromise = listeningHistory.aggregate([
-    { $group: { _id: '$title', count: { $sum: 1 } } },
+    { $group: { _id: '$title', count: { $sum: 1 }, } },
     { $sort: { count: -1 } },
     { $limit: 1 },
   ]);
@@ -70,6 +70,7 @@ async function analyse (req, res) {
       totalTracksPromise,
     ]);
       const totalTracks = values[6]
+      console.log(values[0][0]);
       const analysis = {
         topTrack: values[0][0],
         topArtist: values[1][0],
@@ -79,6 +80,7 @@ async function analyse (req, res) {
         repeatedTracksPercentage: Math.round(values[4][0].duplicateCount / totalTracks * 100),
         topYear: values[5][0],
       };
+      console.log(analysis);
       res.status(200);
       res.send(analysis);
   } catch (err) {
