@@ -9,6 +9,8 @@ function FeaturedPlaylists() {
   const baseUrl = 'http://localhost:4000/';
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
   const { token } = useSelector((state) => state.accessToken);
+  const { currentView } = useSelector((state) => state.currentView);
+
 
 
   useEffect(() => {
@@ -27,7 +29,7 @@ function FeaturedPlaylists() {
       console.log(err);
     }
     }
-  }, [token]);
+  }, [token, currentView]);
 
   return (
     <div className='list-container'>

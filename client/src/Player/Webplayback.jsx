@@ -18,7 +18,7 @@ function WebPlayback() {
     // const { currentPlayState } = useSelector((state) => state.currentPlayState);
     const currentTrack = useSelector((state) => state.currentTrack);
     const [player, setPlayer] = useState(undefined);
-    const [is_paused, setPaused] = useState(false);
+    const [is_paused, setPaused] = useState(true);
     const [is_active, setActive] = useState(false);
     const [current_track, setTrack] = useState(currentTrack);
     // const { deviceId } = useSelector((state) => state.deviceId);

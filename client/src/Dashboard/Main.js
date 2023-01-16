@@ -17,14 +17,12 @@ function DashboardMain() {
   const [searchResults, setSearchResults] = useState([]);
   const { playlist } = useSelector((state) => state.currentView);
   const { token } = useSelector((state) => state.accessToken);
+  console.log(playlist, 'from main');
 
-
-  // Maybe add another dashboard view for the search results?
   // Set access token
   useEffect(() => {
     if (!token) return;
     try {
-      console.log('Access Token - ', token);
     spotifyApi.setAccessToken(token);
     } catch (err) {
       console.log(err);

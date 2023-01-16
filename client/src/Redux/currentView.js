@@ -10,6 +10,11 @@ export const currentViewSlice = createSlice({
     setCurrentView: (state, action) => {
       state.playlist.playlistName = action.payload.playlistName;
       state.playlist.playlistId = action.payload.playlistId;
+      console.log(
+        'curr view set to',
+        state.playlist.playlistName,
+        state.playlist.playlistId
+      );
     },
   },
 });
