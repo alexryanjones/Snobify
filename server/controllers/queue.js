@@ -1,7 +1,5 @@
 const axios = require('axios');
 
-
-
 function getQueue(req, res) {
   try {
     const accessToken = req.body.data.accessToken;

@@ -1,11 +1,6 @@
 // import SpotifyWebApi from "spotify-web-api-node";
 const SpotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
-console.log(process.env.CLIENT_ID);
-console.log(process.env.CLIENT_SECRET);
-console.log(process.env.REDIRECT_URI);
-
-
 
 
 function Login(req, res) {

@@ -1,13 +1,14 @@
 // import SpotifyWebApi from "spotify-web-api-node";
 const SpotifyWebApi = require('spotify-web-api-node');
+require('dotenv').config();
 
 function getHistory(req, res) {
   try {
     let accessToken = req.body.accessToken;
     const spotifyApi = new SpotifyWebApi({
-      clientId: '3da6dc947ad845449ce3be18572218b8',
-      clientSecret: 'e56217866f9b43508b6d705be1b526eb',
-      redirectUri: 'http://localhost:3000',
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      redirectUri: process.env.REDIRECT_URI,
     });
     spotifyApi.setAccessToken(accessToken);
     spotifyApi.getMyRecentlyPlayedTracks({ limit: 50 }).then(
