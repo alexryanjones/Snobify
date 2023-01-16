@@ -22,9 +22,9 @@ function DashboardMain() {
   useEffect(() => {
     if (!token) return;
     try {
-    spotifyApi.setAccessToken(token);
+      spotifyApi.setAccessToken(token);
     } catch (err) {
-      console.log(err);
+      window.alert('Could not set access token: ', err);
     }
   }, [token]);
 
@@ -35,9 +35,10 @@ function DashboardMain() {
     // cancels request if another request is made before promise is resolved
     try {
     let cancel = false;
-    spotifyApi.searchTracks(search).then((res) => {
+    const searchTracks = async () => {
+      const response = await spotifyApi.searchTracks(search)
       if (cancel) return;
-      const searchResultItems = res.body.tracks.items.map((track) => {
+      const searchResultItems = response.body.tracks.items.map((track) => {
         return {
           artist: track.artists[0].name,
           title: track.name,
@@ -48,13 +49,12 @@ function DashboardMain() {
         };
       });
       setSearchResults(searchResultItems);
-    });
+      return () => (cancel = true);
+    }
+    searchTracks()
 
-    
-
-    return () => (cancel = true);
   } catch (err) {
-    console.log(err);
+    window.alert('Counld not search tracks: ', err)
   }
   }, [token, search]);
 
