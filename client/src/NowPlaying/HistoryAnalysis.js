@@ -16,7 +16,7 @@ function HistoryAnalysis () {
       try {
         const getInsights = async () => { 
           const res = await axios.get(baseUrl + 'analyse-history')
-          console.log(res.data.topTrack);
+
           setTopTrack(`Your top song was ${res.data.topTrack.title} by ${res.data.topTrack.artist} with ${res.data.topTrack.count} plays.`);
           setTopArtist(`Your most listened to artist was ${res.data.topArtist._id}. You played ${res.data.topArtist.count} of their songs.`)
           setUniqueArtists(`You listened to ${res.data.uniqueArtistCount} unique artists, that's ${res.data.uniqueArtistPercentage}% of your weekly listens!`)
