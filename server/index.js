@@ -19,7 +19,7 @@ server.use(listeningHistoryRouter);
 server.use(playerRouter);
 server.use(insultsRouter);
 server.use(userRouter);
-
+ 
 server.listen(4000, () => {
   console.log('Server is listening on port 4000!');
 });
