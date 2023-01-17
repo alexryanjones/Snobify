@@ -1,17 +1,16 @@
+import React from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import DashboardMain from './Dashboard/Main';
 import Sidebar from './Sidebar/Sidebar';
 import Login from './Login/Login';
 import UseAuth from './Login/UseAuth';
-import { useSelector, useDispatch } from 'react-redux';
-// import MediaControls from './Player/MediaControls';
-import WebPlayback from './Player/Webplayback';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import User from './User';
+import WebPlayback from './Player/Webplayback';
 import HistoryAnalysis from './NowPlaying/HistoryAnalysis';
 import CurrentlyPlaying from './NowPlaying/CurrentlyPlaying';
 import { setCurrentUser } from './Redux/currentUser';
-import React from 'react';
 
 
 
