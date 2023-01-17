@@ -27,8 +27,6 @@ function App() {
   const currentTrack = useSelector((state) => state.currentTrack);
   const dispatch = useDispatch();
 
-  console.log(process.env.REACT_APP_CLIENT_ID);
-
   // Get recently played tracks
   useEffect(() => {
     try {
