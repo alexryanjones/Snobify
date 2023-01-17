@@ -100,7 +100,7 @@ function App() {
             <CurrentlyPlaying currentTrack={currentTrack} />
           ) : weeklyScore ? (
             <HistoryAnalysis />
-          ) : null}
+          ) : <div style={{height: '90%', width: '30%', background: '#000000'}}/>}
           <WebPlayback />
         </div>
       ) : (
