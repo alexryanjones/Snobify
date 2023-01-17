@@ -392,16 +392,6 @@ h1, h2, h3 {
   align-self: center;
 }
 
-#judgement-container {
-  height: 25%;
-  padding-left: 10%;
-  padding-right: 10%;
-  align-self: center;
-}
-
-.judgement-text {
-  font-size: small;
-}
 
 .player {
   height: 10%;
@@ -471,18 +461,24 @@ h1, h2, h3 {
   color: white;
 }
 
-.typing-text {
-  display: flex;
-  align-items: center;
+#judgement-container {
+  height: 25%;
+  padding-left: 10%;
+  padding-right: 10%;
+  align-self: center;
 }
 
-.typing-text_{
-    animation: typing 2s linear infinite;
-    width: 0;
-    overflow: hidden;
-    white-space: nowrap;
+.judgement-text {
+    font-size: small;
+    color: white;
 }
 
-@keyframes typing {
-  from { width: 0; }
+/* @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
 }
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+} */

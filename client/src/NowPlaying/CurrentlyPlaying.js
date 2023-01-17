@@ -55,8 +55,8 @@ function CurrentlyPlaying({ currentTrack }) {
         src={currentTrack.artwork}
         alt='artwork'
       />
-      <div id='judgement-container' className='typing-text'>
-        {insult ? <p className='judgement-text'>{insult}</p> : null}
+      <div id='judgement-container'>
+        {insult ? <p className='judgement-text typing'>{insult}</p> : null}
       </div>
     </div>
   );

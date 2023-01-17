@@ -40,10 +40,16 @@ async function getHistory(req, res) {
       trackCount++;
     });
 
-    // Add more complex score logic here
     weeklyScore -= Math.round((totalTrackPopularity / trackCount) * 10) / 10;
+    let weightedScore = weeklyScore;
+    if (weeklyScore < 40) {
+      weightedScore = Math.round((weeklyScore - (40 - weeklyScore) / 2) * 10) / 10;
+    } else if (weeklyScore > 55) {
+      weightedScore = Math.round((weeklyScore + (weeklyScore - 55) / 2) * 10) / 10;
+    }
+
     res.status(200);
-    res.send(`${weeklyScore}`);
+    res.send(`${weightedScore}`);
       
   } catch (err) {
     console.log(err);
