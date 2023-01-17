@@ -68,13 +68,14 @@ async function getPlaylistTracks(req, res) {
 async function getMyPlaylists(req, res) {
   try {
     let accessToken = req.body.accessToken;
+    const userId = req.body.userId;
     const spotifyApi = new SpotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       redirectUri: process.env.REDIRECT_URI,
     });
     spotifyApi.setAccessToken(accessToken);
-    const response = await spotifyApi.getUserPlaylists('2177zxcr2gynkbeuca7vsrusi')
+    const response = await spotifyApi.getUserPlaylists(userId);
     let playlists = response.body.items.map((playlist) => {
       return {
         playlistName: playlist.name,

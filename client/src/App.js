@@ -21,8 +21,7 @@ function App() {
   const accessToken = UseAuth(code);
   const baseUrl = 'http://localhost:4000/';
   const [weeklyScore, setWeeklyScore] = useState(null);
-  const [user, setUser] = useState(null);
-  const [playlists, setPlaylists] = useState([]);
+  // const [playlists, setPlaylists] = useState([]);
   const currentTrack = useSelector((state) => state.currentTrack);
   const dispatch = useDispatch();
 
@@ -59,7 +58,6 @@ function App() {
               accessToken: accessToken,
             },
           })
-          setUser(response.data);
           dispatch(setCurrentUser(response.data));
         }
         getUser();
@@ -70,32 +68,33 @@ function App() {
   }, [accessToken]);
 
   // Get playlists
-  useEffect(() => {
-    try {
-      if (accessToken) {
-        const getPlaylists = async () => {
-        const response = await axios({
-          method: 'post',
-          url: baseUrl + 'my-playlists',
-          data: {
-            accessToken: accessToken,
-          }
-        })
-        setPlaylists(response.data);
-      }
-      getPlaylists();
-    } 
-  } catch (err) {
-      window.alert('Could not get playlists: ', err);
-  }
-  }, [accessToken]);
+  // useEffect(() => {
+  //   try {
+  //     if (accessToken) {
+  //       const getPlaylists = async () => {
+  //       const response = await axios({
+  //         method: 'post',
+  //         url: baseUrl + 'my-playlists',
+  //         data: {
+  //           userId: user,
+  //           accessToken: accessToken,
+  //         }
+  //       })
+  //       setPlaylists(response.data);
+  //     }
+  //     getPlaylists();
+  //   } 
+  // } catch (err) {
+  //     window.alert('Could not get playlists: ', err);
+  // }
+  // }, [accessToken]);
 
   return (
     <div>
       {accessToken ? (
         <div id='index'>
-          <User user={user} />
-          <Sidebar weeklyScore={weeklyScore} playlists={playlists} />
+          <User />
+          <Sidebar weeklyScore={weeklyScore} /* playlists={playlists} */ />
           <DashboardMain />
           {currentTrack?.title.length > 0 ? (
             <CurrentlyPlaying currentTrack={currentTrack} />

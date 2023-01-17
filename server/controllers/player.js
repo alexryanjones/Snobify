@@ -37,7 +37,6 @@ async function getQueue(req, res) {
     
     queue.unshift(currentTrack);
 
-    console.log('QUEUE HERE', queue);
     res.status(200);
     res.send(queue);
     }

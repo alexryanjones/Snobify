@@ -11,11 +11,11 @@ async function getUser(req, res) {
       redirectUri: process.env.REDIRECT_URI,
     });
     spotifyApi.setAccessToken(accessToken);
-    const reponse = await spotifyApi.getMe()
+    const response = await spotifyApi.getMe()
     const user = {
-      name: reponse.body.display_name,
-      userId: reponse.body.id,
-      image: reponse.body.images[0].url,
+      name: response.body.display_name,
+      userId: response.body.id,
+      image: response.body.images[0].url,
     };
     
     res.status(200);

@@ -9,11 +9,14 @@ async function generateInsult(req, res) {
   try {
     const user = req.body.userInfo.name;
     const artist = req.body.trackInfo.artist;
-    const popularity = Math.ceil(req.body.trackInfo.popularity / 10) * 10;
-
+    
+    let popularity = Math.ceil(req.body.trackInfo.popularity / 10) * 10;
+    if (popularity === 0) popularity = 10
+    
     let weeklyListens = await listeningHistory.count({ artist: artist });
     weeklyListens = Math.ceil(weeklyListens / 10) * 10;
     if (weeklyListens > 40) weeklyListens = 40;
+
     const promptBuilder = await insults.find({
       popularityRange: popularity,
       artistWeeklyListens: weeklyListens,

@@ -61,7 +61,6 @@ useEffect(() => {
         player.connect();
 
         player.addListener('player_state_changed', ( state => {
-            console.log('current player state', state);
             if (!state) {
                 return;
             }

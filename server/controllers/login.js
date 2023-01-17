@@ -5,8 +5,6 @@ require('dotenv').config();
 
 async function Login(req, res) {
   try {
-    console.log('login hit');
-    console.log(req.body.code);
     const code = req.body.code;
     const spotifyApi = new SpotifyWebApi({
       clientId: process.env.CLIENT_ID,
@@ -14,7 +12,6 @@ async function Login(req, res) {
       redirectUri: process.env.REDIRECT_URI,
     });
     const data = await spotifyApi.authorizationCodeGrant(code);
-    console.log(data, 'data');
     res.json({
       accessToken: data.body.access_token,
       refreshToken: data.body.refresh_token,

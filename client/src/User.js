@@ -1,7 +1,9 @@
 import dropdown from './assets/dropdown.svg'
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-function User({user}) {
+function User() {
+  const { user } = useSelector((state) => state.currentUser);
 
   return (
     <div>

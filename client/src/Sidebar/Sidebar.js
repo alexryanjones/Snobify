@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Playlists from './Playlists';
 import logo from '../assets/Snobify-Logo.svg'
@@ -8,9 +8,11 @@ import React from 'react';
 
 
 
-function Sidebar({weeklyScore, playlists}) {
+function Sidebar({weeklyScore/* , playlists */}) {
   const baseUrl = 'http://localhost:4000/';
   const { token } = useSelector((state) => state.accessToken);
+  const { user } = useSelector((state) => state.currentUser);
+  const [playlists, setPlaylists] = useState([])
   const dispatch = useDispatch()
 
   
@@ -24,6 +26,28 @@ function Sidebar({weeklyScore, playlists}) {
   useEffect(() => {
       axios.get(baseUrl + 'load-insults');
   }, [])
+
+  useEffect(() => {
+    try {
+      if (token) {
+        console.log(user);
+        const getPlaylists = async () => {
+          const response = await axios({
+            method: 'post',
+            url: baseUrl + 'my-playlists',
+            data: {
+              userId: user,
+              accessToken: token,
+            },
+          });
+          setPlaylists(response.data);
+        };
+        getPlaylists();
+      }
+    } catch (err) {
+      window.alert('Could not get playlists: ', err);
+    }
+  }, [token]);
   
   return (
     <div className='sidebar'>
