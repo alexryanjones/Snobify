@@ -3,7 +3,7 @@ import queueSVG from '../assets/queue.svg'
 import axios from 'axios';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { moveToQueueFront } from '../Redux/queue';
+import { moveToQueueFront, addToQueue } from '../Redux/queue';
 import { setPlayState } from '../Redux/currentPlayState';
 import { setCurrentTrack } from '../Redux/currentTrack';
 
@@ -15,6 +15,7 @@ function TrackSearchItem ({track}) {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.accessToken);
   const { deviceId } = useSelector((state) => state.deviceId);
+  const { queue } = useSelector((state) => state.queue);
 
 
   // ADD TO QUEUE FUNCTION HERE!!!!!!!
@@ -34,15 +35,14 @@ function TrackSearchItem ({track}) {
 
   const handlePlay = async () => {
     try {
-      await axios.put(
-        
-        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
-        {"uris": [`${track.uri}`]},
-        {
-          headers:
-          {'Authorization': `Bearer ${token}`}
-        },
       
+      await axios.put(
+        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
+        // { uris: queue },
+        { uris: [`${track.uri}`] },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
     } catch (err) {
       console.log(err);
@@ -64,6 +64,7 @@ function TrackSearchItem ({track}) {
           alt='queueSVG'
           onClick={() => {
             addToQueue();
+            dispatch(addToQueue(track.uri))
           }}
         />
         <img

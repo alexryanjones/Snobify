@@ -20,12 +20,12 @@ const code = new URLSearchParams(window.location.search).get('code');
 
 function App() {
   const accessToken = UseAuth(code);
-  const currentTrack = useSelector((state) => state.currentTrack);
+  const baseUrl = 'http://localhost:4000/';
   const [weeklyScore, setWeeklyScore] = useState(null);
   const [user, setUser] = useState(null);
   const [playlists, setPlaylists] = useState([]);
+  const currentTrack = useSelector((state) => state.currentTrack);
   const dispatch = useDispatch();
-  const baseUrl = 'http://localhost:4000/';
 
   // Get recently played tracks
   useEffect(() => {

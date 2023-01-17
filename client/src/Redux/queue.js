@@ -8,10 +8,10 @@ export const queueSlice = createSlice({
       state.queue = action.payload
     },
     addToQueue: (state, action) => {
-      state.queue.push(action.payload)
+      state.queue.push(`${action.payload}`)
     },
     moveToQueueFront: (state, action) => {
-      state.queue[0] = action.payload;
+      state.queue[0] = `${action.payload}`;
     }
   }
 })
