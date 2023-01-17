@@ -73,9 +73,10 @@ async function analyseHistory(req, res) {
   try {
     // Get top track
     let topTrackPromise = listeningHistory.aggregate([
-      { $group: { _id: '$title', count: { $sum: 1 } } },
+      { $group: { _id: '$title', count: { $sum: 1 }, artist: { $first: "$artist" } } },
       { $sort: { count: -1 } },
       { $limit: 1 },
+      { $project: { _id: 0, title: "$_id", artist: "$artist", count: "$count" } }
     ]);
 
     // Get top artist
@@ -139,6 +140,7 @@ async function analyseHistory(req, res) {
       totalTracksPromise,
     ]);
     const totalTracks = values[6];
+    console.log(values[0]);
     const analysis = {
       topTrack: values[0][0],
       topArtist: values[1][0],

@@ -7,8 +7,6 @@ import { moveToQueueFront, addToQueue } from '../Redux/queue';
 import { setPlayState } from '../Redux/currentPlayState';
 import { setCurrentTrack } from '../Redux/currentTrack';
 
-// import { getQueue } from '../ApiService';
-
 
 function TrackSearchItem ({track}) {
   const baseUrl = 'http://localhost:4000/';

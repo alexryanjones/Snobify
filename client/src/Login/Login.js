@@ -2,7 +2,7 @@ import { Container } from 'react-bootstrap'
 import React from 'react';
 
 
-const client_id = '3da6dc947ad845449ce3be18572218b8';
+const client_id = process.env.REACT_APP_CLIENT_ID;
 const response_type = 'code';
 const redirect_uri = 'http://localhost:3000';
 const scope =
