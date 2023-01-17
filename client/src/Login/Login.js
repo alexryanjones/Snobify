@@ -4,7 +4,7 @@ import React from 'react';
 
 const client_id = process.env.REACT_APP_CLIENT_ID;
 const response_type = 'code';
-const redirect_uri = 'http://localhost:3000';
+const redirect_uri = 'https://main--snobify.netlify.app/';
 const scope =
 'streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-private%20user-read-playback-state%20user-modify-playback-state%20user-read-recently-played';
 
