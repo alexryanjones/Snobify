@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentTrack } from '../Redux/currentTrack';
-import { setPlayState } from '../Redux/currentPlayState';
+// import { setPlayState } from '../Redux/currentPlayState';
 import { setDeviceId } from '../Redux/deviceId';
 
 
@@ -15,20 +15,18 @@ import skip from '../assets/forwards.svg'
 
 function WebPlayback() {
     const { token } = useSelector((state) => state.accessToken);
-    // const { currentPlayState } = useSelector((state) => state.currentPlayState);
     const currentTrack = useSelector((state) => state.currentTrack);
     const [player, setPlayer] = useState(undefined);
     const [is_paused, setPaused] = useState(true);
-    const [is_active, setActive] = useState(false);
+
     const [current_track, setTrack] = useState(currentTrack);
-    // const { deviceId } = useSelector((state) => state.deviceId);
     const dispatch = useDispatch()
 
 
     useEffect(() => {
 
     setCurrentTrack(currentTrack)
-    setActive(true)
+
     }, [currentTrack])
 
 
@@ -71,10 +69,6 @@ useEffect(() => {
             setTrack(state.track_window.current_track);
             setPaused(state.paused);
 
-
-            player.getCurrentState().then( state => { 
-                (!state)? setActive(false) : setActive(true) 
-            });
 
         }));
 

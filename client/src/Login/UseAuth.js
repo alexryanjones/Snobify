@@ -52,7 +52,7 @@ function UseAuth (code) {
   }, [refreshToken, expiresIn]);
   
   return accessToken;
-};
+}
 
 
 export default UseAuth;

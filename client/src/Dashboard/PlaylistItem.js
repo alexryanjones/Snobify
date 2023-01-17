@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { moveToQueueFront } from '../Redux/queue';
 import { setCurrentTrack } from '../Redux/currentTrack';
 import { setPlayState } from '../Redux/currentPlayState';
 import axios from 'axios';
@@ -18,7 +17,7 @@ function PlaylistItem({ track }) {
     (((track.duration % 60000) / 1000).toFixed(0) < 10 ? '0' : '') +
     ((track.duration % 60000) / 1000).toFixed(0);
 
-   const handlePlay = async () => {
+  const handlePlay = async () => {
     try {
       await axios.put(
         

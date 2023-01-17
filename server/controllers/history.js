@@ -139,8 +139,8 @@ async function analyseHistory(req, res) {
       topYearPromise,
       totalTracksPromise,
     ]);
+    
     const totalTracks = values[6];
-    console.log(values[0]);
     const analysis = {
       topTrack: values[0][0],
       topArtist: values[1][0],

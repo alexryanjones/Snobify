@@ -11,12 +11,7 @@ function HistoryAnalysis () {
   const [repeatedTracksPercentage, setRepeatedTracksPercentage] = useState('')
   const [explicitPercentage, setExplicitPercentage] = useState('')
   const [topYear, setTopYear] = useState('');
-  const [currentText, setCurrentText] = useState('');
-  const [insightsText, setInsightsText] = useState([])
-  let i = 0;
 
-    
-    
     useEffect(() => {
       try {
         const getInsights = async () => { 
@@ -28,24 +23,12 @@ function HistoryAnalysis () {
           setRepeatedTracksPercentage(`${res.data.repeatedTracksPercentage}% of the songs you listened to were songs you'd already heard before.`)
           setExplicitPercentage(`${res.data.explicitPercentage}% of your songs contained explicit material.`)
           setTopYear(`You listened to ${res.data.topYear.count} songs released in ${res.data.topYear._id}, more than any other year.`)
-
-          setInsightsText([topTrack, topArtist,uniqueArtists,repeatedTracksPercentage,explicitPercentage,topYear]);
         }
         getInsights()
       } catch (err) {
         window.alert('Could not get insights: ', err)
       }
     }, [])
-    
-    // // Type top track
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setCurrentText(insightsText.join('\n').slice(0, i));
-        i++;
-      }, 35);
-      return () => clearInterval(interval);
-    }, [insightsText]);
-
 
   return (
     <div id='weekly-stats'>

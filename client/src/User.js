@@ -1,4 +1,5 @@
 import dropdown from './assets/dropdown.svg'
+import React from 'react';
 
 function User({user}) {
 

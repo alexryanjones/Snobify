@@ -7,12 +7,7 @@ import React from 'react';
 function CurrentlyPlaying({ currentTrack }) {
   const baseUrl = 'http://localhost:4000/';
   const [insult, setInsult] = useState('');
-  const [currentText, setCurrentText] = useState('');
   const { user } = useSelector((state) => state.currentUser);
-  const { currentPlayState } = useSelector((state) => state.currentPlayState);
-  let i = 0;
-
-  // const { queue } = useSelector((state) => state.queue);
 
   useEffect(() => {
     try {
@@ -32,14 +27,6 @@ function CurrentlyPlaying({ currentTrack }) {
       window.alert('Could not generate insult, consider yourself lucky: ', err)
     }
   }, [currentTrack]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText(insult.slice(0, i));
-      i++;
-    }, 35);
-    return () => clearInterval(interval);
-  }, [insult]);
 
   return (
     <div id='currently-playing'>

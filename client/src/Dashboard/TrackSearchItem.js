@@ -3,9 +3,9 @@ import queueSVG from '../assets/queue.svg'
 import axios from 'axios';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { moveToQueueFront, addToQueue } from '../Redux/queue';
 import { setPlayState } from '../Redux/currentPlayState';
 import { setCurrentTrack } from '../Redux/currentTrack';
+// import { moveToQueueFront, addToQueue } from '../Redux/queue';
 
 
 function TrackSearchItem ({track}) {
@@ -13,10 +13,10 @@ function TrackSearchItem ({track}) {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.accessToken);
   const { deviceId } = useSelector((state) => state.deviceId);
-  const { queue } = useSelector((state) => state.queue);
+  // const { queue } = useSelector((state) => state.queue);
 
 
-  // ADD TO QUEUE FUNCTION HERE!!!!!!!
+  // ADD TO QUEUE FUNCTION HERE
 
   const addToQueue = () => {
     try {
