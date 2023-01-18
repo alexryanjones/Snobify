@@ -5,7 +5,7 @@ import React from 'react';
 
 
 function CurrentlyPlaying({ currentTrack }) {
-  const baseUrl = 'http://localhost:4000/';
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [insult, setInsult] = useState('');
   const { user } = useSelector((state) => state.currentUser);
 

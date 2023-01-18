@@ -4,7 +4,7 @@ import React from 'react';
 
 
 function HistoryAnalysis () {
-  const baseUrl = 'http://localhost:4000/';
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [topTrack, setTopTrack] = useState('')
   const [topArtist, setTopArtist] = useState('');
   const [uniqueArtists, setUniqueArtists] = useState('');

@@ -8,7 +8,7 @@ import clock from "../assets/clock.svg"
 
 
 function PlaylistView ({playlist}) {
-  const baseUrl = 'http://localhost:4000/';
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const { token } = useSelector((state) => state.accessToken);
   const [playlistTracks, setPlaylistTracks] = useState([])
 

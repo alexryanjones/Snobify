@@ -9,7 +9,7 @@ import { setCurrentTrack } from '../Redux/currentTrack';
 
 
 function TrackSearchItem ({track}) {
-  const baseUrl = 'http://localhost:4000/';
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.accessToken);
   const { deviceId } = useSelector((state) => state.deviceId);

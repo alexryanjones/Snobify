@@ -6,7 +6,7 @@ import React from 'react';
 
 
 function FeaturedPlaylists() {
-  const baseUrl = 'http://localhost:4000/';
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
   const { token } = useSelector((state) => state.accessToken);
   const { currentView } = useSelector((state) => state.currentView);

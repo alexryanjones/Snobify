@@ -19,7 +19,7 @@ const code = new URLSearchParams(window.location.search).get('code');
 
 function App() {
   const accessToken = UseAuth(code);
-  const baseUrl = 'http://localhost:4000/';
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [weeklyScore, setWeeklyScore] = useState(null);
   const currentTrack = useSelector((state) => state.currentTrack);
   const dispatch = useDispatch();

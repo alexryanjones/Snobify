@@ -4,7 +4,7 @@ import { setReduxAccessToken } from "../Redux/accessToken";
 import axios from "axios";
 
 function UseAuth (code) {
-
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState()
@@ -14,7 +14,7 @@ function UseAuth (code) {
   useEffect(() => {
     try {
       const login = async () => {
-      const response = await axios.post('http://localhost:4000/login', {code})
+      const response = await axios.post(baseUrl + 'login', {code})
 
       setAccessToken(response.data.accessToken);
       dispatch(setReduxAccessToken(response.data.accessToken));
@@ -37,7 +37,7 @@ function UseAuth (code) {
     if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-      .post('http://localhost:4000/refresh', {
+      .post(baseUrl + 'refresh', {
         refreshToken,
       })
       .then((response) => {

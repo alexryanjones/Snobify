@@ -9,7 +9,7 @@ import React from 'react';
 
 
 function Sidebar({weeklyScore}) {
-  const baseUrl = 'http://localhost:4000/';
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const { token } = useSelector((state) => state.accessToken);
   const { user } = useSelector((state) => state.currentUser);
   const [playlists, setPlaylists] = useState([])
