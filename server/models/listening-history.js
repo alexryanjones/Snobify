@@ -21,6 +21,10 @@ const listeningHistorySchema = mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  playedAt: {
+    type: String,
+    required: true,
+  }
 });
 
 module.exports = mongoose.model('listeningHistory', listeningHistorySchema);

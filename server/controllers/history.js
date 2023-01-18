@@ -2,8 +2,6 @@ const spotifyWebApi = require('spotify-web-api-node');
 const listeningHistory = require('../models/listening-history.js');
 require('dotenv').config();
 
-const date = Date.now() - 7 * 24 * 60 * 60 * 1000;
-
 async function getHistory(req, res) {
   try {
     let accessToken = req.body.accessToken;
@@ -19,12 +17,14 @@ async function getHistory(req, res) {
     const data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: 50 })
 
     data.body.items.forEach((item) => {
+      const formattedDate = Date.parse(item.played_at)
       listeningHistory.create({
         title: item.track.name,
         artist: item.track.artists[0].name,
         popularity: item.track.popularity,
         releaseDate: item.track.album.release_date,
         explicit: item.track.explicit,
+        playedAt: formattedDate,
       });
     });
 
@@ -58,6 +58,8 @@ async function getHistory(req, res) {
 }
 
 async function clearOldTracks(req, res) {
+  let date = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  date = date.getTime();
   try {
     await listeningHistory.deleteMany({ playedAt: { $lt: date } });
     res.sendStatus(200);
@@ -165,3 +167,4 @@ async function analyseHistory(req, res) {
 }
 
 module.exports = { getHistory, analyseHistory, clearOldTracks };
+
