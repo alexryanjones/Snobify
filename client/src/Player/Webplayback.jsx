@@ -22,57 +22,57 @@ function WebPlayback() {
     const [current_track, setTrack] = useState(currentTrack);
     const dispatch = useDispatch()
 
-
+    // Set current track
     useEffect(() => {
 
     setCurrentTrack(currentTrack)
 
     }, [currentTrack])
 
+    // Player configuration
+    useEffect(() => {
 
-useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://sdk.scdn.co/spotify-player.js";
+        script.async = true;
 
-    const script = document.createElement("script");
-    script.src = "https://sdk.scdn.co/spotify-player.js";
-    script.async = true;
+        document.body.appendChild(script);
 
-    document.body.appendChild(script);
+        window.onSpotifyWebPlaybackSDKReady = () => {
 
-    window.onSpotifyWebPlaybackSDKReady = () => {
+            const player = new window.Spotify.Player({
+                name: 'Snobify',
+                getOAuthToken: cb => { cb(token); },
+                volume: 0.5
+            });
 
-        const player = new window.Spotify.Player({
-            name: 'Snobify',
-            getOAuthToken: cb => { cb(token); },
-            volume: 0.5
-        });
+            setPlayer(player);
 
-        setPlayer(player);
+            player.addListener('ready', ({ device_id }) => {
+                dispatch(setDeviceId(device_id))
+                console.log('Ready with Device ID', device_id);
+            });
 
-        player.addListener('ready', ({ device_id }) => {
-            dispatch(setDeviceId(device_id))
-            console.log('Ready with Device ID', device_id);
-        });
-
-        player.addListener('not_ready', ({ device_id }) => {
-            console.log('Device ID has gone offline', device_id);
-        });
-
-
-        player.connect();
-
-        player.addListener('player_state_changed', ( state => {
-            if (!state) {
-                return;
-            }
-
-            setTrack(state.track_window.current_track);
-            setPaused(state.paused);
+            player.addListener('not_ready', ({ device_id }) => {
+                console.log('Device ID has gone offline', device_id);
+            });
 
 
-        }));
+            player.connect();
 
-        };
-}, []);
+            player.addListener('player_state_changed', ( state => {
+                if (!state) {
+                    return;
+                }
+
+                setTrack(state.track_window.current_track);
+                setPaused(state.paused);
+
+
+            }));
+
+            };
+    }, []);
 
     return (
     <>

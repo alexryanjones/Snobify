@@ -10,6 +10,7 @@ function UseAuth (code) {
   const [expiresIn, setExpiresIn] = useState()
   const dispatch = useDispatch();
 
+  // Get access token
   useEffect(() => {
     try {
       const login = async () => {
@@ -30,6 +31,7 @@ function UseAuth (code) {
     }
   }, [code]);
 
+  // Refresh access token
   useEffect(() => {
     try {
     if (!refreshToken || !expiresIn) return;

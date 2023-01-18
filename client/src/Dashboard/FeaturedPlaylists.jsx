@@ -12,7 +12,7 @@ function FeaturedPlaylists() {
   const { currentView } = useSelector((state) => state.currentView);
 
 
-
+  // Get featured playlists 
   useEffect(() => {
     if (token) {
       try {

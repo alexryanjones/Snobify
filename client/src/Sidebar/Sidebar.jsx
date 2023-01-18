@@ -8,29 +8,20 @@ import React from 'react';
 
 
 
-function Sidebar({weeklyScore/* , playlists */}) {
+function Sidebar({weeklyScore}) {
   const baseUrl = 'http://localhost:4000/';
   const { token } = useSelector((state) => state.accessToken);
   const { user } = useSelector((state) => state.currentUser);
   const [playlists, setPlaylists] = useState([])
   const dispatch = useDispatch()
 
-  
-  useEffect(() => {
-      axios({
-        method: 'get',
-        url: baseUrl + 'filter-date',
-      });
-  }, [])
+  axios.get(baseUrl + 'load-insults');
+  axios.get(baseUrl + 'filter-date');
 
-  useEffect(() => {
-      axios.get(baseUrl + 'load-insults');
-  }, [])
-
+  // Get playlists
   useEffect(() => {
     try {
       if (token) {
-        console.log(user);
         const getPlaylists = async () => {
           const response = await axios({
             method: 'post',

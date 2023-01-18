@@ -12,6 +12,7 @@ function HistoryAnalysis () {
   const [explicitPercentage, setExplicitPercentage] = useState('')
   const [topYear, setTopYear] = useState('');
 
+    // Get weekly insights
     useEffect(() => {
       try {
         const getInsights = async () => { 

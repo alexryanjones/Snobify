@@ -12,6 +12,7 @@ function PlaylistView ({playlist}) {
   const { token } = useSelector((state) => state.accessToken);
   const [playlistTracks, setPlaylistTracks] = useState([])
 
+  //  Get tracks of selected playlist
   useEffect(() => {
       try {
       const getPlaylists = async () => {

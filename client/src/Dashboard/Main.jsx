@@ -1,15 +1,15 @@
 import { Form } from 'react-bootstrap'
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import SpotifyWebApi from 'spotify-web-api-node';
+import spotifyWebApi from 'spotify-web-api-node';
 import TrackSearchItem from './TrackSearchItem';
 import FeaturedPlaylists from './FeaturedPlaylists';
 import PlaylistView from './PlaylistView';
 import React from 'react';
 
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.REACT_APP_CLIENT_ID
+const spotifyApi = new spotifyWebApi({
+  clientId: process.env.REACT_APP_CLIENT_ID,
 });
 
 function DashboardMain() {

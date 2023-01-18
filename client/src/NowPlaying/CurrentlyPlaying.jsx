@@ -9,6 +9,7 @@ function CurrentlyPlaying({ currentTrack }) {
   const [insult, setInsult] = useState('');
   const { user } = useSelector((state) => state.currentUser);
 
+  // Populate track judgement
   useEffect(() => {
     try {
       const generateInsult = async () => {

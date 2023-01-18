@@ -1,15 +1,14 @@
-// import SpotifyWebApi from "spotify-web-api-node";
-const SpotifyWebApi = require('spotify-web-api-node');
+const spotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
 
 async function getFeaturedPlaylists(req, res) {
   try {
     let accessToken = req.body.accessToken;
-    const spotifyApi = new SpotifyWebApi({
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    redirectUri: process.env.REDIRECT_URI,
-  });
+    const spotifyApi = new spotifyWebApi({
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      redirectUri: process.env.REDIRECT_URI,
+    });
   spotifyApi.setAccessToken(accessToken);
   const response = await spotifyApi.getFeaturedPlaylists()
     
@@ -28,7 +27,7 @@ async function getFeaturedPlaylists(req, res) {
   res.send(featuredPlaylists);
   } catch (err) {
     res.status(400);
-    res.send(err)
+    res.send({ data: null, error: err.message });
   }
 }
 
@@ -36,7 +35,7 @@ async function getPlaylistTracks(req, res) {
   try {
     let accessToken = req.body.accessToken;
     let playlistId = req.body.playlistId;
-    const spotifyApi = new SpotifyWebApi({
+    const spotifyApi = new spotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       redirectUri: process.env.REDIRECT_URI,
@@ -61,7 +60,7 @@ async function getPlaylistTracks(req, res) {
     res.send(playlist);
   } catch (err) {
     res.status(400);
-    res.send(err);
+    res.send({ data: null, error: err.message });
   }
 }
 
@@ -69,7 +68,7 @@ async function getMyPlaylists(req, res) {
   try {
     let accessToken = req.body.accessToken;
     const userId = req.body.userId;
-    const spotifyApi = new SpotifyWebApi({
+    const spotifyApi = new spotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       redirectUri: process.env.REDIRECT_URI,
@@ -89,14 +88,14 @@ async function getMyPlaylists(req, res) {
     res.send(playlists);
   } catch (err) {
     res.status(400);
-    res.send(err);
+    res.send({ data: null, error: err.message });
   }
 }
 
 async function getMyLibrary(req, res) {
   try {
     let accessToken = req.body.accessToken;
-    const spotifyApi = new SpotifyWebApi({
+    const spotifyApi = new spotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       redirectUri: process.env.REDIRECT_URI,
@@ -120,7 +119,7 @@ async function getMyLibrary(req, res) {
     res.send(playlist);
   } catch (err) {
     res.status(400);
-    res.send(err);
+    res.send({ data: null, error: err.message });
   }
 }
 

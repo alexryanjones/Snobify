@@ -1,12 +1,11 @@
-// import SpotifyWebApi from "spotify-web-api-node";
-const SpotifyWebApi = require('spotify-web-api-node');
+const spotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
 
 
 async function Login(req, res) {
   try {
     const code = req.body.code;
-    const spotifyApi = new SpotifyWebApi({
+    const spotifyApi = new spotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       redirectUri: process.env.REDIRECT_URI,
@@ -20,14 +19,14 @@ async function Login(req, res) {
   } catch (err) {
     console.log(err);
       res.status(400);
-      res.send(err)
+      res.send({ data: null, error: err.message });
   }
 }
 
 async function Refresh(req, res) {
   try {
   const refreshToken = req.body.refreshToken;
-  const spotifyApi = new SpotifyWebApi({
+  const spotifyApi = new spotifyWebApi({
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     redirectUri: process.env.REDIRECT_URI,
@@ -41,7 +40,7 @@ async function Refresh(req, res) {
       // spotifyApi.setAccessToken(data.body)
     } catch (err) {
       res.status(400);
-      res.send(err);
+      res.send({ data: null, error: err.message });
     }
 }
 

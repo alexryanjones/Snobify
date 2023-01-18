@@ -1,5 +1,4 @@
-// import SpotifyWebApi from "spotify-web-api-node";
-const SpotifyWebApi = require('spotify-web-api-node');
+const spotifyWebApi = require('spotify-web-api-node');
 const listeningHistory = require('../models/listening-history.js');
 require('dotenv').config();
 
@@ -11,7 +10,7 @@ async function getHistory(req, res) {
     let totalTrackPopularity = 0;
     let trackCount = 0;
     let weeklyScore = 100;
-    const spotifyApi = new SpotifyWebApi({
+    const spotifyApi = new spotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       redirectUri: process.env.REDIRECT_URI,
@@ -54,7 +53,7 @@ async function getHistory(req, res) {
   } catch (err) {
     console.log(err);
     res.status(400);
-    res.send(err);
+    res.send({ data: null, error: err.message });
   }
 }
 
@@ -65,7 +64,8 @@ async function clearOldTracks(req, res) {
   } catch (err) {
     console.log(err);
     res.status(400);
-    res.send(err);
+    res.send({ data: null, error: err.message });
+
   }
 }
 
@@ -160,7 +160,7 @@ async function analyseHistory(req, res) {
     res.send(analysis);
   } catch (err) {
     res.status(400);
-    res.send(err);
+    res.send({ data: null, error: err.message });
   }
 }
 

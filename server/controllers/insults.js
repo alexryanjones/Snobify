@@ -45,7 +45,7 @@ async function generateInsult(req, res) {
   } catch (err) {
     console.log(err);
     res.status(400);
-    res.send('You filthy')
+    res.send({ data: null, error: err.message });
   }
 }
 
@@ -59,7 +59,8 @@ function loadInsults(req, res) {
     res.sendStatus(200);
   } catch (err) {
     res.staus(400);
-    res.send(err);
+    res.send({ data: null, error: err.message });
+
   }
 }
 

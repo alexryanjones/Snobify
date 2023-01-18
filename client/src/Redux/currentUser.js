@@ -12,7 +12,6 @@ export const currentUserSlice = createSlice({
       state.user.name = action.payload.name;
       state.user.userId = action.payload.userId;
       state.user.image = action.payload.image;
-      console.log(state.user.userId);
     },
   },
 });

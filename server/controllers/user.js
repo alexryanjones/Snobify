@@ -1,11 +1,10 @@
-// import SpotifyWebApi from "spotify-web-api-node";
-const SpotifyWebApi = require('spotify-web-api-node');
+const spotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
 
 async function getUser(req, res) {
   try {
     let accessToken = req.body.accessToken;
-    const spotifyApi = new SpotifyWebApi({
+    const spotifyApi = new spotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       redirectUri: process.env.REDIRECT_URI,
@@ -23,7 +22,7 @@ async function getUser(req, res) {
 
   } catch (err) {
     res.status(400);
-    res.send(err);
+    res.send({ data: null, error: err.message });
   }
 }
 
