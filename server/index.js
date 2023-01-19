@@ -10,7 +10,11 @@ const insultsRouter = require('./routers/insults-router');
 const userRouter = require('./routers/user-router')
 
 
-server.use(cors());
+server.use(cors({
+  origin: '*',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT']
+}));
 server.use(Express.json({ extended: true }));
 server.use(loginRouter);
 server.use(playlistRouter);
