@@ -2,6 +2,7 @@ const spotifyWebApi = require('spotify-web-api-node');
 const listeningHistory = require('../models/listening-history.js');
 require('dotenv').config();
 
+// TODO: Replace create with create or update based on playedAt time
 async function getHistory(req, res) {
   try {
     let accessToken = req.body.accessToken;
