@@ -5,7 +5,6 @@ require('dotenv').config();
 async function Login(req, res) {
   try {
     const code = req.body.code;
-    console.log('here is the code which is definitely being supplied => ', code);
     const spotifyApi = new spotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
