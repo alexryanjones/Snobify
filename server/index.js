@@ -24,5 +24,5 @@ server.use(insultsRouter);
 server.use(userRouter);
 
 server.listen(process.env.SERVER_PORT, () => {
-  console.log('Server is listening on port 4000!');
+  console.log(`Server is listening on port ${process.env.SERVER_PORT}!`);
 });

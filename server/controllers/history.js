@@ -58,19 +58,19 @@ async function getHistory(req, res) {
   }
 }
 
-// async function clearOldTracks(req, res) {
-//   let date = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-//   date = date.getTime();
-//   try {
-//     await listeningHistory.deleteMany({ playedAt: { $lt: date } });
-//     res.sendStatus(200);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(400);
-//     res.send({ data: null, error: err.message });
+async function clearOldTracks(req, res) {
+  let date = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  date = date.getTime();
+  try {
+    await listeningHistory.deleteMany({ playedAt: { $lt: date } });
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    res.status(400);
+    res.send({ data: null, error: err.message });
 
-//   }
-// }
+  }
+}
 
 async function analyseHistory(req, res) {
   try {
@@ -167,5 +167,5 @@ async function analyseHistory(req, res) {
   }
 }
 
-module.exports = { getHistory, analyseHistory, /* clearOldTracks */ };
+module.exports = { getHistory, analyseHistory, clearOldTracks };
 
