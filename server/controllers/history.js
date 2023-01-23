@@ -6,11 +6,11 @@ require('dotenv').config();
 async function getHistory(req, res) {
   try {
     let accessToken = req.body.accessToken;
-    console.log(req.headers, 'HEADERSSSSSSSS');
-    console.log(accessToken);
+    // let currentUser = req.body.currentUser;
     let totalTrackPopularity = 0;
     let trackCount = 0;
     let weeklyScore = 100;
+    await listeningHistory.deleteMany();
     const spotifyApi = new spotifyWebApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,

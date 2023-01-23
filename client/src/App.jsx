@@ -22,18 +22,20 @@ function App() {
   const baseUrl = process.env.REACT_APP_BASE_URL;
   const [weeklyScore, setWeeklyScore] = useState(null);
   const currentTrack = useSelector((state) => state.currentTrack);
+  const currentUser = useSelector((state) => state.currentUser);
   const dispatch = useDispatch();
 
   // Get recently played tracks
   useEffect(() => {
     try {
-      if (accessToken) {
+      if (accessToken && currentUser) {
         const getHistory = async () => {
           const response = await axios({
             method: 'post',
             url: baseUrl + 'get-history',
             data: {
               accessToken: accessToken,
+              currentUser: currentUser
             },
           })
           setWeeklyScore(response.data);
@@ -43,7 +45,7 @@ function App() {
     } catch (err) {
       console.log(err);
     }
-  }, [accessToken]);
+  }, [accessToken, currentUser]);
 
   // Get user info
   useEffect(() => {
