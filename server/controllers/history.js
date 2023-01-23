@@ -7,6 +7,7 @@ async function getHistory(req, res) {
   try {
     let accessToken = req.body.accessToken;
     console.log(req.headers, 'HEADERSSSSSSSS');
+    console.log(accessToken);
     let totalTrackPopularity = 0;
     let trackCount = 0;
     let weeklyScore = 100;
