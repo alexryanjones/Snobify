@@ -11,7 +11,7 @@ const userRouter = require('./routers/user-router')
 
 
 server.use(cors({
-  origin: 'https://main--snobify.netlify.app',
+  origin: '*',
   credentials: true,
   methods: ['GET', 'POST', 'PUT']
 }));

@@ -50,6 +50,7 @@ async function generateInsult(req, res) {
 }
 
 function loadInsults(req, res) {
+  console.log('oioioioio');
   try {
     insults.deleteMany({});
     prompts.forEach((prompt) => {
