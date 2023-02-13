@@ -1,5 +1,5 @@
-import { Container } from 'react-bootstrap'
 import React from 'react';
+import logo from '../assets/Snobify-Logo.svg'
 
 
 const client_id = process.env.REACT_APP_CLIENT_ID;
@@ -14,9 +14,9 @@ function Login () {
 
     return (
         <div className='blocker'>
-            <Container className='d-flex justify-content-center align-items-center' style={{minHeight: "100vh"}}>
-                <a className='btn btn-success btn-lg' href={authUrl}>Login with Spotify</a>
-            </Container>
+            <img id='login-logo' src={logo} alt='logo'/>
+            <p id='login-text'>Inspiring musical diversity through AI</p>
+            <a id='login-button' href={authUrl}>Login with Spotify</a>
         </div>
     );
 }
