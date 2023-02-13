@@ -27,14 +27,17 @@ To set up Snobify, follow these steps:
 4. Install all dependencies listed in the package.json file by running the following command
    in your terminal:
 
-  npm install
+   ````npm install````
   
 5. Set up the server by using the following command in your terminal:
-   nodemon server/index.js
+
+   ````nodemon server/index.js````
    
-6. Launch the client by runnin the following commands in your terminal:
-   cd client
-   npm run start
+6. Launch the client by running the following commands in your terminal:
+
+   ````cd client````
+   
+   ````npm run start````
   
 After completing these steps, you should be ready to use Snobify and start exploring your musical
 horizons.
