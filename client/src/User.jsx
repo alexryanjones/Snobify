@@ -1,4 +1,4 @@
-import dropdown from './assets/dropdown.svg'
+import dropdown from './assets/icons/dropdown.svg';
 import React from 'react';
 import { useSelector } from 'react-redux';
 

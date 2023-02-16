@@ -12,7 +12,6 @@ function UseAuth (code) {
 
   // Get access token
   useEffect(() => {
-    console.log(code, 'code code');
     try {
       const login = async () => {
       const response = await axios.post(baseUrl + 'login', {code})

@@ -6,7 +6,6 @@ require('dotenv').config();
 async function getHistory(req, res) {
   try {
     let accessToken = req.body.accessToken;
-    // let currentUser = req.body.currentUser;
     let totalTrackPopularity = 0;
     let trackCount = 0;
     let weeklyScore = 100;
@@ -63,7 +62,6 @@ async function getHistory(req, res) {
 async function clearOldTracks(req, res) {
   let date = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
   date = date.getTime();
-  console.log('get get');
   try {
     await listeningHistory.deleteMany({ playedAt: { $lt: date } });
     res.sendStatus(200);
